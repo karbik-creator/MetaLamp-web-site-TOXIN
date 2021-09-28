@@ -1,13 +1,35 @@
 @import "./nullstyle.scss";
 @import "./vars.scss";
 @import "./header.scss";
+@import "./form_filter.scss";
 @import "./footer.scss";
 
-body{
+body {
     font-family: "Montserrat", sans-serif;
 }
-.container{
+.container {
     max-width: 1120px;
     margin: 0 auto;
     padding: 0 20px;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: $DS100;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    color: $DS100;
+    text-transform: uppercase;
 }

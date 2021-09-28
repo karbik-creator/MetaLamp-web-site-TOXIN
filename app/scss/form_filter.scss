@@ -1,0 +1,41 @@
+.form__filter {
+    &__wrapper {
+        background: url("../img/form_filter_background.jpg") no-repeat;
+        height: 900px;
+        width: 100%;
+        background-size: cover;
+
+        .container {
+            position: relative;
+
+            form.filter {
+                position: absolute;
+                top: 70px;
+                left: 10px;
+                width: 380px;
+                height: 374px;
+                padding: 40px 30px 30px 30px;
+                background: #ffffff;
+                border: 1px solid rgba(0, 0, 0, 0.12);
+                box-sizing: border-box;
+                box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+                border-radius: 4px;
+
+                .inputs__date {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 21px;
+
+                    &__item {
+                        input {
+                            border: 1px solid rgba(31, 32, 65, 0.25);
+                            box-sizing: border-box;
+                            border-radius: 4px;
+                            padding: 11px 0 8px 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
