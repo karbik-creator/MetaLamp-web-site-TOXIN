@@ -1,2 +1,2 @@
 # MetaLamp-web-site-TOXIN
-website booking accommodation
+website for booking accommodation
