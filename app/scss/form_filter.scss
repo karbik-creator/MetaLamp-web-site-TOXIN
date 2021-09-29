@@ -27,12 +27,73 @@
                     margin-top: 21px;
 
                     &__item {
-                        input {
-                            border: 1px solid rgba(31, 32, 65, 0.25);
-                            box-sizing: border-box;
+                        input[type="date"] {
+                            border: 1px solid $DS25;
                             border-radius: 4px;
-                            padding: 11px 0 8px 13px;
+                            padding: 10px 32px 10px 13px;
+                            margin-top: 5px;
+                            font-size: 14px;
+                            text-transform: uppercase;
+                            color: $DS75;
+                            position: relative;
+                            &::-webkit-calendar-picker-indicator {
+                                position: absolute;
+                                top: 18px;
+                                right: 5px;
+                                background: url(../img/expand_more.svg) no-repeat;
+                                cursor: pointer;
+                            }
                         }
+                    }
+                }
+                .select__date__item {
+                    margin-top: 20px;
+
+                    select {
+                        appearance: none;
+                        border-radius: 4px;
+                        border: 1px solid $DS25;
+                        width: 100%;
+                        padding: 13px 0 13px 15px;
+                        margin-top: 5px;
+                        font-size: 14px;
+                        line-height: 18px;
+                        color: $DS75;
+                        font-family: "Montserrat", sans-serif;
+                        background: url(../img/expand_more.svg) no-repeat;
+                        background-position-x: 290px;
+                        background-position-y: center;
+                        cursor: pointer;
+                    }
+                }
+
+                button {
+                    margin-top: 30px;
+                    width: 100%;
+                    font-weight: 700;
+                    font-size: 12px;
+                    line-height: 15px;
+                    text-transform: uppercase;
+                    color: #ffffff;
+                    background: linear-gradient(180deg, $Purple 0%, #8ba4f9 100%);
+                    border-radius: 22px;
+                    padding: 14px 0;
+                    position: relative;
+                    transition: opacity 0.3s;
+
+                    &:hover {
+                        transition: opacity 0.3s;
+                        opacity: 0.5;
+                    }
+
+                    &::before {
+                        content: "";
+                        position: absolute;
+                        top: 12px;
+                        right: 10px;
+                        width: 24px;
+                        height: 24px;
+                        background: url(../img/arrow_forward.svg) no-repeat;
                     }
                 }
             }
