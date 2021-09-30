@@ -192,18 +192,20 @@ h6 {
   opacity: 0.5;
 }
 
-.form__filter__wrapper {
+.form__filter {
   background: url("../img/form_filter_background.jpg") no-repeat;
   height: 900px;
   width: 100%;
   background-size: cover;
+  min-height: 900px;
 }
 
-.form__filter__wrapper .container {
+.form__filter__wrapper {
   position: relative;
+  min-height: 900px;
 }
 
-.form__filter__wrapper .container form.filter {
+.form__filter__wrapper form.filter {
   position: absolute;
   top: 70px;
   left: 10px;
@@ -217,13 +219,13 @@ h6 {
   border-radius: 4px;
 }
 
-.form__filter__wrapper .container form.filter .inputs__date {
+.form__filter__wrapper form.filter .inputs__date {
   display: flex;
   justify-content: space-between;
   margin-top: 21px;
 }
 
-.form__filter__wrapper .container form.filter .inputs__date__item input[type="date"] {
+.form__filter__wrapper form.filter .inputs__date__item input[type="date"] {
   border: 1px solid rgba(12, 13, 25, 0.25);
   border-radius: 4px;
   padding: 10px 32px 10px 13px;
@@ -234,7 +236,7 @@ h6 {
   position: relative;
 }
 
-.form__filter__wrapper .container form.filter .inputs__date__item input[type="date"]::-webkit-calendar-picker-indicator {
+.form__filter__wrapper form.filter .inputs__date__item input[type="date"]::-webkit-calendar-picker-indicator {
   position: absolute;
   top: 18px;
   right: 5px;
@@ -242,11 +244,11 @@ h6 {
   cursor: pointer;
 }
 
-.form__filter__wrapper .container form.filter .select__date__item {
+.form__filter__wrapper form.filter .select__date__item {
   margin-top: 20px;
 }
 
-.form__filter__wrapper .container form.filter .select__date__item select {
+.form__filter__wrapper form.filter .select__date__item select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -265,7 +267,7 @@ h6 {
   cursor: pointer;
 }
 
-.form__filter__wrapper .container form.filter button {
+.form__filter__wrapper form.filter button {
   margin-top: 30px;
   width: 100%;
   font-weight: 700;
@@ -280,12 +282,12 @@ h6 {
   transition: opacity 0.3s;
 }
 
-.form__filter__wrapper .container form.filter button:hover {
+.form__filter__wrapper form.filter button:hover {
   transition: opacity 0.3s;
   opacity: 0.5;
 }
 
-.form__filter__wrapper .container form.filter button::before {
+.form__filter__wrapper form.filter button::before {
   content: "";
   position: absolute;
   top: 12px;
@@ -293,6 +295,17 @@ h6 {
   width: 24px;
   height: 24px;
   background: url(../img/arrow_forward.svg) no-repeat;
+}
+
+.form__filter__wrapper .subtext {
+  position: absolute;
+  bottom: 15px;
+  right: 0;
+  max-width: 297px;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: right;
+  color: rgba(12, 13, 25, 0.75);
 }
 
 body {
@@ -326,6 +339,6 @@ h3 {
   text-transform: uppercase;
 }
 
-.webp .form__filter__wrapper {
+.webp .form__filter {
   background: url(../img/form_filter_background.webp) no-repeat;
 }
