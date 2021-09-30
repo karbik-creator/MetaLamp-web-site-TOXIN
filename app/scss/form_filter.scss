@@ -1,16 +1,15 @@
 .form__filter {
     background: url("../img/form_filter_background.jpg") no-repeat;
-    height: 900px;
+    height: 830px;
     width: 100%;
     background-size: cover;
-    min-height: 900px;
     &__wrapper {
         position: relative;
-        min-height: 900px;
+        min-height: 830px;
         form.filter {
             position: absolute;
             top: 70px;
-            left: 10px;
+            left: 0;
             width: 380px;
             height: 374px;
             padding: 40px 30px 30px 30px;
@@ -27,9 +26,10 @@
 
                 &__item {
                     input[type="date"] {
+                        appearance: none;
                         border: 1px solid $DS25;
                         border-radius: 4px;
-                        padding: 10px 32px 10px 13px;
+                        padding: 10px 38px 13px 9px;
                         margin-top: 5px;
                         font-size: 14px;
                         text-transform: uppercase;
@@ -38,8 +38,10 @@
                         &::-webkit-calendar-picker-indicator {
                             position: absolute;
                             top: 18px;
-                            right: 5px;
+                            right: -25px;
                             background: url(../img/expand_more.svg) no-repeat;
+                            width: 44px;
+                            height: 44px;
                             cursor: pointer;
                         }
                     }
@@ -88,8 +90,8 @@
                 &::before {
                     content: "";
                     position: absolute;
-                    top: 12px;
-                    right: 10px;
+                    top: 13px;
+                    right: 6px;
                     width: 24px;
                     height: 24px;
                     background: url(../img/arrow_forward.svg) no-repeat;
@@ -99,8 +101,8 @@
 
         .subtext {
             position: absolute;
-            bottom: 15px;
-            right: 0;
+            bottom: 21px;
+            right: -7px;
             max-width: 297px;
             font-size: 14px;
             line-height: 24px;

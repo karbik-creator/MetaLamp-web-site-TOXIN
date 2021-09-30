@@ -8,31 +8,51 @@
         .header__content__right {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: baseline;
 
             .menu {
-                margin-right: 20px;
+                padding-right: 20px;
                 &__list {
                     display: flex;
-                    width: 472px;
+                    width: 550px;
                     justify-content: space-between;
 
                     &__item {
-                        display: block;
+                        //display: flex;
+                        //justify-content: space-between;
                         font-size: 14px;
                         line-height: 17px;
                         width: 100%;
+                        position: relative;
+
+                        &::before{
+                            content: "";
+                            position: absolute;
+                            background-image: url(../img/expand_more.svg);
+                            width: 24px;
+                            height: 21px;
+                            width: 24px;
+                            height: 21px;
+                            background-repeat: no-repeat;
+                        }
 
                         a {
                             color: $DS50;
                             transition: all 0.3s;
-                        }
 
+                        }
+                        /*.link__arrow {
+                            //position: absolute;
+                            right: 26px;
+                            width: 24px;
+                            height: 21px;
+                        }*/
                         &:hover {
-                            font-weight: 700;
                             a {
                                 color: $DS75;
+                                font-weight: 700;
                                 transition: all 0.3s;
+                                
                             }
                         }
                     }
@@ -57,7 +77,6 @@
                 font-weight: 700;
                 box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
                 border-radius: 22px;
-
             }
             button + button {
                 margin-left: 20px;
@@ -79,11 +98,11 @@
                     border-radius: 22px;
                     background: linear-gradient($Purple, #8ba4f9);
                     z-index: -1;
-                    transition: all .3s ease-out;
+                    transition: all 0.2s ease-out;
                 }
 
-                &:hover::before{
-                    transition: all .3s ease-in;
+                &:hover::before {
+                    transition: all 0.2s ease-in;
                     opacity: 0.5;
                 }
             }
@@ -92,10 +111,10 @@
                 color: #ffff;
                 background: linear-gradient($Purple, #8ba4f9);
                 padding: 9px 20px 10px 19px;
-                transition: all .3s ease-out;
+                transition: all 0.2s ease-out;
 
-                &:hover{
-                    transition: all .3s ease-in;
+                &:hover {
+                    transition: all 0.2s ease-in;
                     opacity: 0.5;
                 }
             }
