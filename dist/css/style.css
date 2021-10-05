@@ -312,6 +312,17 @@ h6 {
   position: relative;
 }
 
+.form__filter__wrapper form.filter .select__wrapper .select__backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  opacity: 0.2;
+}
+
 .form__filter__wrapper form.filter .select__wrapper .select__input {
   line-height: 18px;
   border: 1px solid rgba(12, 13, 25, 0.25);
@@ -396,6 +407,10 @@ h6 {
   opacity: 1;
 }
 
+.form__filter__wrapper form.filter .select__wrapper .select__drop__down__item .select__item__content__right .select__item__btn.active:active {
+  background-color: rgba(12, 13, 25, 0.25);
+}
+
 .form__filter__wrapper form.filter .select__wrapper .select__drop__down .select__drop__down__btn {
   display: flex;
   justify-content: space-between;
@@ -433,6 +448,10 @@ h6 {
 }
 
 .form__filter__wrapper form.filter .select__wrapper.open .select__drop__down {
+  display: block;
+}
+
+.form__filter__wrapper form.filter .select__wrapper.open .select__backdrop {
   display: block;
 }
 
