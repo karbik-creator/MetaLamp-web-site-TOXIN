@@ -7,7 +7,7 @@ const getTemplate = (data = [], placeholder) => {
     <div class="select__item__content__right">
       <button class="select__item__btn" type="button" data-type='btnMinus'>-</button>
       <div class="select__item__number" data-type='count'>${item.count}</div>
-      <button class="select__item__btn active" type="button" data-type='btnplus'>+</button>
+      <button class="select__item__btn active" type="button" data-type='btnPlus'>+</button>
     </div>
     </div>
     `;
@@ -59,7 +59,7 @@ class Select {
     if (type === "input") {
       this.toogle();
     }
-    if (type === "btnplus" || type === "btnMinus") {
+    if (type === "btnPlus" || type === "btnMinus") {
       const id = event.target.parentElement.parentElement.dataset.id;
       this.select(id, type);
     }
@@ -82,7 +82,7 @@ class Select {
   select(id, type) {
     this.selectId = id;
     this.count[this.selectId - 1].textContent =
-      type === "btnplus" ? this.plus() : this.minus();
+      type === "btnPlus" ? this.plus() : this.minus();
     this.currentStyleBtn(id);
     this.currentInput();
   }
@@ -106,49 +106,30 @@ class Select {
     let textForCountChildren = "";
 
     this.options.data.map((item) => {
-      if (item.value === "Младенцы") {
-        countChildren += item.count;
-      } else {
-        countPeople += item.count;
-      }
+      item.value === "Младенцы"
+        ? (countChildren += item.count)
+        : (countPeople += item.count);
     });
 
-    if (countPeople === 1) {
-      textForCountPeople = `${countPeople} гость`;
-    }
-    if (countPeople > 1 && countPeople < 5) {
-      textForCountPeople = `${countPeople} гостя`;
-    }
-    if (countPeople > 4) {
-      textForCountPeople = `${countPeople} гостей`;
-    }
-    if (countPeople === 0) {
-      if (countChildren === 1) {
-        textForCountChildren = `${countChildren} младенец`;
-      }
-      if (countChildren > 1 && countChildren < 5) {
-        textForCountChildren = `${countChildren} младенца`;
-      }
-      if (countChildren > 4) {
-        textForCountChildren = `${countChildren} младенцев`;
-      }
-    } else {
-      if (countChildren === 1) {
-        textForCountChildren = `, ${countChildren} младенец`;
-      }
-      if (countChildren > 1 && countChildren < 5) {
-        textForCountChildren = `, ${countChildren} младенца`;
-      }
-      if (countChildren > 4) {
-        textForCountChildren = `, ${countChildren} младенцев`;
-      }
-    }
+    textForCountPeople = this.declOfNum(countPeople, [
+      "гость",
+      "гостя",
+      "гостей",
+    ]);
+    textForCountChildren = this.declOfNum(countChildren, [
+      "младенец",
+      "младенца",
+      "младенцев",
+    ]);
+
     if (countPeople === 0 && countChildren === 0) {
       textForCountPeople = this.options.placeholder ?? "Выберите значение";
     }
-
-    this.value.textContent = textForCountPeople + textForCountChildren;
-
+    if (countPeople !== 0 && countChildren !== 0) {
+      this.value.textContent = textForCountPeople + ", " + textForCountChildren;
+    } else {
+      this.value.textContent = textForCountPeople + textForCountChildren;
+    }
     if (countChildren + countPeople > 0) {
       if (!this.isActiveBtnClean()) {
         this.btnClean.classList.add("active");
@@ -160,23 +141,57 @@ class Select {
     }
   }
 
+  declOfNum(n, text_forms) {
+    if (n == 0) {
+      return "";
+    }
+    n = Math.abs(n) % 1000;
+    let n1 = n % 10;
+    if (n > 10 && n < 20) {
+      return n + " " + text_forms[2];
+    }
+    if (n1 > 1 && n1 < 5) {
+      return n + " " + text_forms[1];
+    }
+    if (n1 == 1) {
+      return n + " " + text_forms[0];
+    }
+    return n + " " + text_forms[2];
+  }
+
   currentStyleBtn(id, arrayId = this.options.data) {
     if (typeof id === "undefined") {
-      arrayId.map(item => {
+      arrayId.map((item) => {
         let btnMinus = this.element.querySelector(
           `[data-id="${item.id}"] > div > button[data-type="btnMinus"]`
+        );
+        let btnPlus = this.element.querySelector(
+          `[data-id="${item.id}"] > div > button[data-type="btnPlus"]`
         );
         this.current().count > 0
           ? btnMinus.classList.add("active")
           : btnMinus.classList.remove("active");
+
+        this.current().count === 100
+          ? btnPlus.classList.remove("active")
+          : btnPlus.classList.add("active");
       });
     } else {
       let btnMinus = this.element.querySelector(
         `[data-id="${id}"] > div > button[data-type="btnMinus"]`
       );
+      let btnPlus = this.element.querySelector(
+        `[data-id="${id}"] > div > button[data-type="btnPlus"]`
+      );
       this.current().count > 0
         ? btnMinus.classList.add("active")
         : btnMinus.classList.remove("active");
+
+     /* if (this.current().count === 10) {
+        btnPlus.classList.remove("active");
+      } else {
+        btnPlus.classList.add("active");
+      }*/
     }
   }
 
