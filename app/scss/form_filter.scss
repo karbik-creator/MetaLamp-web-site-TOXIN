@@ -19,34 +19,32 @@
             box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
 
-            .inputs__date {
+            .filter__date {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 21px;
 
-                &__item {
-                    input[type="date"] {
-                        appearance: none;
-                        border: 1px solid $DS25;
-                        border-radius: 4px;
-                        padding: 10px 38px 13px 9px;
-                        margin-top: 5px;
-                        font-size: 14px;
-                        text-transform: uppercase;
-                        color: $DS75;
-                        position: relative;
-                        &::-webkit-calendar-picker-indicator {
-                            position: absolute;
-                            top: 18px;
-                            right: -25px;
-                            background: url(../img/expand_more.svg) no-repeat;
-                            width: 44px;
-                            height: 44px;
-                            cursor: pointer;
+                .date {
+                    &__wrapper {
+                        .date__input {
+                            border: 1px solid $DS25;
+                            border-radius: 4px;
+                            font-size: 14px;
+                            line-height: 18px;
+                            color: $DS75;
+                            padding: 11px 32px 8px 15px;
+                            margin-top: 5px;
+                            position: relative;
+
+                            span.material-icons.md-dark{
+                                color: red !important;
+                            }
+                            
                         }
                     }
                 }
             }
+
             .select {
                 margin-top: 20px;
 
@@ -191,7 +189,7 @@
                             display: block;
                         }
 
-                        .select__backdrop{
+                        .select__backdrop {
                             display: block;
                         }
                     }

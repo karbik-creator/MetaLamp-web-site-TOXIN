@@ -1,4 +1,4 @@
-const getTemplate = (data = [], placeholder) => {
+const getTemplateSelect = (data = [], placeholder) => {
   const text = placeholder ?? "Выберите значение";
   const items = data.map((item) => {
     return `
@@ -41,7 +41,7 @@ class Select {
     this.element.classList.add("select__wrapper");
     this.element.insertAdjacentHTML(
       "afterbegin",
-      getTemplate(data, placeholder)
+      getTemplateSelect(data, placeholder)
     );
   }
 
@@ -187,7 +187,7 @@ class Select {
         ? btnMinus.classList.add("active")
         : btnMinus.classList.remove("active");
 
-     /* if (this.current().count === 10) {
+      /* if (this.current().count === 10) {
         btnPlus.classList.remove("active");
       } else {
         btnPlus.classList.add("active");
@@ -217,3 +217,22 @@ const select = new Select("#select-in-form", {
     { id: 3, value: "Младенцы", count: 0 },
   ],
 });
+
+class InputDate {
+  constructor(selector, options) {
+    this.element = document.querySelector(selector);
+    this.options = options;
+
+    this.render();
+    this.setup();
+  }
+
+  render() {
+    const  placeholder  = this.options;
+    this.element.classList.add("select__wrapper");
+    this.element.insertAdjacentHTML(
+      "afterbegin",
+      getTemplateSelect(data, placeholder)
+    );
+  }
+}

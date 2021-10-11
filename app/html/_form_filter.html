@@ -3,28 +3,34 @@
     <div class="form__filter__wrapper">
       <form action="" class="filter">
         <h1>Найдём номера под ваши пожелания</h1>
-        <div class="inputs__date">
-          <div class="inputs__date__item">
-            <label for="">
-              <h3>прибытие</h3>
-            </label>
-            <input type="date">
+        <div class="filter__date">
+          <div class="date">
+            <h3>прибытие</h3>
+            <div class="date__wrapper">
+              <div class="date__input">ДД.ММ.ГГГГ</div>
+              <div class="date__dropdown"></div>
+            </div>
           </div>
-          <div class="inputs__date__item">
-            <label for="">
-              <h3>выезд</h3>
-            </label>
-            <input type="date">
+          <div class="date">
+            <h3>выезд</h3>
+            <div class="date__wrapper">
+              <div class="date__input">
+                ДД.ММ.ГГГГ 
+                <span class="material-icons"> expand_more </span>
+              </div>
+              <div class="date__dropdown"></div>
+            </div>
           </div>
         </div>
         <div class="select">
           <h3>гости</h3>
-          <div id='select-in-form'>
-          </div>
+          <div id="select-in-form"></div>
         </div>
         <button class="pick-up-numbers">подобрать номер</button>
       </form>
-      <div class="subtext">Лучшие номера для вашей работы, отдыха и просто вдохновения</div>
+      <div class="subtext">
+        Лучшие номера для вашей работы, отдыха и просто вдохновения
+      </div>
     </div>
   </div>
 </section>
