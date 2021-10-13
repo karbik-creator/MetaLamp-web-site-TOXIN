@@ -218,7 +218,7 @@ const select = new Select("#select-in-form", {
   ],
 });
 
-class InputDate {
+class Datepicker {
   constructor(selector, options) {
     this.element = document.querySelector(selector);
     this.options = options;

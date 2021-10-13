@@ -19,27 +19,168 @@
             box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
             border-radius: 4px;
 
-            .filter__date {
+            .datepicker {
                 display: flex;
                 justify-content: space-between;
                 margin-top: 21px;
+                position: relative;
 
-                .date {
+                .datepicker__item {
                     &__wrapper {
-                        .date__input {
+                        .datepicker__item__input {
                             border: 1px solid $DS25;
                             border-radius: 4px;
                             font-size: 14px;
-                            line-height: 18px;
                             color: $DS75;
-                            padding: 11px 32px 8px 15px;
+                            max-width: 150px;
+                            padding: 11px 45px 8px 15px;
                             margin-top: 5px;
                             position: relative;
+                            cursor: pointer;
 
-                            span.material-icons.md-dark{
-                                color: red !important;
+                            &::before {
+                                content: "";
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                background-image: url(../img/expand_more.svg);
+                                background-repeat: no-repeat;
+                                width: 44px;
+                                height: 44px;
+                                background-position: center;
+                                cursor: pointer;
                             }
-                            
+                        }
+                    }
+                }
+                .datepicker__item__dropdown {
+                    position: absolute;
+                    z-index: 1000;
+                    top: 70px;
+                    background-color: #ffffff;
+                    border: 1px solid $DS25;
+                    border-radius: 4px;
+                    min-width: 319px;
+                    height: 369px;
+                    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+                    padding: 13px 7px 13px 15px;
+
+                    &__inner {
+                        padding: 20px;
+
+                        & .content__top {
+                            display: flex;
+                            justify-content: space-between;
+
+                            .month-and-year {
+                                font-weight: 700;
+                                font-size: 19px;
+                                line-height: 23px;
+                                color: $DS100;
+                            }
+
+                            .arrow {
+                                background-color: transparent;
+
+                                #prev-month,
+                                #next-month {
+                                    color: $Purple;
+                                }
+                                #prev-month {
+                                    transform: rotate(180deg);
+                                }
+                            }
+                        }
+
+                        & .content__center {
+                            margin-top: 30px;
+
+                            .days-of-week {
+                                display: flex;
+                                justify-content: space-between;
+                                color: $Purple;
+                                font-size: 12px;
+                                line-height: 15px;
+                                font-weight: 700;
+
+                                .day-of-week {
+                                    min-width: 40px;
+                                    height: 40px;
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                }
+                            }
+
+                            .days {
+                                display: grid;
+                                grid-template-columns: repeat(7, 40px);
+
+                                .day {
+                                    display: grid;
+                                    height: 40px;
+                                    justify-content: center;
+                                    align-items: center;
+                                    color: $DS50;
+                                    background-color: transparent;
+                                    font-size: 12px;
+                                    position: relative;
+                                    transition: all .3s;
+
+                                    &::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                        right: 0;
+                                        z-index: -1;
+                                        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                                        border-radius: 50%;
+                                        opacity: 0;
+                                        transition: all .3s;
+                                    } 
+
+                                    &.inactive {
+                                        color: $DS25;
+                                    }
+
+                                    &:hover{
+                                        font-weight: 700;
+                                        color: white;
+
+                                       &::before {
+                                        opacity: 1;
+                                        transition: all .3s;
+                                    } 
+                                    }
+                                    
+                                    
+                                }
+                            }
+                        }
+
+                        .content__footer{
+                            .drop__down__btn {
+                                background-color: #ffffff;
+                                border: 1px solid $DS25;
+                                border-radius: 22px;
+                                color: $DS50;
+                                opacity: 0.38;
+                                font-size: 18px;
+                                width: 30px;
+                                height: 30px;
+                                cursor: default;
+
+                                &.active {
+                                    cursor: pointer;
+                                    opacity: 1;
+
+                                    &:active {
+                                        background-color: $DS25;
+                                    }
+                                }
+                            }
                         }
                     }
                 }

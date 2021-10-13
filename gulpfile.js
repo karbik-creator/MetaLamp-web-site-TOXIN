@@ -18,7 +18,7 @@ let path = {
         html: [source_folder + "/*.html", "!" + source_folder + "/_*.html"],
         css: source_folder + "/scss/style.scss",
         js: source_folder + "/js/script.js",
-        //jsSlider: source_folder + "/js/slick.min.js",
+        jsModule: source_folder + "/js/*.js",
         fonts: source_folder + "/fonts/*.ttf",
     },
     watch: {
@@ -106,8 +106,8 @@ function js() {
         .pipe(browsersync.stream())
 }
 
-function  jsSlider() {
-    return src(path.src.jsSlider)
+function  jsModule() {
+    return src(path.src.jsModule)
         .pipe(dest(path.build.js))
         .pipe(browsersync.stream())
 }
@@ -177,7 +177,7 @@ function clean(params) {
     return deleted(path.clean);
 }
 
-let build = gulp.series(clean, gulp.parallel(images, js, css, html, fonts), fontsStyle);
+let build = gulp.series(clean, gulp.parallel(images, js, css, html, fonts, jsModule), fontsStyle);
 let watch = gulp.parallel(build, watchFiles, browserSync);
 
 
@@ -185,7 +185,7 @@ exports.fontsStyle = fontsStyle;
 exports.fonts = fonts;
 exports.images = images;
 exports.js = js;
-//exports.jsSlider = jsSlider;
+exports.jsModule = jsModule;
 exports.css = css;
 exports.html = html;
 exports.build = build;

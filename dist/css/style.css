@@ -273,34 +273,165 @@ h6 {
   border-radius: 4px;
 }
 
-.form__filter__wrapper form.filter .inputs__date {
+.form__filter__wrapper form.filter .datepicker {
   display: flex;
   justify-content: space-between;
   margin-top: 21px;
-}
-
-.form__filter__wrapper form.filter .inputs__date__item input[type="date"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border: 1px solid rgba(12, 13, 25, 0.25);
-  border-radius: 4px;
-  padding: 10px 38px 13px 9px;
-  margin-top: 5px;
-  font-size: 14px;
-  text-transform: uppercase;
-  color: rgba(12, 13, 25, 0.75);
   position: relative;
 }
 
-.form__filter__wrapper form.filter .inputs__date__item input[type="date"]::-webkit-calendar-picker-indicator {
+.form__filter__wrapper form.filter .datepicker .datepicker__item__wrapper .datepicker__item__input {
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  font-size: 14px;
+  color: rgba(12, 13, 25, 0.75);
+  max-width: 150px;
+  padding: 11px 45px 8px 15px;
+  margin-top: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__wrapper .datepicker__item__input::before {
+  content: "";
   position: absolute;
-  top: 18px;
-  right: -25px;
-  background: url(../img/expand_more.svg) no-repeat;
+  right: 0;
+  top: 0;
+  background-image: url(../img/expand_more.svg);
+  background-repeat: no-repeat;
   width: 44px;
   height: 44px;
+  background-position: center;
   cursor: pointer;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown {
+  position: absolute;
+  z-index: 1000;
+  top: 70px;
+  background-color: #ffffff;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  min-width: 319px;
+  height: 369px;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  padding: 13px 7px 13px 15px;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner {
+  padding: 20px;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top .month-and-year {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  color: #0c0d19;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top .arrow {
+  background-color: transparent;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top .arrow #prev-month,
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top .arrow #next-month {
+  color: #BC9CFF;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top .arrow #prev-month {
+  transform: rotate(180deg);
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center {
+  margin-top: 30px;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days-of-week {
+  display: flex;
+  justify-content: space-between;
+  color: #BC9CFF;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days-of-week .day-of-week {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day {
+  display: grid;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  color: rgba(12, 13, 25, 0.5);
+  background-color: transparent;
+  font-size: 12px;
+  position: relative;
+  transition: all .3s;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all .3s;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day.inactive {
+  color: rgba(12, 13, 25, 0.25);
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day:hover {
+  font-weight: 700;
+  color: white;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day:hover::before {
+  opacity: 1;
+  transition: all .3s;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn {
+  background-color: #ffffff;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 22px;
+  color: rgba(12, 13, 25, 0.5);
+  opacity: 0.38;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  cursor: default;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn.active {
+  cursor: pointer;
+  opacity: 1;
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn.active:active {
+  background-color: rgba(12, 13, 25, 0.25);
 }
 
 .form__filter__wrapper form.filter .select {
