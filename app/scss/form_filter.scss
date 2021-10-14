@@ -60,10 +60,9 @@
                     background-color: #ffffff;
                     border: 1px solid $DS25;
                     border-radius: 4px;
-                    min-width: 319px;
+                    width: 320px;
                     height: 369px;
                     box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-                    padding: 13px 7px 13px 15px;
 
                     &__inner {
                         padding: 20px;
@@ -75,7 +74,6 @@
                             .month-and-year {
                                 font-weight: 700;
                                 font-size: 19px;
-                                line-height: 23px;
                                 color: $DS100;
                             }
 
@@ -85,6 +83,7 @@
                                 #prev-month,
                                 #next-month {
                                     color: $Purple;
+                                    font-size: 25px;
                                 }
                                 #prev-month {
                                     transform: rotate(180deg);
@@ -125,7 +124,8 @@
                                     background-color: transparent;
                                     font-size: 12px;
                                     position: relative;
-                                    transition: all .3s;
+                                    transition: all 0.3s;
+                                    cursor: pointer;
 
                                     &::before {
                                         content: "";
@@ -138,46 +138,111 @@
                                         background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
                                         border-radius: 50%;
                                         opacity: 0;
-                                        transition: all .3s;
-                                    } 
+                                        transition: all 0.3s;
+                                    }
 
-                                    &.inactive {
+                                    &.active {
+                                        color: white;
+                                        font-weight: 700;
+                                        position: relative;
+
+                                        &::before {
+                                            opacity: 1;
+                                            background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+                                        }
+                                        &.end {
+                                            &::after {
+                                                content: "";
+                                                position: absolute;
+                                                left: 0;
+                                                width: 50%;
+                                                height: 100%;
+                                                background: linear-gradient(
+                                                    180deg,
+                                                    rgba(188, 156, 255, 0.25) 0%,
+                                                    rgba(139, 164, 249, 0.25) 100%
+                                                );
+                                                z-index: -1;
+                                            }
+                                        }
+                                        &.start{
+                                            &::after {
+                                                content: "";
+                                                position: absolute;
+                                                right: 0;
+                                                width: 50%;
+                                                height: 100%;
+                                                background: linear-gradient(
+                                                    180deg,
+                                                    rgba(188, 156, 255, 0.25) 0%,
+                                                    rgba(139, 164, 249, 0.25) 100%
+                                                );
+                                                z-index: -1;
+                                            }
+                                        }
+                                    }
+
+                                    &.prev-next-day {
                                         color: $DS25;
                                     }
 
-                                    &:hover{
+                                    &:hover {
                                         font-weight: 700;
                                         color: white;
 
-                                       &::before {
-                                        opacity: 1;
-                                        transition: all .3s;
-                                    } 
+                                        &::before {
+                                            opacity: 1;
+                                            transition: all 0.3s;
+                                        }
                                     }
-                                    
-                                    
+
+                                    &.streak {
+                                        background: linear-gradient(
+                                            180deg,
+                                            rgba(188, 156, 255, 0.25) 0%,
+                                            rgba(139, 164, 249, 0.25) 100%
+                                        );
+
+                                        &:hover {
+                                            font-weight: normal;
+                                            color: $DS50;
+
+                                            &::before {
+                                                opacity: 0;
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
 
-                        .content__footer{
+                        .content__footer {
                             .drop__down__btn {
-                                background-color: #ffffff;
-                                border: 1px solid $DS25;
-                                border-radius: 22px;
-                                color: $DS50;
-                                opacity: 0.38;
-                                font-size: 18px;
-                                width: 30px;
-                                height: 30px;
-                                cursor: default;
+                                display: flex;
+                                justify-content: space-between;
+                                margin-top: 20px;
+                                button {
+                                    opacity: 0;
+                                    overflow: hidden;
+                                    visibility: hidden;
+                                    pointer-events: none;
+                                    font-size: 12px;
+                                    line-height: 15px;
+                                    font-weight: 700;
+                                    text-transform: uppercase;
+                                    color: $Purple;
+                                    background-color: transparent;
+                                    transition: 0.3s;
 
-                                &.active {
-                                    cursor: pointer;
-                                    opacity: 1;
+                                    &.active {
+                                        opacity: 1;
+                                        visibility: inherit;
+                                        pointer-events: visible;
 
-                                    &:active {
-                                        background-color: $DS25;
+                                        &:hover {
+                                            color: $DS50;
+                                            transition: 0.3s;
+                                        }
                                     }
                                 }
                             }
