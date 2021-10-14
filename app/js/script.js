@@ -218,21 +218,137 @@ const select = new Select("#select-in-form", {
   ],
 });
 
+const getTemplateDatepicker = (placeholder,month) => {
+  return `<div class="datepicker__item">
+  <h3>прибытие</h3>
+  <div class="datepicker__item__wrapper">
+    <div class="datepicker__item__input" data-type="input">${placeholder}</div>
+  </div>
+</div>
+<div class="datepicker__item">
+  <h3>выезд</h3>
+  <div class="datepicker__item__wrapper">
+    <div class="datepicker__item__input" data-type="input">${placeholder}</div>
+  </div>
+</div>
+<div class="datepicker__item__dropdown">
+  <div class="datepicker__item__dropdown__inner">
+    <div class="content__top">
+      <button class="arrow prev-month" data-type="btn-prev-month">
+        <span class="material-icons" id="arrow-prev-month"> arrow_forward </span>
+      </button>
+      <div class="month-and-year">${month}</div>
+      <button class="arrow next-month" data-type="btn-next-month">
+      <span class="material-icons" id="arrow-next-month"> arrow_forward </span>
+      </button>
+    </div>
+    <div class="content__center">
+      <div class="days-of-week">
+        <div class="day-of-week">ПН</div>
+        <div class="day-of-week">ВТ</div>
+        <div class="day-of-week">СР</div>
+        <div class="day-of-week">ЧТ</div>
+        <div class="day-of-week">ПТ</div>
+        <div class="day-of-week">СБ</div>
+        <div class="day-of-week">ВС</div>
+      </div>
+      <div class="days">
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+        <div class="day">1</div>
+        <div class="day">2</div>
+        <div class="day">3</div>
+        <div class="day">4</div>
+        <div class="day">5</div>
+        <div class="day">6</div>
+        <div class="day">7</div>
+        <div class="day">8</div>
+        <div class="day">9</div>
+        <div class="day">10</div>
+      </div>
+    </div>
+    <div class="content__footer">
+      <div class="drop__down__btn">
+        <button type="button" data-type="cleandrop">очистить</button>
+        <button class="active" type="button" data-type="backdrop">
+          применить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>`;
+};
+
 class Datepicker {
   constructor(selector, options) {
     this.element = document.querySelector(selector);
     this.options = options;
+    this.date = new Date();
 
     this.render();
     this.setup();
   }
 
   render() {
-    const  placeholder  = this.options;
-    this.element.classList.add("select__wrapper");
+    const placeholder = this.options;
+    let month = this.renderDate();
     this.element.insertAdjacentHTML(
       "afterbegin",
-      getTemplateSelect(data, placeholder)
+      getTemplateDatepicker(placeholder,month)
     );
+    console.log(this.month)
+    
+    
+   
+  }
+
+  renderDate(){
+    const months = ['Январь','Февраль', 'Март', "Апрель", "Май", "Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
+     months.find((item, date)=>{
+      if(date === this.date.getMonth()){
+         return item
+      }});
+  }
+
+
+  setup() {
+    this.clickHandler = this.clickHandler.bind(this);
+    this.element.addEventListener("click", this.clickHandler);
+    this.dateInput = this.element.querySelectorAll(".datepicker__item__input");
+    this.dropDown = this.element.querySelector(".datepicker__item__dropdown");
+  }
+
+  clickHandler(event) {
+    const { type } = event.target.dataset;
+    if (type === "input") {
+      this.toggleDropdown();
+    }
+    if(type === 'btn-prev-month'){
+
+    }
+  }
+
+  toggleDropdown() {
+    this.element.classList.toggle("open");
   }
 }
+
+const datePicker = new Datepicker(".datepicker", "ДД.ММ.ГГГГ");
