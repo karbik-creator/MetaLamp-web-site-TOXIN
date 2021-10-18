@@ -218,28 +218,29 @@ const select = new Select("#select-in-form", {
   ],
 });
 
-const getTemplateDatepicker = (placeholder,month) => {
-  return `<div class="datepicker__item">
+const getTemplateDatepicker = (placeholder, month, year) => {
+  return `<div class="datepicker__backdrop" data-type="backdrop"></div>
+  <div class="datepicker__item">
   <h3>прибытие</h3>
   <div class="datepicker__item__wrapper">
-    <div class="datepicker__item__input" data-type="input">${placeholder}</div>
+    <div class="datepicker__item__input" data-type="input-start-date">${placeholder}</div>
   </div>
 </div>
 <div class="datepicker__item">
   <h3>выезд</h3>
   <div class="datepicker__item__wrapper">
-    <div class="datepicker__item__input" data-type="input">${placeholder}</div>
+    <div class="datepicker__item__input" data-type="input-end-date">${placeholder}</div>
   </div>
 </div>
 <div class="datepicker__item__dropdown">
   <div class="datepicker__item__dropdown__inner">
     <div class="content__top">
-      <button class="arrow prev-month" data-type="btn-prev-month">
-        <span class="material-icons" id="arrow-prev-month"> arrow_forward </span>
+      <button class="arrow prev-month"  type="button">
+        <span class="material-icons" id="arrow-prev-month" data-type="btn-prev-month"> arrow_forward </span>
       </button>
-      <div class="month-and-year">${month}</div>
-      <button class="arrow next-month" data-type="btn-next-month">
-      <span class="material-icons" id="arrow-next-month"> arrow_forward </span>
+      <div class="month-and-year">${month + ' ' + year}</div>
+      <button class="arrow next-month"  type="button">
+      <span class="material-icons" id="arrow-next-month" data-type="btn-next-month"> arrow_forward </span>
       </button>
     </div>
     <div class="content__center">
@@ -252,38 +253,7 @@ const getTemplateDatepicker = (placeholder,month) => {
         <div class="day-of-week">СБ</div>
         <div class="day-of-week">ВС</div>
       </div>
-      <div class="days">
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day">6</div>
-        <div class="day">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day">6</div>
-        <div class="day">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-        <div class="day">1</div>
-        <div class="day">2</div>
-        <div class="day">3</div>
-        <div class="day">4</div>
-        <div class="day">5</div>
-        <div class="day">6</div>
-        <div class="day">7</div>
-        <div class="day">8</div>
-        <div class="day">9</div>
-        <div class="day">10</div>
-      </div>
+      <div class="days"></div>
     </div>
     <div class="content__footer">
       <div class="drop__down__btn">
@@ -302,6 +272,7 @@ class Datepicker {
     this.element = document.querySelector(selector);
     this.options = options;
     this.date = new Date();
+    [this.month, this.year] = [this.date.getMonth(), this.date.getFullYear()];
 
     this.render();
     this.setup();
@@ -309,46 +280,132 @@ class Datepicker {
 
   render() {
     const placeholder = this.options;
-    let month = this.renderDate();
     this.element.insertAdjacentHTML(
       "afterbegin",
-      getTemplateDatepicker(placeholder,month)
+      getTemplateDatepicker(placeholder, this.renderMonth(), this.year)
     );
-    console.log(this.month)
-    
-    
-   
+    this.renderDays();
+
   }
 
-  renderDate(){
-    const months = ['Январь','Февраль', 'Март', "Апрель", "Май", "Июнь","Июль","Август","Сентябрь","Октябрь","Ноябрь","Декабрь"];
-     months.find((item, date)=>{
-      if(date === this.date.getMonth()){
-         return item
-      }});
+  renderMonth() {
+    const months = ['Январь', 'Февраль', 'Март', "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+    return months[this.month]
   }
 
+  renderDays() {
+    let days = new Date(this.month, this.year, 0).getDate();
+    let daysList = this.element.querySelector('.days')
+    for (let i = 1; i <= days; i++) {
+      daysList.insertAdjacentHTML(
+        "beforeend",
+        `<div class="day" data-type="day" data-value='${i}'>${i}</div>`
+      );
+    }
+  }
 
   setup() {
     this.clickHandler = this.clickHandler.bind(this);
+    this.daysContainer = this.element.querySelector(".days");
     this.element.addEventListener("click", this.clickHandler);
-    this.dateInput = this.element.querySelectorAll(".datepicker__item__input");
-    this.dropDown = this.element.querySelector(".datepicker__item__dropdown");
+    this.days = this.element.querySelectorAll(".day");
+    this.btnClean = this.element.querySelector('[data-type="cleandrop"]');
+    this.inputStartDate = this.element.querySelector('[data-type="input-start-date"]');
+    this.inputEndDate = this.element.querySelector('[data-type="input-end-date"]');
+    this.startPeriod, this.endPeriod;
   }
 
   clickHandler(event) {
     const { type } = event.target.dataset;
-    if (type === "input") {
+    if (type === "input-start-date" || type === "input-end-date") {
       this.toggleDropdown();
     }
-    if(type === 'btn-prev-month'){
-
+    if (type === 'btn-next-month') {
+      this.nextMonth()
+    }
+    if (type === 'btn-prev-month') {
+      this.prevMonth()
+    }
+    if (type === 'day') {
+      this.activeDay(event)
+    }
+    if (type === 'backdrop') {
+      this.toggleDropdown();
+      this.fillInput();
+    }
+    if (type === 'cleandrop') {
+      this.cleanDrop();
     }
   }
 
   toggleDropdown() {
     this.element.classList.toggle("open");
   }
+
+  nextMonth() {
+    this.month < 11 ? this.month++ : (this.month = 0, this.year++)
+    this.element.querySelector('.month-and-year').textContent = this.renderMonth() + ' ' + this.year;
+    this.renderDays()
+  }
+
+  prevMonth() {
+    this.month > 0 ? this.month-- : (this.month = 11, this.year--)
+    this.element.querySelector('.month-and-year').textContent = this.renderMonth() + ' ' + this.year;
+    this.renderDays()
+  }
+
+  activeDay(event) {
+    this.reviewCountActiveDays();
+    event.target.classList.add('active');
+    this.btnClean.classList.add('active');
+    this.colorPeriod();
+  }
+
+  reviewCountActiveDays() {
+    let ActiveDays = this.element.querySelectorAll('.day.active');
+    if (ActiveDays.length > 1) {
+      for (let day of ActiveDays) {
+        day.classList.remove('active', 'start', 'end')
+      }
+      for (let i = this.startPeriod; i < this.endPeriod - 1; i++) {
+        this.days[i].classList.remove('streak');
+      }
+    }
+
+  }
+
+  colorPeriod() {
+    let ActiveDays = this.element.querySelectorAll('.day.active');
+    this.startPeriod = parseInt(ActiveDays[0].dataset.value);
+    if (ActiveDays.length == 2) {
+      this.endPeriod = parseInt(ActiveDays[1].dataset.value);
+      ActiveDays[0].classList.add('start');
+      ActiveDays[1].classList.add('end');
+      for (let i = this.startPeriod; i < this.endPeriod - 1; i++) {
+        this.days[i].classList.add('streak');
+      }
+    }
+
+  }
+
+  fillInput() {
+    let month, startDay, endDay;
+    this.month < 9 ? month = '0' + (this.month + 1) : month = this.month + 1;
+    this.startPeriod < 10 ? startDay = '0' + this.startPeriod : startDay = this.startPeriod;
+    this.endPeriod < 10 ? endDay = '0' + this.endPeriod : endDay = this.endPeriod;
+    this.inputStartDate.textContent = startDay + '.' + month + '.' + this.year;
+    this.inputEndDate.textContent = endDay + '.' + month + '.' + this.year;
+
+  }
+
+  cleanDrop() {
+    for (let day of this.days) {
+      day.classList.remove('active', 'start', 'end', 'streak');
+    }
+
+  }
+
 }
 
+//new Datepicker(контейнер для datepicker, "ДД.ММ.ГГГГ");
 const datePicker = new Datepicker(".datepicker", "ДД.ММ.ГГГГ");

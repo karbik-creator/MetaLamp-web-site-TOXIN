@@ -29,21 +29,35 @@
                     .datepicker__item__dropdown {
                         display: block;
                     }
+                    .datepicker__backdrop {
+                        display: block;
+                    }
+                }
+
+                .datepicker__backdrop {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    bottom: 0;
+                    right: 0;
+                    left: 0;
+                    background-color: transparent;
+                    opacity: 0.2;
                 }
 
                 .datepicker__item {
                     &__wrapper {
-                        transition: background-color .2s ease-in;
-                        &:hover{
-                            transition: background-color .2s ease-out;
-                            background-color: rgba(12,13,25,.03);
+                        transition: background-color 0.2s ease-in;
+                        &:hover {
+                            transition: background-color 0.2s ease-out;
+                            background-color: rgba(12, 13, 25, 0.03);
                         }
                         .datepicker__item__input {
                             border: 1px solid $DS25;
                             border-radius: 4px;
                             font-size: 14px;
-                            color: $DS75;
-                            max-width: 150px;
+                            color: rgba(31, 32, 65, 0.75);
+                            width: 150px;
                             padding: 11px 45px 8px 15px;
                             margin-top: 5px;
                             position: relative;
@@ -147,9 +161,9 @@
                                         left: 0;
                                         right: 0;
                                         z-index: -1;
-                                        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
                                         border-radius: 50%;
                                         opacity: 0;
+                                        background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
                                         transition: all 0.3s;
                                     }
 
@@ -162,6 +176,7 @@
                                             opacity: 1;
                                             background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
                                         }
+
                                         &.end {
                                             &::after {
                                                 content: "";
@@ -204,6 +219,7 @@
 
                                         &::before {
                                             opacity: 1;
+                                            
                                             transition: all 0.3s;
                                         }
                                     }
