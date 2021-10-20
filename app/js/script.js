@@ -250,7 +250,8 @@ const getTemplateDatepicker = (placeholder, month, year, daysOfWeek) => {
       <div class="days-of-week">
         ${days.join("")}
       </div>
-      <div class="days"></div>
+      <div class="days">
+      </div>
     </div>
     <div class="content__footer">
       <div class="drop__down__btn">
@@ -314,11 +315,15 @@ class Datepicker {
       }
     );
     const paddingDays = this.daysOfWeek.indexOf(dateString.split(", ")[0]);
-    let daysList = this.element.querySelector(".days");
+    let daysContainer = this.element.querySelector(".days");
+    let days = document.createElement('div');
+    days.classList.add('days__list');
+    days.style
+    daysContainer.append(days);
     let countDaysInMonth = new Date(this.year, this.month + 1, 0).getDate();
     let countDaysOfLastMonth = new Date(this.year, this.month, 0).getDate();
     let countDaysInDatepicker = 35;
-    daysList.innerHTML = "";
+    //daysList.innerHTML = "";
     for (let i = 1; i <= countDaysInDatepicker; i++) {
       if (i <= paddingDays) {
         for (
@@ -326,19 +331,17 @@ class Datepicker {
           j > countDaysOfLastMonth - paddingDays;
           j--
         ) {
-          daysList.insertAdjacentHTML(
+          days.insertAdjacentHTML(
             "afterbegin",
-            `<div class="day prev-next-day" data-type="day" data-value='${j}'>${j}</div>`
+            `<div class="day prev-next-day" data-type="day" data-value='${new Date(this.year, this.month-1, j, 0, 0, 0, 0).getTime()}'>${j}</div>`
           );
           i++;
         }
       }
       if (i <= countDaysInMonth + paddingDays && i > paddingDays) {
-        daysList.insertAdjacentHTML(
+        days.insertAdjacentHTML(
           "beforeend",
-          `<div class="day" data-type="day" data-value='${i - paddingDays}'>${
-            i - paddingDays
-          }</div>`
+          `<div class="day" data-type="day" data-value='${new Date(this.year, this.month, i-paddingDays, 0, 0, 0, 0).getTime()}'>${i - paddingDays}</div>`
         );
       }
       if (i >= countDaysInMonth + paddingDays) {
@@ -347,9 +350,9 @@ class Datepicker {
           k <= countDaysInDatepicker - countDaysInMonth - paddingDays;
           k++
         ) {
-          daysList.insertAdjacentHTML(
+          days.insertAdjacentHTML(
             "beforeend",
-            `<div class="day prev-next-day" data-type="day" data-value='${k}'>${k}</div>`
+            `<div class="day prev-next-day" data-type="day" data-value='${new Date(this.year, this.month+1, k, 0, 0, 0, 0).getTime()}'>${k}</div>`
           );
           i++;
         }
@@ -360,8 +363,7 @@ class Datepicker {
   setup() {
     this.clickHandler = this.clickHandler.bind(this);
     this.element.addEventListener("click", this.clickHandler);
-    this.daysContainer = this.element.querySelector(".days");
-    this.days = this.element.querySelectorAll(".day");
+    this.daysContainer = this.element.querySelector(".days__list");
     this.btnClean = this.element.querySelector('[data-type="cleandrop"]');
     this.inputStartDate = this.element.querySelector(
       '[data-type="input-start-date"]'
@@ -389,6 +391,7 @@ class Datepicker {
     if (type === "backdrop") {
       this.toggleDropdown();
       this.fillInput();
+      console,log(this.startPeriod)
     }
     if (type === "cleandrop") {
       this.cleanDrop();
@@ -403,6 +406,8 @@ class Datepicker {
     this.month < 11 ? this.month++ : ((this.month = 0), this.year++);
     this.element.querySelector(".month-and-year").textContent =
       this.months[this.month] + " " + this.year;
+      console.log(this.daysContainer.style)
+      
     this.renderDays();
   }
 
@@ -426,68 +431,40 @@ class Datepicker {
       for (let day of ActiveDays) {
         day.classList.remove("active", "start", "end");
       }
-      for (let i = this.startPeriod; i < this.endPeriod - 1; i++) {
-        this.days[i].classList.remove("streak");
+      for (let i = this.startPeriod; i < this.endPeriod ; i+=86400000) {
+        this.element.querySelector(`[data-value="${i}"]`).classList.remove('streak');
       }
     }
   }
 
   colorPeriod() {
-    let ActiveDays = this.element.querySelectorAll(".day.active");
-    this.startPeriod = parseInt(ActiveDays[0].dataset.value);
-    if (ActiveDays.length == 2) {
-      this.endPeriod = parseInt(ActiveDays[1].dataset.value);
-      ActiveDays[0].classList.add("start");
-      ActiveDays[1].classList.add("end");
-      for (let i = this.startPeriod; i < this.endPeriod - 1; i++) {
-        this.days[i].classList.add("streak");
+    let activeDays = this.element.querySelectorAll(".day.active");
+    this.startPeriod = new Date(parseInt(activeDays[0].dataset.value)).getTime();
+    if (activeDays.length == 2) {
+      this.endPeriod = new Date(parseInt(activeDays[1].dataset.value)).getTime();
+      activeDays[0].classList.add("start");
+      activeDays[1].classList.add("end");
+      for (let i = this.startPeriod + 86400000; i < this.endPeriod; i+=86400000) {
+        this.element.querySelector(`[data-value="${i}"]`).classList.add('streak');
       }
     }
   }
 
   fillInput() {
-    let month, startDay, endDay;
-    if (this.isActiveDay() == 2) {
-      this.month < 9
-        ? (month = "0" + (this.month + 1))
-        : (month = this.month + 1);
-      this.startPeriod < 10
-        ? (startDay = "0" + this.startPeriod)
-        : (startDay = this.startPeriod);
-      this.endPeriod < 10
-        ? (endDay = "0" + this.endPeriod)
-        : (endDay = this.endPeriod);
-      this.inputStartDate.textContent =
-        startDay + "." + month + "." + this.year;
-      this.inputEndDate.textContent = endDay + "." + month + "." + this.year;
-    }
-    if (this.isActiveDay() == 1) {
-      this.month < 9
-        ? (month = "0" + (this.month + 1))
-        : (month = this.month + 1);
-      this.startPeriod < 10
-        ? (startDay = "0" + this.startPeriod)
-        : (startDay = this.startPeriod);
-      endDay = startDay;
-      this.inputStartDate.textContent =
-        startDay + "." + month + "." + this.year;
-      this.inputEndDate.textContent = endDay + "." + month + "." + this.year;
-    }
-    if (this.isActiveDay() == 0) {
-      this.inputStartDate.textContent = this.options;
-      this.inputEndDate.textContent = this.options;
-    }
+      this.inputStartDate.textContent = new Date(this.startPeriod+86400000).toISOString().replace(/^([^T]+)T(.+)$/,'$1').replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1');
+      this.inputEndDate.textContent = new Date(this.endPeriod+86400000).toISOString().replace(/^([^T]+)T(.+)$/,'$1').replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1');
   }
   isActiveDay() {
-    let ActiveDays = this.element.querySelectorAll(".day.active");
-    return ActiveDays.length;
+    return this.element.querySelectorAll(".day.active").length;
   }
   cleanDrop() {
-    for (let day of this.days) {
+    for (let day of this.element.querySelectorAll(".day")) {
       day.classList.remove("active", "start", "end", "streak");
     }
+    this.btnClean.classList.remove("active");
+    this.inputStartDate.textContent = this.options;
+    this.inputEndDate.textContent = this.options;
   }
 }
 
-//new Datepicker(контейнер для datepicker, "ДД.ММ.ГГГГ");
 const datePicker = new Datepicker(".datepicker", "ДД.ММ.ГГГГ");

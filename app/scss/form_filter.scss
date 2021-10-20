@@ -138,8 +138,15 @@
                             }
 
                             .days {
-                                display: grid;
+                                display: flex;
+                                overflow: hidden;
+
+                                &__list{
+                                    color: turquoise;
+                                    transform: translateX(0);
+                                    display: grid;
                                 grid-template-columns: repeat(7, 40px);
+                                }
 
                                 .day {
                                     display: grid;
