@@ -23,7 +23,6 @@
                         padding: 15px 15px 15px 0;
                         transition: all 0.3s;
                         position: relative;
-                        
 
                         a {
                             color: $DS50;
@@ -53,7 +52,7 @@
                                     transform: scale(1);
                                 }
                             }
-                             path {
+                            path {
                                 fill-opacity: 0.8;
                             }
 
@@ -68,6 +67,7 @@
                         .link__arrow {
                             width: 24px;
                             text-align: center;
+                            margin: auto;
                         }
 
                         .menu__sub__list {

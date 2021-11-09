@@ -1,0 +1,16 @@
+include ../../elements/head/head
+
++head("TOXIN")
+
+body
+     include ../../elements/header/header.pug
+.search 
+     .container 
+          .search__wrapper 
+               .filter 
+                    .filter__list 
+                         .filter__item#select1
+                              include ../../elements/form__filter/select/select.pug
+                         .filter__item#select2
+                              include ../../elements/form__filter/select/select.pug
+               .catalog

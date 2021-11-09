@@ -12,6 +12,7 @@ const getTemplateSelect = (data = [], placeholder) => {
     </div>
     `;
   });
+  console.log(items);
 
   return `<div class="select__backdrop" data-type="backdrop"></div>
             <div class="select__input" data-type="input">${text}</div>
@@ -288,6 +289,7 @@ class Datepicker {
       "Декабрь",
     ];
     this.daysOfWeek = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
+    this.timeStampDay = 86400000;
 
     this.render();
     this.setup();
@@ -316,9 +318,8 @@ class Datepicker {
     );
     const paddingDays = this.daysOfWeek.indexOf(dateString.split(", ")[0]);
     let daysContainer = this.element.querySelector(".days");
-    let days = document.createElement('div');
-    days.classList.add('days__list');
-    days.style
+    let days = document.createElement("div");
+    days.classList.add("days__list");
     daysContainer.append(days);
     let countDaysInMonth = new Date(this.year, this.month + 1, 0).getDate();
     let countDaysOfLastMonth = new Date(this.year, this.month, 0).getDate();
@@ -333,7 +334,15 @@ class Datepicker {
         ) {
           days.insertAdjacentHTML(
             "afterbegin",
-            `<div class="day prev-next-day" data-type="day" data-value='${new Date(this.year, this.month-1, j, 0, 0, 0, 0).getTime()}'>${j}</div>`
+            `<div class="day prev-next-day" data-type="day" data-value='${new Date(
+              this.year,
+              this.month - 1,
+              j,
+              0,
+              0,
+              0,
+              0
+            ).getTime()}'>${j}</div>`
           );
           i++;
         }
@@ -341,7 +350,15 @@ class Datepicker {
       if (i <= countDaysInMonth + paddingDays && i > paddingDays) {
         days.insertAdjacentHTML(
           "beforeend",
-          `<div class="day" data-type="day" data-value='${new Date(this.year, this.month, i-paddingDays, 0, 0, 0, 0).getTime()}'>${i - paddingDays}</div>`
+          `<div class="day" data-type="day" data-value='${new Date(
+            this.year,
+            this.month,
+            i - paddingDays,
+            0,
+            0,
+            0,
+            0
+          ).getTime()}'>${i - paddingDays}</div>`
         );
       }
       if (i >= countDaysInMonth + paddingDays) {
@@ -352,7 +369,15 @@ class Datepicker {
         ) {
           days.insertAdjacentHTML(
             "beforeend",
-            `<div class="day prev-next-day" data-type="day" data-value='${new Date(this.year, this.month+1, k, 0, 0, 0, 0).getTime()}'>${k}</div>`
+            `<div class="day prev-next-day" data-type="day" data-value='${new Date(
+              this.year,
+              this.month + 1,
+              k,
+              0,
+              0,
+              0,
+              0
+            ).getTime()}'>${k}</div>`
           );
           i++;
         }
@@ -363,7 +388,8 @@ class Datepicker {
   setup() {
     this.clickHandler = this.clickHandler.bind(this);
     this.element.addEventListener("click", this.clickHandler);
-    this.daysContainer = this.element.querySelector(".days__list");
+    this.monthAndYear = this.element.querySelector(".month-and-year");
+    this.daysContainer = this.element.querySelector(".days");
     this.btnClean = this.element.querySelector('[data-type="cleandrop"]');
     this.inputStartDate = this.element.querySelector(
       '[data-type="input-start-date"]'
@@ -371,7 +397,8 @@ class Datepicker {
     this.inputEndDate = this.element.querySelector(
       '[data-type="input-end-date"]'
     );
-    this.startPeriod, this.endPeriod;
+    this.startPeriodTimeStamp, this.endPeriodTimeStamp;
+    this.number = null;
   }
 
   clickHandler(event) {
@@ -380,9 +407,11 @@ class Datepicker {
       this.toggleDropdown();
     }
     if (type === "btn-next-month") {
+      this.number--;
       this.nextMonth();
     }
     if (type === "btn-prev-month") {
+      this.number++;
       this.prevMonth();
     }
     if (type === "day") {
@@ -390,8 +419,7 @@ class Datepicker {
     }
     if (type === "backdrop") {
       this.toggleDropdown();
-      this.fillInput();
-      console,log(this.startPeriod)
+      this.fillInput(this.arrayActiveDays());
     }
     if (type === "cleandrop") {
       this.cleanDrop();
@@ -404,17 +432,15 @@ class Datepicker {
 
   nextMonth() {
     this.month < 11 ? this.month++ : ((this.month = 0), this.year++);
-    this.element.querySelector(".month-and-year").textContent =
-      this.months[this.month] + " " + this.year;
-      console.log(this.daysContainer.style)
-      
+    this.monthAndYear.textContent = this.months[this.month] + " " + this.year;
+    this.daysContainer.style.transform = `translateX(${this.number * 280 + 'px'})`;
+
     this.renderDays();
   }
 
   prevMonth() {
     this.month > 0 ? this.month-- : ((this.month = 11), this.year--);
-    this.element.querySelector(".month-and-year").textContent =
-      this.months[this.month] + " " + this.year;
+    this.monthAndYear.textContent = this.months[this.month] + " " + this.year;
     this.renderDays();
   }
 
@@ -426,45 +452,97 @@ class Datepicker {
   }
 
   reviewCountActiveDays() {
-    let ActiveDays = this.element.querySelectorAll(".day.active");
-    if (ActiveDays.length > 1) {
-      for (let day of ActiveDays) {
+    let activeDays = this.arrayActiveDays();
+    if (activeDays.length > 1) {
+      for (let day of activeDays) {
         day.classList.remove("active", "start", "end");
       }
-      for (let i = this.startPeriod; i < this.endPeriod ; i+=86400000) {
-        this.element.querySelector(`[data-value="${i}"]`).classList.remove('streak');
+      for (let item of this.element.querySelectorAll(".streak")) {
+        item.classList.remove("streak");
       }
     }
   }
 
   colorPeriod() {
-    let activeDays = this.element.querySelectorAll(".day.active");
-    this.startPeriod = new Date(parseInt(activeDays[0].dataset.value)).getTime();
+    let activeDays = this.arrayActiveDays();
     if (activeDays.length == 2) {
-      this.endPeriod = new Date(parseInt(activeDays[1].dataset.value)).getTime();
+      this.startPeriodTimeStamp = parseInt(activeDays[0].dataset.value);
+      this.endPeriodTimeStamp = parseInt(activeDays[1].dataset.value);
       activeDays[0].classList.add("start");
       activeDays[1].classList.add("end");
-      for (let i = this.startPeriod + 86400000; i < this.endPeriod; i+=86400000) {
-        this.element.querySelector(`[data-value="${i}"]`).classList.add('streak');
+      for (
+        let i = this.startPeriodTimeStamp + this.timeStampDay;
+        i < this.endPeriodTimeStamp;
+        i += this.timeStampDay
+      ) {
+        this.element
+          .querySelector(`[data-value="${i}"]`)
+          .classList.add("streak");
       }
+    }
+    if (activeDays.length == 1) {
+      this.startPeriodTimeStamp = parseInt(activeDays[0].dataset.value);
+      this.endPeriodTimeStamp = this.startPeriodTimeStamp;
     }
   }
 
-  fillInput() {
-      this.inputStartDate.textContent = new Date(this.startPeriod+86400000).toISOString().replace(/^([^T]+)T(.+)$/,'$1').replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1');
-      this.inputEndDate.textContent = new Date(this.endPeriod+86400000).toISOString().replace(/^([^T]+)T(.+)$/,'$1').replace(/^(\d+)-(\d+)-(\d+)$/,'$3.$2.$1');
+  fillInput(arrayActiveDays) {
+    if (arrayActiveDays.length === 0) {
+      this.inputStartDate.textContent = this.options;
+      this.inputEndDate.textContent = this.options;
+    }
+    //сократить
+    if (arrayActiveDays.length === 1) {
+      this.inputStartDate.textContent = new Date(
+        this.startPeriodTimeStamp + this.timeStampDay
+      )
+        .toISOString()
+        .replace(/^([^T]+)T(.+)$/, "$1")
+        .replace(/^(\d+)-(\d+)-(\d+)$/, "$3.$2.$1");
+      this.inputEndDate.textContent = this.inputStartDate.textContent;
+    }
+    //сократить
+    if (arrayActiveDays.length === 2) {
+      this.inputStartDate.textContent = new Date(
+        this.startPeriodTimeStamp + this.timeStampDay
+      )
+        .toISOString()
+        .replace(/^([^T]+)T(.+)$/, "$1")
+        .replace(/^(\d+)-(\d+)-(\d+)$/, "$3.$2.$1");
+      this.inputEndDate.textContent = new Date(
+        this.endPeriodTimeStamp + this.timeStampDay
+      )
+        .toISOString()
+        .replace(/^([^T]+)T(.+)$/, "$1")
+        .replace(/^(\d+)-(\d+)-(\d+)$/, "$3.$2.$1");
+    }
   }
-  isActiveDay() {
-    return this.element.querySelectorAll(".day.active").length;
+  arrayActiveDays() {
+    return Array.from(this.element.querySelectorAll(".day.active"));
   }
   cleanDrop() {
     for (let day of this.element.querySelectorAll(".day")) {
       day.classList.remove("active", "start", "end", "streak");
     }
     this.btnClean.classList.remove("active");
-    this.inputStartDate.textContent = this.options;
-    this.inputEndDate.textContent = this.options;
+    tthis.fillInput(this.countActiveDay());
   }
 }
 
 const datePicker = new Datepicker(".datepicker", "ДД.ММ.ГГГГ");
+
+let list = {
+  value: 1,
+  next: {
+    value: 2,
+    next: {
+      value: 3,
+      next: {
+        value: 4,
+        next: null
+      }
+    }
+  }
+};
+list.next.next.next.next = {value:44455, next:null};
+console.log(list)

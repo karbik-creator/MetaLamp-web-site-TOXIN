@@ -1,0 +1,61 @@
+.rate-track {
+    display: flex;
+    align-items: flex-end;
+    font-size: 40px;
+    line-height: 0.75;
+    &__wrapper {
+        position: relative;
+        width: 120px;
+        height: 24px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url(../../img/borderStar.svg);
+        }
+
+        .rate-track__active {
+            position: absolute;
+            width: 0%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url(../../img/activeStar.svg);
+            }
+        }
+
+        .rate-track__items {
+            display: flex;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+            & .rate-track__item {
+                flex: 0 1 50%;
+                height: 100%;
+                cursor: pointer;
+                opacity: 0;
+            }
+        }
+    }
+
+    .rate-track__value {
+        font-size: 50%;
+        padding: 0 0 0 10px;
+    }
+}

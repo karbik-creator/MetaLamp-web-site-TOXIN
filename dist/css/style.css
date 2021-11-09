@@ -347,7 +347,7 @@ h6 {
 }
 
 .form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner {
-  padding: 20px;
+  padding: 19px;
 }
 
 .form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__top {
@@ -403,7 +403,6 @@ h6 {
 
 .form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days__list {
   color: turquoise;
-  transform: translateX(0);
   display: grid;
   grid-template-columns: repeat(7, 40px);
 }
@@ -468,6 +467,10 @@ h6 {
 
 .form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day.prev-next-day {
   color: rgba(12, 13, 25, 0.25);
+}
+
+.form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day.prev-next-day.active {
+  color: white;
 }
 
 .form__filter__wrapper form.filter .datepicker .datepicker__item__dropdown__inner .content__center .days .day:hover {
