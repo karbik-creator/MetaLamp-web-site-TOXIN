@@ -1,0 +1,20 @@
+body{
+    padding: 20px auto;
+    font-family: 'Montserrat',sans-serif;
+
+    .colors__list{
+        display: flex;
+        flex-direction: column;
+
+        .colors__item{
+            display: flex;
+            .color{
+                border-radius: 6px;
+                width: 70px;
+                height: 70px;
+                background-color: black;
+                margin-right: 40px;
+            }
+        }
+    }
+}
