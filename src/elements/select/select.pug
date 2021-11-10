@@ -1,0 +1,18 @@
+mixin select(arrowPath,arrowWidth,arrowHeight,border,background,placholder)
+    .select
+        .select__wrapper
+            .select__backdrop(data-type='backdrop')
+            .select__input(style=`border:${border},background:${background},` ,data-type='input') 
+                .select__input__placeholder(style=`placholder:${placholder}`) Сколько гостей
+                .select__input__btn(style={'background-image':`url(${arrowPath})`,'width':`${arrowWidth}`,'height':`${arrowHeight}`})
+            .select__drop__down
+                each item in ['Взрослые','Младенцы','Дети']
+                   .select__drop__down__item(data-id=`${item[index]}`)
+                    .select__item__text=item
+                    .select__item__content__right
+                        button.select__item__btn(type='button', data-type='btnMinus') -
+                        .select__item__number(data-type='count') 0
+                        button.select__item__btn.active(type='button', data-type='btnPlus') + 
+                .select__drop__down__btn
+                    button(type='button', data-type='cleandrop') очистить
+                    button.active(type='button', data-type='backdrop') применить 
