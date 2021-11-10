@@ -1,0 +1,22 @@
+include ../../elements/logo/logo.pug
+include ../../elements/select/select.pug
+include ../../elements/textField/textField.pug
+body 
+    .body__wrapper
+        +logo("../../img/logo_UIkit.svg", "48px","48px")
+        .elements__list 
+            .element__item
+                .element-name Dropdown
+                +select('../../img/expand_more.svg','44px','44px')  
+            .element__item
+                .element-name masked text field
+                +select('../../img/expand_more.svg','44px','44px')
+            .element__item 
+                .element-name Text Field
+                +textFieldDefault
+            .element__item
+                .singUp 
+                    .singUp__wrapper 
+                        .singUp__title
+                        
+                
