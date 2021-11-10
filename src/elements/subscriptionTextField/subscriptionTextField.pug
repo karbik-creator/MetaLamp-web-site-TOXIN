@@ -1,0 +1,11 @@
+mixin subscriptionTextField(buttonImg,typeInput,nameInput,placeholderInput,styleForInput)
+    label(for="sub") Получайте специальные предложения и новости сервиса
+        form.input__and__button
+            input#sub(type=typeInput, name=nameInput, placeholder=placeholderInput, style=styleForInput)
+            button( style=`background-image:${buttonImg}`)
+    
+mixin subscriptionTextField
+    label(for="sub") Получайте специальные предложения и новости сервиса
+        form.input__and__button
+            input#sub(type='email', name='email', placeholder='Email')
+            button
