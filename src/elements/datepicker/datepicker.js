@@ -1,3 +1,4 @@
+import './datepicker.scss'
 export const getTemplateDatepicker = (placeholder, month, year, daysOfWeek) => {
     const days = daysOfWeek.map((item) => {
       return `<div class="day-of-week">${item}</div>`;

@@ -1,3 +1,5 @@
+import './select.scss'
+import '../../img/expand_more.svg'
 export const getTemplateSelect = (data = [], placeholder) => {
     const text = placeholder ?? "Выберите значение";
     const items = data.map((item) => {

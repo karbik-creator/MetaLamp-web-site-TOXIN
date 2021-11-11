@@ -25,7 +25,7 @@ const optimization = () => {
 }
 const plugins = () => {
   const base = [
-    new HTMLWebpackPlugin({
+   /* new HTMLWebpackPlugin({
       filename: "index.html",
       template: "./pages/home/index.pug",
       minify: {
@@ -42,12 +42,20 @@ const plugins = () => {
       chunks: ["pages/catalog"]
     }),
     new HTMLWebpackPlugin({
-      filename: "./template/colors&type/colors.html",
-      template: "./template/colors&type/colors.pug",
+      filename: "./template/colors/colors.html",
+      template: "./template/colors/colors.pug",
       minify: {
         collapseWhitespace: isProd
       },
-      chunks: ["template/colors&type/colors"]
+      chunks: ["template/colors/colors"]
+    }),*/
+    new HTMLWebpackPlugin({
+      filename: "./template/formElements/formElements.html",
+      template: "./template/formElements/formElements.pug",
+      minify: {
+        collapseWhitespace: isProd
+      },
+      chunks: ["template/formElements/formElements"]
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
@@ -62,9 +70,10 @@ module.exports = {
   entry: {
     //точка входа
     
-    "pages/main": "./pages/home/index.js",
-    "pages/catalog": "./pages/catalog/catalog.js",
-    "template/colors&type/colors": "./template/colors&type/colors.js",
+    //"pages/main": "./pages/home/index.js",
+    //"pages/catalog": "./pages/catalog/catalog.js",
+    //"template/colors/colors": "./template/colors/colors.js",
+    "template/formElements/formElements": "./template/formElements/formElements.js"
   },
   //devtool: "source-map",
   output: {

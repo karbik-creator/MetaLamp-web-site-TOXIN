@@ -1,13 +1,13 @@
-mixin select(arrowPath,arrowWidth,arrowHeight,border,background,placholder)
+mixin select(arrowPath='',arrowWidth='',arrowHeight='',styleForInput='',placeholder='Сколько гостей',placholderStyle='',value=['Взрослые','Младенцы','Дети'])
     .select
         .select__wrapper
             .select__backdrop(data-type='backdrop')
-            .select__input(style=`border:${border},background:${background},` ,data-type='input') 
-                .select__input__placeholder(style=`placholder:${placholder}`) Сколько гостей
-                .select__input__btn(style={'background-image':`url(${arrowPath})`,'width':`${arrowWidth}`,'height':`${arrowHeight}`})
+            .select__input(style=styleForInput,data-type='input') 
+                .select__input__placeholder(style=placholderStyle)=placeholder
+                .select__input__btn(style=`background-image:url(${arrowPath}),width:${arrowWidth},height:${arrowHeight}`)
             .select__drop__down
-                each item in ['Взрослые','Младенцы','Дети']
-                   .select__drop__down__item(data-id=`${item[index]}`)
+                each item in value
+                   .select__drop__down__item(data-id=`${1}`)
                     .select__item__text=item
                     .select__item__content__right
                         button.select__item__btn(type='button', data-type='btnMinus') -
