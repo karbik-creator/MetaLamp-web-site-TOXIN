@@ -1,4 +1,4 @@
-@import '../../scss/vars.scss';
+@import "../../scss/vars.scss";
 button.pick-up-numbers {
     margin-top: 30px;
     width: 100%;
@@ -7,22 +7,29 @@ button.pick-up-numbers {
     line-height: 15px;
     text-transform: uppercase;
     border-radius: 22px;
-    padding: 14px 0;
+    padding: 14px 0 15px 0;
     position: relative;
     transition: opacity 0.3s;
+    background: linear-gradient(180deg, $Purple 0%, #8ba4f9 100%);
+    color: #fff;
+    border: 0;
 
     &:hover {
         transition: opacity 0.3s;
         opacity: 0.5;
+        span {
+            transition: opacity 0.3s;
+            opacity: 0.5;
+        }
     }
-
-    &::before {
-        content: "";
+    span {
         position: absolute;
-        top: 13px;
-        right: 6px;
-        width: 24px;
-        height: 24px;
-        background: url(./img/arrow_forward.svg) no-repeat;
+        top: 0;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        background-image: url(./img/arrow_forward.svg);
+        background-position: center;
+        background-repeat: no-repeat;
     }
 }
