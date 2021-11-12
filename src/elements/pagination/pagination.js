@@ -1,7 +1,4 @@
-//import Post from './Post'
-//import json from './json/text.json'
-//import './scss/test.scss'
-//import logo from './img/form_filter_background.jpg'
+import './pagination.scss'
 
 export const getTemplatePagination = function (numbers) {
     const countItem = (() => {
@@ -81,4 +78,6 @@ export class Pagination {
     }
 
 }
+
+new Pagination('pagination',{countElementsInPage:5})
 
