@@ -1,11 +1,16 @@
-const rateTracks = document.querySelectorAll('.rate-track');
+import './rateTrack.scss'
+import './img/activeStar.svg'
+import './img/borderStar.svg'
 
+const rateTracks = document.querySelectorAll('.rate-track');
+let rateTrackActive,
+rateTrackValue=0,
+rateTrackItemsContainer;
 if(rateTracks.length>0){
   initRateTracks();
 }
 
 function initRateTracks(){
-  let rateTrackActive, rateTrackValue;
   for (let index = 0; index < rateTracks.length; index++) {
     const rateTrack = rateTracks[index];
     initRateTrack(rateTrack);
@@ -23,12 +28,11 @@ function initRateTrack(rateTrack){
 
 function initRateTrackVars(rateTrack){
   rateTrackActive = rateTrack.querySelector('.rate-track__active');
-  rateTrackValue = rateTrack.querySelector('.rate-track__value');
   rateTrackItemsContainer = rateTrack.querySelector('.rate-track__items');
 
 }
 
-function setRateTrackActiveWidth(index = rateTrackValue.innerHTML) {
+function setRateTrackActiveWidth(index = rateTrackValue) {
   const rateTrackActiveWidth = index/0.05;
   rateTrackActive.style.width = `${rateTrackActiveWidth}%`
   
@@ -46,7 +50,7 @@ function setRating(rateTrack) {
       setRateTrackActiveWidth();
     })
     ratingItem.addEventListener('click', function (e) {
-      rateTrackValue.innerHTML = ratingItem.value;
+      rateTrackValue = ratingItem.value;
     })
   }
 }
