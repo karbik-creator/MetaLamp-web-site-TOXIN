@@ -1,4 +1,11 @@
-@import '../../scss/vars.scss';
+@import "../../scss/style.scss";
+body {
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+}
 .datepicker {
     display: flex;
     justify-content: space-between;
@@ -26,7 +33,12 @@
     }
 
     .datepicker__item {
+        & + .datepicker__item {
+            margin-left: 20px;
+        }
         &__wrapper {
+            background-color: #ffffff;
+            border-radius: 4px;
             transition: background-color 0.2s ease-in;
             &:hover {
                 transition: background-color 0.2s ease-out;
@@ -35,25 +47,22 @@
             .datepicker__item__input {
                 border: 1px solid $DS25;
                 border-radius: 4px;
-                font-size: 14px;
-                color: rgba(31, 32, 65, 0.75);
-                width: 150px;
-                padding: 11px 45px 8px 15px;
+                min-width: 150px;
+                padding: 11px 10px 8px 15px;
                 margin-top: 5px;
-                position: relative;
                 cursor: pointer;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    right: 0;
-                    top: 0;
-                    background-image: url(../../img/expand_more.svg);
-                    background-repeat: no-repeat;
-                    width: 44px;
-                    height: 44px;
-                    background-position: center;
-                    cursor: pointer;
+                display: flex;
+                justify-content: space-between;
+                .datepicker__item__placeholder {
+                    display: contents;
+                    font-size: 14px;
+                    color: rgba(31, 32, 65, 0.75);
+                    max-width: 85%;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+                span.material-icons {
+                    color: rgba(31, 32, 65, 0.5);
                 }
             }
         }
@@ -118,13 +127,14 @@
                 }
 
                 .days {
-                    display: flex;
                     overflow: hidden;
+                    &__wrapper {
+                        display: flex;
+                    }
 
-                    &__list{
-                        color: turquoise;
+                    &__list {
                         display: grid;
-                    grid-template-columns: repeat(7, 40px);
+                        grid-template-columns: repeat(7, 40px);
                     }
 
                     .day {
@@ -135,69 +145,50 @@
                         color: $DS50;
                         background-color: transparent;
                         font-size: 12px;
-                        position: relative;
                         transition: all 0.3s;
                         cursor: pointer;
+                        border-radius: 50%;
+                        position: relative;
 
-                        &::before {
-                            content: "";
+                        span {
                             position: absolute;
-                            top: 0;
-                            bottom: 0;
-                            left: 0;
-                            right: 0;
+                            height: 100%;
                             z-index: -1;
-                            border-radius: 50%;
-                            opacity: 0;
-                            background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
-                            transition: all 0.3s;
                         }
 
-                        &.active {
+                        &.active,
+                        &.active:hover {
                             color: white;
                             font-weight: 700;
-                            position: relative;
-
-                            &::before {
-                                opacity: 1;
-                                background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
-                            }
+                            background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
 
                             &.end {
-                                &::after {
-                                    content: "";
-                                    position: absolute;
+                                span {
                                     left: 0;
                                     width: 50%;
-                                    height: 100%;
                                     background: linear-gradient(
                                         180deg,
                                         rgba(188, 156, 255, 0.25) 0%,
                                         rgba(139, 164, 249, 0.25) 100%
                                     );
-                                    z-index: -1;
                                 }
                             }
                             &.start {
-                                &::after {
-                                    content: "";
-                                    position: absolute;
+                                span {
                                     right: 0;
                                     width: 50%;
-                                    height: 100%;
                                     background: linear-gradient(
                                         180deg,
                                         rgba(188, 156, 255, 0.25) 0%,
                                         rgba(139, 164, 249, 0.25) 100%
                                     );
-                                    z-index: -1;
                                 }
                             }
                         }
 
                         &.prev-next-day {
                             color: $DS25;
-                            &.active{
+                            &.active {
                                 color: white;
                             }
                         }
@@ -205,28 +196,22 @@
                         &:hover {
                             font-weight: 700;
                             color: white;
-
-                            &::before {
-                                opacity: 1;
-                                
-                                transition: all 0.3s;
-                            }
+                            background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                            transition: all 0.3s;
                         }
 
-                        &.streak {
-                            background: linear-gradient(
-                                180deg,
-                                rgba(188, 156, 255, 0.25) 0%,
-                                rgba(139, 164, 249, 0.25) 100%
-                            );
-
-                            &:hover {
-                                font-weight: normal;
-                                color: $DS50;
-
-                                &::before {
-                                    opacity: 0;
-                                }
+                        &.streak,
+                        &.streak:hover {
+                            background: none;
+                            color: $DS50;
+                            font-weight: 400;
+                            span {
+                                width: 100%;
+                                background: linear-gradient(
+                                    180deg,
+                                    rgba(188, 156, 255, 0.25) 0%,
+                                    rgba(139, 164, 249, 0.25) 100%
+                                );
                             }
                         }
                     }
