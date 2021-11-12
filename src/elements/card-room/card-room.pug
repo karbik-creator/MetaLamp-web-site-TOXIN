@@ -1,0 +1,29 @@
+include ../rateTrack/rateTrack.pug
+
+mixin card-room
+    .card
+        .card__inner
+            .dots
+                .dot
+                .dot
+                .dot.active
+            .slider
+                .slider__item
+                    img(src='../.././img/slider1.jpg' data-item='1')
+                .slider__item
+                    img(src='../.././img/slider2.jpg' data-item='2')
+                .slider__item
+                    img(src='../.././img/slider3.jpg' data-item='3')
+            .content
+                .content__top
+                    .content__number-room 
+                        span.number-sign №
+                        .number 888
+                        span.room-class люкс
+                    .content__price-room 9 990₽
+                        span.for в сутки
+                .content__bottom
+                    .content__pagination
+                        +rateTrack
+                    .content__feedback 65
+                        span Отзывов

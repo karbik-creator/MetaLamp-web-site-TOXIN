@@ -1,0 +1,125 @@
+@import "../../scss/style.scss";
+body {
+    background-color: #e5e5e5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.card {
+    max-width: 270px;
+    min-height: 257px;
+    background: #ffffff;
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+    border-radius: 4px;
+    overflow: hidden;
+    .card__inner {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        .dots {
+            position: absolute;
+            top: 132px;
+            right: 15px;
+            display: flex;
+
+            .dot {
+                width: 7.5px;
+                height: 7.5px;
+                border-radius: 50%;
+                border: 1px solid #ffffff;
+                box-sizing: border-box;
+                filter: drop-shadow(0px 5px 5px rgba(31, 32, 65, 0.3));
+            }
+
+            .dot + .dot {
+                margin-left: 3.5px;
+            }
+
+            .dot.active {
+                background: #ffffff;
+            }
+        }
+        .slider {
+            display: flex;
+            width: 270px;
+            height: 151.38px;
+            overflow: hidden;
+            img {
+                width: 270px;
+                height: 151.38px;
+            }
+        }
+
+        .content {
+            padding: 20px 17px 20px 20px;
+
+            .content__top {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-items: flex-end;
+                margin-bottom: 12px;
+                .content__number-room {
+                    display: flex;
+                    align-items: flex-end;
+                    .number {
+                        font-weight: 700;
+                        font-size: 19px;
+                        line-height: 23px;
+                        color: #1f2041;
+                    }
+
+                    span:nth-of-type(1) {
+                        font-weight: 700;
+                        font-size: 14px;
+                        line-height: 17px;
+                        color: #1f2041;
+                    }
+
+                    span:nth-of-type(2) {
+                        font-weight: 700;
+                        font-size: 12px;
+                        line-height: 15px;
+                        text-transform: uppercase;
+                        color: #bc9cff;
+                    }
+                }
+
+                .content__price-room {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: #1f204180;
+                    display: flex;
+
+                    span {
+                        font-weight: 400;
+                        font-size: 12px;
+                        line-height: 18px;
+                        padding-left: 5px;
+                    }
+                }
+            }
+
+            .content__bottom {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                align-items: center;
+                padding-top: 8px;
+                border-top: 1px solid rgba(31, 32, 65, 0.1);
+                .content__feedback {
+                    font-weight: 700;
+                    font-size: 14px;
+                    line-height: 18px;
+                    color: rgba(31, 32, 65, 0.5);
+
+                    span {
+                        font-weight: 400;
+                        padding-left: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
