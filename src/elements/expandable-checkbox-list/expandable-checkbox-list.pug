@@ -1,0 +1,15 @@
+include ../checkboxlist/checkboxList.pug 
+
+mixin expandable-checkbox-list(headerName='правила дома')
+    .expandable-checkbox-list
+        .expandable-checkbox-list-header 
+            .expandable-checkbox-list-header-title
+                h3=headerName
+            .expandable-checkbox-list-header-arrow
+                span.material-icons expand_more
+        .expandable-checkbox-list-content
+            +checkboxList
+            block
+
+link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
++expandable-checkbox-list
