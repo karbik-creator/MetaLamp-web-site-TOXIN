@@ -1,13 +1,4 @@
 @import "../../scss/style.scss";
-body {
-    font-family: "Montserrat", sans-serif;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgb(255, 255, 255);
-}
-
 .expandable-checkbox-list {
     .expandable-checkbox-list-header {
         display: flex;
@@ -15,6 +6,7 @@ body {
         justify-content: space-between;
         align-items: center;
         margin-bottom: 17px;
+        cursor: pointer;
 
         .expandable-checkbox-list-header-title {
             display: flex;
@@ -23,6 +15,31 @@ body {
         .expandable-checkbox-list-header-arrow {
             .material-icons {
                 color: rgba(31, 32, 65, 0.5);
+                transition: transform .4s;
+            }
+        }
+    }
+    .expandable-checkbox-list-content {
+        transition: opacity .1s;
+        //display: none;
+        transition: transform .4s;
+        opacity: 0;
+        transform: translateY(-2000px);
+    }
+
+    &.open {
+        .expandable-checkbox-list-content {
+            //display: block;
+            opacity: 1;
+            transform: translateY(0);
+            transition: transform .4s;
+            transition: opacity .6s;
+        }
+
+        .expandable-checkbox-list-header-arrow {
+            .material-icons {
+                transform: rotate(180deg);
+                transition: transform .4s;
             }
         }
     }

@@ -1,8 +1,8 @@
 include ../checkboxlist/checkboxList.pug 
 
-mixin expandable-checkbox-list(headerName='правила дома')
-    .expandable-checkbox-list
-        .expandable-checkbox-list-header 
+mixin expandable-checkbox-list(headerName='правила дома', id)
+    .expandable-checkbox-list(id=id)
+        .expandable-checkbox-list-header(data-type='checkbox') 
             .expandable-checkbox-list-header-title
                 h3=headerName
             .expandable-checkbox-list-header-arrow
@@ -10,6 +10,3 @@ mixin expandable-checkbox-list(headerName='правила дома')
         .expandable-checkbox-list-content
             +checkboxList
             block
-
-link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-+expandable-checkbox-list
