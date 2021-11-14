@@ -3,17 +3,7 @@ include ../rateTrack/rateTrack.pug
 mixin card-room
     .card
         .card__inner
-            .dots
-                .dot
-                .dot
-                .dot.active
-            .slider
-                .slider__item
-                    img(src='../.././img/slider1.jpg' data-item='1')
-                .slider__item
-                    img(src='../.././img/slider2.jpg' data-item='2')
-                .slider__item
-                    img(src='../.././img/slider3.jpg' data-item='3')
+            +slider
             .content
                 .content__top
                     .content__number-room 
@@ -27,3 +17,19 @@ mixin card-room
                         +rateTrack
                     .content__feedback 65
                         span Отзывов
+
+mixin slider(widthSlider='270px',heightSlider='151px')
+    .slider(style=`width:${widthSlider};height:${heightSlider}`)
+        .dots
+            .dot
+            .dot
+            .dot.active
+        .slider__wrapper
+            .slider__item
+                img(src='../.././img/slider1.jpg' data-item='1')
+            .slider__item
+                img(src='../.././img/slider2.jpg' data-item='2')
+            .slider__item
+                img(src='../.././img/slider3.jpg' data-item='3')
+
++slider
