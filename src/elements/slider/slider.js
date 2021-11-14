@@ -1,3 +1,4 @@
+import "./slider.scss";
 import "./img/slider1.jpg";
 import "./img/slider2.jpg";
 import "./img/slider3.jpg";
@@ -35,26 +36,15 @@ sliderWrapper.addEventListener("mousedown", (e) => {
 sliderWrapper.addEventListener("mouseup", (e) => {
   isDown = false;
   indexActiveSlider = parseInt(e.target.dataset.item);
-  if (
-    !(
-      sliderWrapper.scrollLeft === 0 ||
-      sliderWrapper.scrollLeft >= maxScrollLeft
-    )
-  ) {
-    dots.forEach((item) => {
-      item.classList.remove("active");
-    });
-    walk < 0
-      ? dots[indexActiveSlider].classList.add("active")
-      : dots[indexActiveSlider - 2].classList.add("active");
+  let index = walk < 0 ? indexActiveSlider : indexActiveSlider - 2;
+  sliderWrapper.scrollLeft = index * widthSlider;
+  if(dots[index] !== undefined){
+    dots.forEach((item) => {item.classList.remove("active");});
+    dots[index].classList.add("active");
   }
-
-  sliderWrapper.scrollLeft =
-    walk < 0
-      ? indexActiveSlider * widthSlider
-      : (indexActiveSlider - 2) * widthSlider;
 });
 
+  
 sliderWrapper.addEventListener("mousemove", (e) => {
   if (!isDown) return;
   e.preventDefault();
