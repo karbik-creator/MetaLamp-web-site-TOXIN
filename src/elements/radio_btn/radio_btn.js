@@ -18,12 +18,14 @@ class RadioBtn {
       if (item.classList.contains("active")) {
         item.classList.remove("active");
       }
+      item.querySelector('input').checked = false;
     });
     
     let eventPath = event.path || (event.composedPath && event.composedPath());
     eventPath.forEach((item) => {
       if (item.tagName === "LABEL") {
         item.classList.add("active");
+        item.querySelector('input').checked = true;
       }
     });
   }
