@@ -2,32 +2,29 @@ import "./radio_btn.scss";
 
 class RadioBtn {
   constructor(selector) {
-    this.element = document.querySelector(selector);
+    this.elements = document.querySelectorAll(selector);
     this.setup();
   }
   setup() {
     this.toggle = this.toggle.bind(this);
-    this.btnRadio = this.element.querySelectorAll("[data-type='btn']");
-    this.btnRadio.forEach((element) => {
-      element.addEventListener("click", this.toggle);
-    });
+    this.elements.forEach(element => {
+      element.addEventListener("click", this.toggle,true);
+    })
+
   }
 
   toggle(event) {
-    this.btnRadio.forEach((item) => {
-      if (item.classList.contains("active")) {
-        item.classList.remove("active");
-      }
-      item.querySelector('input').checked = false;
-    });
-    
-    let eventPath = event.path || (event.composedPath && event.composedPath());
-    eventPath.forEach((item) => {
-      if (item.tagName === "LABEL") {
-        item.classList.add("active");
-        item.querySelector('input').checked = true;
-      }
-    });
+    if (event.target.dataset.type === 'input') {
+      let container = event.target.offsetParent.parentElement;
+      let allInputs = container.querySelectorAll('input');
+      allInputs.forEach(item=>{
+        item.checked=false;
+      })
+      let input = event.target;
+      input.checked = true;
+    }
   }
 }
+
+new RadioBtn('.radio-btn__list')
 

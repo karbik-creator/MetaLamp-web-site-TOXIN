@@ -1,10 +1,14 @@
+include ../toggle_btn/toggle_btn.pug 
 
-mixin radio-btn(id,array=['Мужчина','Женщина'],styleInput='linear-gradient(180deg, #BC9CFF 0%, #8BA4F9 100%)',styleBorder='#BC9CFF')
-    .radio-btn__list(id=id)
+mixin radio-btn(array=['Мужчина','Женщина'],styleInput='',styleBorder='')
+    .radio-btn__list(data-type='radio-btn__list')
         each item in array
-            label(for="" data-type='btn').radio-btn__label
+            label( data-type='btn').radio-btn__label
                 input(type="radio", value=item, data-type='input').radio-btn__item-hidden 
                 .radio-btn__item-visible
-                    span(style=`background:${styleInput}`).circle
-                    span.border(style=`border-color:${styleBorder}`)
+                    span(style=styleInput).circle
+                    span.border(style=styleBorder)
                 .radio-btn__item-text=item
+
++radio-btn
++radio-btn
