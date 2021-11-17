@@ -1,0 +1,5 @@
+mixin like_btn(styleActiveLike,activeLike='favorite',inactiveLike='favorite_border')
+    button.like_btn(data-type='like_btn')
+        span.material-icons.activeLike(style=backgroundActiveLike)=activeLike
+        span.material-icons.inactiveLike=inactiveLike
+        span.countLike(style=`color:${colorCountLike}`) 12
