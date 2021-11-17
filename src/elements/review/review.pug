@@ -1,0 +1,12 @@
+include ../like_btn/like_btn.pug
+mixin review(array=[{img:"../../img/image1.jpg", name:'Мурад Сарафанов', date:'5 дней назад', text:'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'},{img:"../../img/image1.jpg", name:'Мурад Сарафанов', date:'5 дней назад', text:'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.'}])
+    .review__list 
+        each item in array 
+            .review__item     
+                .review__content-left 
+                    .review__content-left__img(style=`background-image:url(${item.img})`)
+                    +like_btn
+                .review__content-right
+                    .review__content-right__name=item.name 
+                    .review__content-right__date=item.date 
+                    .review__content-right__text=item.text
