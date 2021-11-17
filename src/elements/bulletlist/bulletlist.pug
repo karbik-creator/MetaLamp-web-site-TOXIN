@@ -1,0 +1,6 @@
+mixin bulletlist(array=['Нельзя с питомцами','Без вечеринок и мероприятий','Время прибытия — после 13:00,а выезд до 12:00'],styleFont='',styleMarker='')
+    .bulletList
+        each item in array 
+            .bulletList__item 
+                span.bulletList__item-marker(style=styleMarker)
+                .bulletList__item-text(style=styleFont)=item
