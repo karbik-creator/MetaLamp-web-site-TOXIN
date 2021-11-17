@@ -1,5 +1,3 @@
-include ../toggle_btn/toggle_btn.pug 
-
 mixin radio-btn(array=['Мужчина','Женщина'],styleInput='',styleBorder='')
     .radio-btn__list(data-type='radio-btn__list')
         each item in array
@@ -10,5 +8,4 @@ mixin radio-btn(array=['Мужчина','Женщина'],styleInput='',styleBor
                     span.border(style=styleBorder)
                 .radio-btn__item-text=item
 
-+radio-btn
-+radio-btn
+
