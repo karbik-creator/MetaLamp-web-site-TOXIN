@@ -1,0 +1,40 @@
+@import "../../scss/style.scss";
+
+.info__list {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    
+
+    .info__list__item {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-start;
+        padding-bottom: 17px;
+        .info__list__item-img {
+            font-size: 48px;
+            line-height: 41px;
+            background: -webkit-gradient(linear, left top, left bottom, from($Purple), to(#8ba4f9));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .info__list__item-info {
+            font-size: 14px;
+            line-height: 24px;
+            color: rgba(31, 32, 65, 0.75);
+            max-width: 280px;
+            margin-left: 10px;
+            .info__list__item-title {
+                font-weight: 700;
+            }
+            .info__list__item-text {
+                font-weight: 400;
+            }
+        }
+    }
+
+    .info__list__item + .info__list__item{
+        padding-top: 20px;
+        border-top: 1px solid rgba(31, 32, 65, 0.1);
+    }
+}
