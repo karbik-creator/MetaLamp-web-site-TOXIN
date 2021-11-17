@@ -1,0 +1,8 @@
+include ../checkboxList/checkboxList.pug
+mixin richCheckbox(array=[{header:'Широкий коридор',text:'Ширина коридоров в номере не менее 91 см.'},{header:'Помощник для инвалидов',text:'На 1 этаже вас встретит специалист  и проводит до номера.'}])
+    .richCheckbox
+        each item in array
+            +checkbox(item.header)
+                .checkbox__item__text
+                    .checkbox__item__text-title=item.header
+                    .checkbox__item__text-info=item.text
