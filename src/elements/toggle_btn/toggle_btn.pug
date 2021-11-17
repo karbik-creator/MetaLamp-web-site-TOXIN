@@ -1,9 +1,9 @@
-mixin toggle_btn(title='Получать спецпредложения',styleBorder='#BC9CFF',styleInput='#BC9CFF')
+mixin toggle_btn(title='Получать спецпредложения',styleBorder='',styleInput='')
     .checkbox(data-type='checkbox')
-        input.checkbox-input-hidden(type="checkbox", name="toggle_btn" value='title')
+        input.checkbox-input-hidden(type="checkbox", name="toggle_btn" value=title)
         .checkbox-title=title
             .checkbox-input-visible
-                span.border(style=`border-color:${styleBorder}`)
-                span.circle(style=`background:${styleInput}`)
+                span.border(style=styleBorder)
+                span.circle(style=styleInput)
             
 
