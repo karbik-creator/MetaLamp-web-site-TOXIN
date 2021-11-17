@@ -1,12 +1,15 @@
-mixin checkboxList(array=['Завтрак','Письменный стол','Стул для кормления','Кроватка','Телевизор','Шампунь'],imgChecked='../.././img/Vector.svg')
+mixin checkboxList(array=['Завтрак','Письменный стол','Стул для кормления','Кроватка','Телевизор','Шампунь'])
     div.checkbox__list
         each item in array 
             div.checkbox__item
-                label.checkbox__label
-                    input(type="checkbox", name=item).checkbox__item__checkbox-hidden
-                    .checkbox__item__checkbox-active
-                        span(style=`background-image: url(${imgChecked})`)
+                +checkbox(item)
                     .checkbox__item__text=item
 
+mixin checkbox(value,imgChecked='../.././img/Vector.svg')
+    label.checkbox__label
+        input(type="checkbox", value=value).checkbox__item__checkbox-hidden
+        .checkbox__item__checkbox-active
+            span(style=`background-image: url(${imgChecked})`)
+        block
 
 

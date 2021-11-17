@@ -50,12 +50,12 @@ const plugins = () => {
       chunks: ["template/colors/colors"]
     }),*/
     new HTMLWebpackPlugin({
-      filename: "./template/formElements/formElements.html",
-      template: "./template/formElements/formElements.pug",
+      filename: "./elements/like_btn/like_btn.html",
+      template: "./elements/like_btn/like_btn.pug",
       minify: {
         collapseWhitespace: isProd
       },
-      chunks: ["template/formElements/formElements"]
+      chunks: ["template/radio_btn"]
     }),
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
@@ -73,7 +73,8 @@ module.exports = {
     //"pages/main": "./pages/home/index.js",
     //"pages/catalog": "./pages/catalog/catalog.js",
     //"template/colors/colors": "./template/colors/colors.js",
-    "template/formElements/formElements": "./template/formElements/formElements.js"
+    //"template/formElements/formElements": "./template/formElements/formElements.js"
+    "template/radio_btn": "./elements/like_btn/like_btn.js"
   },
   //devtool: "source-map",
   output: {

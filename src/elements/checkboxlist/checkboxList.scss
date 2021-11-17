@@ -11,45 +11,44 @@
         & + .checkbox__item {
             margin-top: 11px;
         }
+    }
+}
+label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    .checkbox__item__checkbox-hidden {
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+        -webkit-appearance: none;
+    }
 
-        label {
-            display: flex;
-            align-items: center;
-            position: relative;
-            .checkbox__item__checkbox-hidden {
-                margin-right: 10px;
-                width: 20px;
-                height: 20px;
-                -webkit-appearance: none;
-            }
+    .checkbox__item__checkbox-active {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ffffff;
+        border: 1px solid rgba(31, 32, 65, 0.25);
+        border-radius: 4px;
+        transition: all 0.1s ease-in;
 
-            .checkbox__item__checkbox-active {
-                position: absolute;
-                width: 20px;
-                height: 20px;
-                background-color: #ffffff;
-                border: 1px solid rgba(31, 32, 65, 0.25);
-                border-radius: 4px;
-                transition: all 0.1s ease-in;
-
-                span {
-                    display: block;
-                    opacity: 0;
-                    width: 18px;
-                    height: 18px;
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    transition: all 0.1s ease-in;
-                }
-            }
+        span {
+            display: block;
+            opacity: 0;
+            width: 18px;
+            height: 18px;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: all 0.1s ease-in;
         }
-        .checkbox__label input:checked + .checkbox__item__checkbox-active {
-            border: 1px solid $Purple;
-            transition: all 0.1s ease-out;
-            span {
-                opacity: 1;
-                transition: all 0.1s ease-out;
-            }
-        }
+    }
+}
+.checkbox__label input:checked + .checkbox__item__checkbox-active {
+    border: 1px solid $Purple;
+    transition: all 0.1s ease-out;
+    span {
+        opacity: 1;
+        transition: all 0.1s ease-out;
     }
 }
