@@ -1,0 +1,13 @@
+include ../datepicker/datepicker.pug
+include ../select/select.pug
+include ../btn/btn.pug
+mixin form__search(header)
+    .form__search
+        .form__search__wrapper
+            h1=header
+                form(action="", method="post")
+                    +datepicker
+                    +select
+                    +button('подобрать номера')
+                    block
+
