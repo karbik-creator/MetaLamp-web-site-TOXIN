@@ -1,0 +1,25 @@
+mixin rateTrack(styleStar='',iconActiveStar='grade',iconInactiveStar='star_border') 
+  .rate-track.rating_set
+    .rate-track__wrapper
+      .rate-track__icon-list.__icons-inactive(style=styleStar)
+        - for (var x = 1; x < 6; x++)
+          span.material-icons.rate-track__item=iconInactiveStar
+      .rate-track__icon-list.__icons-active(style=styleStar)
+        - for (var x = 1; x < 6; x++)
+          span.material-icons.rate-track__item=iconActiveStar
+      .rate-track__input-list
+        - for (var x = 1; x < 6; x++)
+          input.rate-track__item(type="radio" value=x name='rateTrack')
+
+mixin rateTrackActive(countActiveStar=5,styleStar='',iconActiveStar='grade',iconInactiveStar='star_border') 
+  .rate-track-active
+    .rate-track__wrapper
+      .rate-track__icon-list.__icons-inactive(style=styleStar)
+        - for (var x = 1; x < 6; x++)
+          span.material-icons.rate-track__item=iconInactiveStar
+      .rate-track__icon-list.__icons-active(style=`width:${countActiveStar/0.05}%;${styleStar}`)
+        - for (var x = 1; x < 6; x++)
+          span.material-icons.rate-track__item=iconActiveStar
+      .rate-track__input-list
+        - for (var x = 1; x < 6; x++)
+          input.rate-track__item(type="radio" value=x name='rateTrack')

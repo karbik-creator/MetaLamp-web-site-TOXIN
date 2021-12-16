@@ -1,0 +1,15 @@
+mixin menu(array=[{name:'О нас',href:"/mock-address/change-me"},{name:'Услуги',submenu:['Услуги','Услуги','Услуги'],href:"/mock-address/change-me"},{name:'Вакансии',href:"/mock-address/change-me"},{name:'Новости',href:"/mock-address/change-me"},{name:'Соглашения',submenu:['Услуги','Услуги','Услуги'],href:"/mock-address/change-me"}])
+    nav.menu
+        ul.menu__list
+            each item in array
+                if item.submenu === undefined
+                    li.menu__item
+                        a.menu__item__link(href=item.href data-title=item.name)=item.name
+                else
+                    li.menu__item
+                        a.menu__item__link(href=item.href data-title=item.name)=item.name
+                        ul.menu__sub
+                            each element in item.submenu
+                                li.menu__item
+                                    a.menu__item__link(href="/mock-address/change-me" data-title=element data-type='submenu')=element
+                        span.link__arrow.material-icons expand_more

@@ -1,0 +1,47 @@
+@import "../../scss/style.scss";
+.rate-track,.rate-track-active {
+    font-size: 40px;
+    line-height: 0.75;
+    &__wrapper {
+        position: relative;
+        width: 120px;
+        height: 24px;
+    }
+    .rate-track__icon-list {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        background: -webkit-gradient(linear, left top, left bottom, from($Purple), to(#8ba4f9));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .__icons-inactive {
+        width: 100%;
+    }
+    .__icons-active {
+        width: 0%;
+        overflow: hidden;
+    }
+
+    .rate-track__input-list {
+        display: flex;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+    .rate-track__item {
+        flex: 0 1 50%;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        -webkit-appearance: none;
+    }
+    .rate-track__item:focus-visible {
+        outline: 1px solid rgba(31, 32, 65, 0.7);
+    }
+}

@@ -1,0 +1,14 @@
+include ../checkboxList/checkbox__list.pug
+mixin richCheckbox(header,name='luxOptions',array=[{value:'Широкий коридор',text:'Ширина коридоров в номере не менее 91 см.'},{value:'Помощник для инвалидов',text:'На 1 этаже вас встретит специалист  и проводит до номера.'}],styleForActiveInput='',imgPathForInputChecked='')
+    .richCheckbox
+        if header === undefined
+            .richCheckbox__list
+                each item in array
+                    +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+                        .richCheckbox__text-info=item.text
+        else 
+            h3=header
+            .richCheckbox__list
+                each item in array
+                    +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+                        .richCheckbox__text-info=item.text

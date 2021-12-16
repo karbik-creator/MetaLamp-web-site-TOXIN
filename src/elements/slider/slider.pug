@@ -1,0 +1,14 @@
+mixin slider(array=['../.././img/slider1.jpg','../.././img/slider2.jpg','../.././img/slider3.jpg'],widthSlider='269px',heightSlider='151px')
+    .slider(style=`width:${widthSlider};height:${heightSlider}`)
+        .dots
+            .dot
+            .dot
+            .dot.active
+        .slider__wrapper
+            each item,index in array
+                .slider__item
+                    img(src=item data-item=index+1)
+        .slider__arrow.__arrow-prev(data-type='prev')
+            span.material-icons(data-type='prev') chevron_left
+        .slider__arrow.__arrow-next(data-type='next')
+            span.material-icons(data-type='next') chevron_right

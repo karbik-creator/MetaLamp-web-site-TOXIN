@@ -1,0 +1,13 @@
+@import '../../scss/style.scss';
+.form__entry{
+    h1{
+        margin-bottom: 20px;
+    }
+    input+input{
+        margin-top: 10px;
+    }
+    input+button{
+        margin-top: 20px;
+    }
+}
+

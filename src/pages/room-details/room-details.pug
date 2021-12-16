@@ -1,0 +1,62 @@
+extends ../../elements/templates/template-main/template-main.pug 
+block content
+    include ../../elements/info_list/info_list.pug
+    include ../../elements/review/review.pug
+    include ../../elements/bulletlist/bulletlist.pug
+    .room-details
+        .preview
+            .images__list
+                - let index = 0;
+                - let roomsInfo = require("../search-room/cards-room.json").value;
+                - for (var x = 0; x < 3; x++)
+                    img(src=roomsInfo[index].pathImg[x]) 
+        .container.content
+            .__left
+                .__top
+                    .row
+                        +info_list('Сведения о номере',[{
+                            img:'insert_emoticon',
+                            title:'Комфорт',
+                            text:'Шумопоглощающие стены'
+                        },
+                        {
+                            img:'location_city',
+                            title:'Удобство',
+                            text:'Окно в каждой из спален'
+                        },
+                        {
+                            img:'whatshot',
+                            title:'Уют',
+                            text:'Номер оснащён камином'
+                        }])
+                    .row
+                .review
+                    .review__title
+                        h2 Отзывы посетителей номера
+                        .subtitle 2 отзыва
+                    +review__list(undefined,[{
+                        img:"./img/image1.jpg", 
+                        name:'Мурад Сарафанов', 
+                        date:'5 дней назад', 
+                        text:'Великолепный матрас на кровати в основной спальне! А пуфик вообще потрясающий. И стены, действительно, шумоподавляющие. Выкрикивал комплименты повару — никто не жаловался из соседей.',
+                        countLike:13},
+    
+                        {img:"./img/image2.png", 
+                        name:'Патрисия Стёклышкова', 
+                        date:'Неделю назад', 
+                        text:'Обслуживание на высоте! Всё аккуратно, чисто. Завтраки в номер советую заказать, каждый день новое блюдо и десерт как комплимент',
+                        countLike:2}
+                        ]) 
+                .__top 
+                    .row
+                        +bulletlist('Правила')
+                    .row
+                        .any-info
+                            h2 Отмена
+                            .any-info__text Бесплатная отмена в течение 48 ч. После этого при отмене не позднее чем за 5 дн. до прибытия вы получите полный возврат за вычетом сбора за услуги.
+            .__right
+                .row 
+                    include ../../elements/form_booking/form_booking.pug
+                    +form_booking(roomsInfo[index])
+        .line
+            

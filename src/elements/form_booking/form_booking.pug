@@ -1,0 +1,36 @@
+include ../form/form.pug 
+include ../select/select.pug
+include ../btn/btn.pug 
+include ../datepicker/datepicker.pug 
+include ../btn/btn.pug 
+mixin form_booking(options)
+    +form
+        .content__top
+            .content__number-room 
+                span.number-sign №
+                .number=options.number
+                span.room-class=options.addInfo
+            .content__price-room=options.price
+                span.for=options.per
+        +datepicker
+        +select
+        .content__bottom 
+            .price__info__list 
+                .price__info__item 
+                    .info 9 990₽ х 4 суток
+                    .price 39 960₽
+                .price__info__item 
+                    .info Сбор за услуги: скидка 2 179₽
+                        span.material-icons-outlined info
+                        .tooltip Сбор за дополнительные услуги
+                    .price 0₽
+                .price__info__item 
+                    .info Сбор за дополнительные услуги
+                        span.material-icons-outlined info
+                        .tooltip Сбор за дополнительные услуги
+                    .price 300₽
+            .price__info__sum
+                .name Итого
+                span
+                .sum 38 081₽
+        +btnBackground('забронировать')

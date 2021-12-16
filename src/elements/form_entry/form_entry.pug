@@ -1,0 +1,10 @@
+include ../form/form.pug 
+include ../text_field/text_field.pug
+include ../btn/btn.pug 
+
++form('Войти','form__entry')
+    +text_field_email
+    +text_field('password','Пароль','text')
+    +btnBackground('Войти')
+    +form_footer
+        +btnBorder('создать')

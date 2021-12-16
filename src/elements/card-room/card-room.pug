@@ -1,0 +1,23 @@
+include ../slider/slider.pug
+include ../rateTrack/rateTrack.pug
+
+mixin card-room(options)
+    .card(data-count=options.count)
+        .card__inner
+            +slider(options.pathImg)
+            .content
+                +number-price(options)
+                .content__bottom
+                    .content__pagination
+                        +rateTrackActive(options.activeStar)
+                    .content__feedback=options.countReview
+                        span Отзывов
+
+mixin number-price(options={number:'888',addInfo:'люкс',price:'7 900₽',per:'в сутки'})
+    .content__top
+        .content__number-room 
+            span.number-sign №
+            .number=options.number
+            span.room-class=options.addInfo
+        .content__price-room=options.price
+            span.for=options.per

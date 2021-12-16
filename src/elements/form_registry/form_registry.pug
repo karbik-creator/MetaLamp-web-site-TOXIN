@@ -1,0 +1,26 @@
+include ../form/form.pug
+include ../text_field/text_field.pug
+include ../radio_btn/radio_btn.pug
+include ../toggle_btn/toggle_btn.pug
+include ../btn/btn.pug
+include ../masked_text_field/masked_text_field.pug 
+
++form('Регистрация аккаунта','form__registry')
+    link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
+    .form__content.content-1
+        +text_field('text','Имя','Имя')
+        +text_field('text','Фамилия','Фамилия')
+        +radio_btn_list
+    .form__content.content-2
+        h3 дата рождения
+        +masked_text_field
+    .form__content.content-3
+        h3 данные для входа в сервис
+        +text_field('email','Email','Email')
+        +text_field('password','Пароль','text')
+        +toggle_btn 
+    +btnBackground('зарегистрироваться')
+    .form__footer
+        p Уже есть аккаунт на Toxin
+        +btnBorder('войти')
+    

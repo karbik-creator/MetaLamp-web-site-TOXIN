@@ -1,0 +1,9 @@
+mixin bulletlist(header=undefined,array=['Нельзя с питомцами','Без вечеринок и мероприятий','Время прибытия — после 13:00,а выезд до 12:00'],styleFont='',styleMarker='')
+    .bulletList
+        if header === undefined 
+        else 
+            h2=header
+        each item in array 
+            .bulletList__item 
+                span.bulletList__item__marker(style=styleMarker)
+                .bulletList__item__text(style=styleFont)=item

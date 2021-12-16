@@ -1,0 +1,29 @@
+@import "../../scss/style.scss";
+@import '../../scss/vars.scss';
+@import '../../scss/nullstyle.scss';
+
+.main {
+    background-image: url(../../img/form_filter_background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .main__content {
+        position: relative;
+        min-height: 683px;
+    }
+    .main__caption {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        text-align: right;
+        color: rgba(31, 32, 65, 0.75);
+        max-width: 297px;
+        position: absolute;
+        bottom: 18px;
+        right: 0;
+    }
+    .form__search{
+        padding-top: 70px;
+        padding-bottom: 386px;
+    }
+}

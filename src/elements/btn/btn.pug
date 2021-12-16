@@ -1,0 +1,23 @@
+mixin btnBackground(value,isArrow = true,styleBtn, styleSpan)
+    button(class="button btnBackground" style=style)=value
+        if isArrow === true
+            span.material-icons(style=styleSpan) arrow_forward
+
+mixin btnBorder(value,styleBtn)
+    .btnBorder_container
+        button(class="button btnBorder" style=style type='button')=value
+
+mixin btnLink(value,styleBtn)
+    button(class="button btnLink" style=style type='button')=value
+
+mixin btnLinkHover(value,styleBtn)
+    button(class="button btnLink hover" style=style type='button')=value
+
+mixin btnBackgroundHover(value,isArrow = true,styleBtn, styleSpan)
+    button(class="button btnBackground hover" style=style)=value
+        if isArrow === true
+            span.material-icons(style=styleSpan) arrow_forward
+
+mixin btnBorderHover(value,styleBtn)
+    .btnBorder_container.hover
+        button(class="button btnBorder hover" style=style type='button')=value

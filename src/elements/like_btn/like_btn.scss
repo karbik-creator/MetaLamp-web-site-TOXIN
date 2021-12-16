@@ -1,0 +1,67 @@
+@import "../../scss/vars.scss";
+
+.like-btn {
+    min-width: 40px;
+    height: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(31, 32, 65, 0.25);
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-right: 10px;
+    padding-left: 5px;
+
+    .like-btn__icons {
+        position: relative;
+        width: 15px;
+    }
+    span.material-icons.like-btn__icon {
+        height: 20px;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+        font-size: 10px;
+        line-height: 9px;
+        transition: 0.3s ease-out;
+    }
+    .__icon-active {
+        position: absolute;
+        opacity: 0;
+        background: -webkit-gradient(linear, left top, left bottom, from($Purple), to(#8ba4f9));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .__icon-inactive {
+        opacity: 1;
+        color: rgba(31, 32, 65, 0.25);
+    }
+    .like-btn__count {
+        font-size: 10px;
+        line-height: 12px;
+        font-weight: 400;
+        color: rgba(31, 32, 65, 0.25);
+        transition: 0.3s ease-out;
+    }
+    &.__btn-active {
+        border-color: $Purple;
+        .__icon-inactive {
+            opacity: 0;
+            transition: 0.3s ease-out;
+        }
+        .__icon-active {
+            opacity: 1;
+            transition: 0.2s ease-in;
+        }
+        .like-btn__count {
+            color: $Purple;
+            transition: 0.3s ease-in;
+        }
+    }
+}
+button.like-btn:focus-visible {
+    outline: 1px solid rgba(31, 32, 65, 0.7);
+}

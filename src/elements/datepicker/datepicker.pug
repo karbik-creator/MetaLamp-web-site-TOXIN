@@ -1,0 +1,49 @@
+mixin datepicker(array=[{placeholder:'ДД.ММ.ГГГГ',label:'Прибытие'},{placeholder:'ДД.ММ.ГГГГ',label:'Выезд'}])
+    .datepicker
+        .datepicker__backdrop(data-type='backdrop')
+        +datepickerInput(array)
+        +datepickerDropDown
+        
+mixin datepickerInput(array=[{placeholder:'ДД.ММ.ГГГГ',label:'Прибытие'},{placeholder:'ДД.ММ.ГГГГ',label:'Выезд'}])
+    each item,index in array
+        .datepicker__item
+                h3=item.label
+                .datepicker__item__wrapper(tabindex='0' data-type='input')
+                    if item.length === 1
+                        .datepicker__item__input(data-type='input-start-date')
+                            .datepicker__item__placeholder=item.placeholder
+                            span.material-icons expand_more
+                    else
+                        if index === 0
+                            .datepicker__item__input(data-type='input-start-date')
+                                .datepicker__item__placeholder=item.placeholder
+                                span.material-icons expand_more
+                        else
+                            .datepicker__item__input(data-type='input-end-date')
+                                .datepicker__item__placeholder=item.placeholder
+                                span.material-icons expand_more
+
+mixin datepickerDropDown(color) 
+    .datepicker__item__dropdown
+            .datepicker__item__dropdown__inner
+                .content__top
+                    button.arrow.prev-month(type='button')
+                        span#arrow-prev-month.material-icons(data-type='btn-prev-month', style=color)  arrow_forward 
+                    .month-and-year Ноябрь 2021
+                    button.arrow.next-month(type='button')
+                        span#arrow-next-month.material-icons(data-type='btn-next-month', style=color)  arrow_forward 
+                .content__center
+                    .days-of-week(style=color)
+                        -let array = ['ПН','ВТ','Ср','ЧТ','ПТ','СБ','ВС']
+                            each item in array
+                                .day-of-week=item
+                    .days
+                        .days__wrapper
+                            .days__list
+                                - for (let x = 1; x < 31; x++)
+                                    .day=x
+                                        span
+                .content__footer
+                    .drop__down__btn
+                        button(type='button', data-type='cleandrop', style=color) очистить
+                        button.active(type='button', data-type='backdrop', style=color) применить

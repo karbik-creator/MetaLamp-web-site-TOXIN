@@ -1,0 +1,34 @@
+@import "../../scss/vars.scss";
+
+.richCheckbox {
+    h3{
+        margin-bottom: 17px;
+    }
+    .richCheckbox__list {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+    .__input-hidden {
+        min-width: 20px;
+    }
+    .checkbox__text {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        .checkbox__title {
+            font-weight: bold;
+            color: rgba(31, 32, 65, 0.75);
+            margin-bottom: 5px;
+        }
+        .richCheckbox__text-info {
+            font-size: 12px;
+            line-height: 14px;
+            color: rgba(31, 32, 65, 0.5);
+        }
+    }
+
+    .checkbox__label + .checkbox__label {
+        margin-top: 10px;
+    }
+}

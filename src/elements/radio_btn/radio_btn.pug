@@ -1,0 +1,13 @@
+mixin radio_btn_list(array=[{value:'Мужчина',name:'man',checked:true},{value:'Женщина',name:'man'}],styleActiveInputCircle='',styleActiveInputBorder='') 
+    .radio-btn__list
+        each item in array
+            .radio-btn__item
+                +radio_btn(item.value,item.name,item.checked,styleActiveInputCircle,styleActiveInputBorder)
+
+mixin radio_btn(value='Женщина',name='woman',checked=false,styleActiveInputCircle='',styleActiveInputBorder='')
+    label.radio-btn
+        input(type="radio" value=value name=name checked=checked).radio-btn__input.__input-hidden 
+        .radio-btn__input.__input-active
+            span.circle(style=styleActiveInputCircle)
+            span.border(style=styleActiveInputBorder)
+        .radio-btn__text=value

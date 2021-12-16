@@ -1,0 +1,14 @@
+include ../logo/logo.pug
+include ../menu/menu.pug
+include ../btn/btn.pug
+mixin header
+  header.header
+    .container
+      .header__wrapper
+        +logo("../../img/logo.svg", "106px","40px")
+        .header__content-right
+          +menu
+          .header__account-name Константин Константинович
+          .header__buttons
+            +btnBorder('Войти')
+            +btnBackground('зарегистрироваться',false)

@@ -1,0 +1,18 @@
+@import "../../scss/nullstyle.scss";
+@import "../../scss/vars.scss";
+@import "../../scss/style.scss";
+
+.main {
+    background-image: url(../../img/form_filter_background.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .main__content {
+        position: relative;
+        min-height: 712px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+}

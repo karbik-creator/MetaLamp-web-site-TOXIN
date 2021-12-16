@@ -1,0 +1,38 @@
+@import "../../scss/vars.scss";
+.header {
+    &__wrapper {
+        min-height: 70px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__content-right {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .header__account-name {
+        display: none;
+        color: $DS50;
+        font-size: 14px;
+        line-height: 17px;
+        padding: 6px 0 6px 20px;
+        border-left: 1px solid $DS10;
+    }
+
+    .header__buttons {
+        display: flex;
+        .btnBorder_container{
+            height: 32px;
+        }
+        button {
+            height: 32px;
+        }
+        * + * {
+            margin-left: 20px;
+        }
+
+        
+    }
+}

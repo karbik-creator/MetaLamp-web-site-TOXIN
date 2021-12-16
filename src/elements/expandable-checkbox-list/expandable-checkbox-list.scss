@@ -1,0 +1,46 @@
+@import "../../scss/vars.scss";
+.expandable-checkbox-list {
+    .expandable-checkbox-list__header {
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+
+        margin-bottom: 17px;
+        cursor: pointer;
+        &:focus-visible {
+            outline: 1px solid rgba(31, 32, 65, 0.5);
+        }
+        .material-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            color: rgba(31, 32, 65, 0.5);
+            transition: transform 0.4s;
+        }
+    }
+    .expandable-checkbox-list__content {
+        transition: opacity 0.3s;
+        overflow: hidden;
+        visibility: hidden;
+        transition: overflow 0.4s;
+        opacity: 0;
+    }
+
+    &.open {
+        .expandable-checkbox-list__content {
+            overflow: visible;
+            visibility: visible;
+            opacity: 1;
+            transition: overflow 0.4s;
+            transition: opacity 0.3s;
+        }
+
+        .material-icons {
+            transform: rotate(180deg);
+            transition: transform 0.4s;
+        }
+    }
+}

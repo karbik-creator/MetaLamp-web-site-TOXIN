@@ -1,0 +1,38 @@
+mixin checkboxList(header,name='options',array=[{value:'Завтрак'},{value:'Письменный стол', checked:true},{value:'Стул для кормления', checked:true},{value:'Кроватка', checked:true},{value:'Телевизор'},{value:'Шампунь'},{value:'Телевизор'},{value:'Шампунь'}],styleForActiveInput='',imgPathForInputChecked='')
+    .checkbox  
+        if header === undefined
+            .checkbox__list
+                each item in array
+                    .checkbox__item
+                        +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+        else 
+            h3=header 
+            .checkbox__list
+                each item in array
+                    .checkbox__item
+                        +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+
+mixin checkbox(value,checked=false,name,styleForActiveInput,imgPathForInputChecked)
+    label.checkbox__label
+        if checked == false
+            input(type="checkbox" value=value tabindex='0' name=name).checkbox__input.__input-hidden
+        else 
+            input(type="checkbox" value=value tabindex='0' name=name checked).checkbox__input.__input-hidden
+        .checkbox__input.__input-inactive
+        if styleForActiveInput == undefined
+            .checkbox__input.__input-active
+                if imgChecked == undefined
+                    span
+                else
+                    span(style=`background-image: url(${imgChecked})`)
+        else 
+            .checkbox__input.__input-active(style=styleForActiveInput)
+                if imgChecked == undefined
+                    span
+                else
+                    span(style=`background-image: url(${imgChecked})`)
+        .checkbox__text
+            .checkbox__title=value
+            block
+
+

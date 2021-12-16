@@ -1,0 +1,26 @@
+mixin pagination
+    .pagination 
+        .pagination__list
+            .pagination__item.__item-prev(data-type="prev" tabindex='0')
+                span.material-icons(data-type="prev") arrow_forward 
+            .pagination__item.__item-active( data-page='1' tabindex='0') 1
+            .pagination__item(data-page='2' tabindex='0') 2
+            .pagination__item( data-page='3' tabindex='0') 3
+            .pagination__item(data-page='dots') ...
+            .pagination__item(data-page='15' tabindex='0') 15
+            .pagination__item.__item-next(data-type="next" tabindex='0')
+                span.material-icons(data-type="next") arrow_forward 
+        .pagination__text 1 – 12 из 100+ вариантов аренды
+
+mixin paginationHover
+    .pagination 
+        .pagination__list
+            .pagination__item.__item-active( data-page='1' tabindex='0') 1
+            .pagination__item( data-page='2' tabindex='0') 2
+            .pagination__item( data-page='3' tabindex='0') 3
+            .pagination__item( data-page='4' tabindex='0') ...
+            .pagination__item( data-page='5' tabindex='0') 15
+            .pagination__item.__item-next(data-type="next" tabindex='0')
+                span.material-icons(data-type="next") arrow_forward 
+        .pagination__text 1 – 12 из 100+ вариантов аренды
+    

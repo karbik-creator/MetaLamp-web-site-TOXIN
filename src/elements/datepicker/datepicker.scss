@@ -1,0 +1,254 @@
+@import "../../scss/vars.scss";
+.datepicker {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 21px;
+    position: relative;
+
+    &.open {
+        .datepicker__item__dropdown {
+            display: block;
+        }
+        .datepicker__backdrop {
+            display: block;
+        }
+    }
+
+    .datepicker__backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: transparent;
+        opacity: 0.2;
+    }
+
+    .datepicker__item__dropdown {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        top: 70px;
+        background-color: #ffffff;
+        border: 1px solid $DS25;
+        border-radius: 4px;
+        width: 320px;
+        min-height: 369px;
+        box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+
+        &__inner {
+            padding: 19px;
+
+            & .content__top {
+                display: flex;
+                justify-content: space-between;
+
+                .month-and-year {
+                    font-weight: 700;
+                    font-size: 19px;
+                    color: $DS100;
+                }
+
+                .arrow {
+                    height: 25px;
+                    background-color: transparent;
+
+                    #arrow-prev-month,
+                    #arrow-next-month {
+                        color: $Purple;
+                        font-size: 25px;
+                    }
+                    #arrow-prev-month {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+
+            & .content__center {
+                margin-top: 30px;
+
+                .days-of-week {
+                    display: flex;
+                    justify-content: space-between;
+                    color: $Purple;
+                    font-size: 12px;
+                    line-height: 15px;
+                    font-weight: 700;
+
+                    .day-of-week {
+                        min-width: 40px;
+                        height: 40px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                }
+
+                .days {
+                    overflow: hidden;
+                    &__wrapper {
+                        display: flex;
+                    }
+
+                    &__list {
+                        display: grid;
+                        grid-template-columns: repeat(7, 40px);
+                    }
+
+                    .day {
+                        display: grid;
+                        height: 40px;
+                        justify-content: center;
+                        align-items: center;
+                        color: $DS50;
+                        background-color: transparent;
+                        font-size: 12px;
+                        transition: all 0.3s;
+                        cursor: pointer;
+                        border-radius: 50%;
+                        position: relative;
+
+                        span {
+                            position: absolute;
+                            height: 100%;
+                            z-index: -1;
+                        }
+
+                        &.active,
+                        &.active:hover {
+                            color: white;
+                            font-weight: 700;
+                            background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+
+                            &.end {
+                                span {
+                                    left: 0;
+                                    width: 50%;
+                                    background: linear-gradient(
+                                        180deg,
+                                        rgba(188, 156, 255, 0.25) 0%,
+                                        rgba(139, 164, 249, 0.25) 100%
+                                    );
+                                }
+                            }
+                            &.start {
+                                span {
+                                    right: 0;
+                                    width: 50%;
+                                    background: linear-gradient(
+                                        180deg,
+                                        rgba(188, 156, 255, 0.25) 0%,
+                                        rgba(139, 164, 249, 0.25) 100%
+                                    );
+                                }
+                            }
+                        }
+
+                        &.prev-next-day {
+                            color: $DS25;
+                            &.active {
+                                color: white;
+                            }
+                        }
+
+                        &:hover {
+                            font-weight: 700;
+                            color: white;
+                            background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                            transition: all 0.3s;
+                        }
+
+                        &.streak,
+                        &.streak:hover {
+                            background: none;
+                            color: $DS50;
+                            font-weight: 400;
+                            span {
+                                width: 100%;
+                                background: linear-gradient(
+                                    180deg,
+                                    rgba(188, 156, 255, 0.25) 0%,
+                                    rgba(139, 164, 249, 0.25) 100%
+                                );
+                            }
+                        }
+                    }
+                }
+            }
+
+            .content__footer {
+                .drop__down__btn {
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 20px;
+                    button {
+                        height: 15px;
+                        opacity: 0;
+                        overflow: hidden;
+                        visibility: hidden;
+                        pointer-events: none;
+                        font-size: 12px;
+                        line-height: 15px;
+                        font-weight: 700;
+                        text-transform: uppercase;
+                        color: $Purple;
+                        background-color: transparent;
+                        transition: 0.3s;
+
+                        &.active {
+                            opacity: 1;
+                            visibility: inherit;
+                            pointer-events: visible;
+
+                            &:hover {
+                                color: $DS50;
+                                transition: 0.3s;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.datepicker__item {
+    width: 100%;
+    & + .datepicker__item {
+        margin-left: 20px;
+    }
+    &__wrapper {
+        background-color: #ffffff;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in;
+        &:hover .datepicker__item__input,
+        &:focus .datepicker__item__input {
+            transition: all 0.2s;
+            border-color: rgba(31, 32, 65, 0.5);
+        }
+        .datepicker__item__input {
+            border: 1px solid $DS25;
+            border-radius: 4px;
+            min-width: 150px;
+            height: 44px;
+            padding: 0 10px 0 15px;
+            margin-top: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            .datepicker__item__placeholder {
+                display: contents;
+                font-size: 14px;
+                color: rgba(31, 32, 65, 0.75);
+                max-width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            span.material-icons {
+                color: rgba(31, 32, 65, 0.5);
+            }
+        }
+    }
+}

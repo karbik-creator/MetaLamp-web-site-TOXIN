@@ -1,0 +1,71 @@
+@import "../../scss/nullstyle.scss";
+@import "../../scss/vars.scss";
+@import "../../scss/style.scss";
+
+.room-details {
+    h2 {
+        margin-bottom: 20px;
+    }
+    .preview {
+        max-width: 1440px;
+        margin: 0 auto;
+    }
+    .images__list {
+        display: grid;
+        grid-template-columns: 2.5fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: "img-large img-small-top" "img-large img-small-bottom";
+        img {
+            width: 100%;
+            height: 100%;
+        }
+
+        img:nth-of-type(1) {
+            grid-area: img-large;
+        }
+        img:nth-of-type(2) {
+            grid-area: img-small-top;
+        }
+        img:nth-of-type(3) {
+            grid-area: img-small-bottom;
+        }
+    }
+    .content {
+        display: flex;
+        justify-content: space-between;
+        padding: 70px 0;
+        & > * + * {
+            margin-left: 70px;
+        }
+    }
+    .__left {
+        & > * + * {
+            margin-top: 30px;
+        }
+    }
+    .__top {
+        display: flex;
+        justify-content: space-between;
+    }
+    .row + .row {
+        margin-left: 70px;
+    }
+    .review__title {
+        display: flex;
+        justify-content: space-between;
+    }
+    .review__item + .review__item {
+        margin-top: 22px;
+    }
+    .subtitle {
+        font-size: 14px;
+        line-height: 14px;
+        color: rgba(31, 32, 65, 0.5);
+    }
+    .any-info {
+        max-width: 391px;
+    }
+    .info__list__item:last-child {
+        border-bottom: none;
+    }
+}

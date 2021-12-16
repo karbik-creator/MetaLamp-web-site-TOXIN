@@ -1,0 +1,175 @@
+{
+    "value": [
+        {
+            "count":1,
+            "pathImg":[
+                "./img/slider11.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider4.jpg"
+            ],
+            "number":888,
+            "addInfo":"люкс",
+            "price":"9 990₽",
+            "per":"в сутки",
+            "activeStar":5,
+            "countReview":145
+        },
+        {
+            "count":2,
+            "pathImg":[
+                "./img/slider4.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider1.jpg"
+            ],
+            "number":840,
+            "price":"9 900₽",
+            "per":"в сутки",
+            "activeStar":4,
+            "countReview":65
+        },
+        {
+            "count":3,
+            "pathImg":[
+                "./img/slider5.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider5.jpg"
+            ],
+            "number":980,
+            "addInfo":"люкс",
+            "price":"8 500₽",
+            "per":"в сутки",
+            "activeStar":3,
+            "countReview":35
+        },
+        {
+            "count":4,
+            "pathImg":[
+                "./img/slider6.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider6.jpg"
+            ],
+            "number":856,
+            "price":"7 300₽",
+            "per":"в сутки",
+            "activeStar":5,
+            "countReview":19
+        },
+        {
+            "count":5,
+            "pathImg":[
+                "./img/slider8.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":740,
+            "price":"6 000₽",
+            "per":"в сутки",
+            "activeStar":4,
+            "countReview":44
+        },
+        {
+            "count":6,
+            "pathImg":[
+                "./img/slider9.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":982,
+            "price":"5 800₽",
+            "per":"в сутки",
+            "activeStar":3,
+            "countReview":56
+        },
+        {
+            "count":7,
+            "pathImg":[
+                "./img/slider7.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":678,
+            "price":"5 500₽",
+            "per":"в сутки",
+            "activeStar":5,
+            "countReview":45
+        },
+        {
+            "count":8,
+            "pathImg":[
+                "./img/slider12.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":450,
+            "price":"5 300₽",
+            "per":"в сутки",
+            "activeStar":4,
+            "countReview":39
+        },
+        {
+            "count":9,
+            "pathImg":[
+                "./img/slider10.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":350,
+            "price":"5 000₽",
+            "per":"в сутки",
+            "activeStar":3,
+            "countReview":77
+        },
+        {
+            "count":10,
+            "pathImg":[
+                "./img/slider3.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":666,
+            "price":"5 000₽",
+            "per":"в сутки",
+            "activeStar":5,
+            "countReview":25
+        },
+        {
+            "count":11,
+            "pathImg":[
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg"
+            ],
+            "number":444,
+            "price":"5 000₽",
+            "per":"в сутки",
+            "activeStar":3,
+            "countReview":15
+        },
+        {
+            "count":12,
+            "pathImg":[
+                "./img/slider1.jpg",
+                "./img/slider2.jpg",
+                "./img/slider3.jpg",
+                "./img/slider2.jpg"
+            ],
+            "number":352,
+            "price":"5 000₽",
+            "per":"в сутки",
+            "activeStar":3,
+            "countReview":55
+        }
+
+    ]
+}

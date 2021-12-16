@@ -1,0 +1,32 @@
+extends ../../elements/templates/template-main/template-main.pug 
+include ../../elements/datepicker/datepicker.pug
+include ../../elements/select/select.pug
+include ../../elements/rangeSlider/rangeSlider.pug
+include ../../elements/checkboxlist/checkbox__list.pug
+include ../../elements/card-room/card-room.pug
+include ../../elements/pagination/pagination.pug
+include ../../elements/richCheckbox/richCheckbox.pug
+include ../../elements/expandable-checkbox-list/expandable-checkbox-list.pug
+block content 
+    .search-room.container
+        .search-room__filter-list 
+            +datepicker([{placeholder:'Дата',label:'даты пребывания в отеле'}])
+            +select('гости')
+            +rangeSlider
+            .range-slider__caption Стоимость за сутки пребывания в номере
+            +checkboxList('правила дома','house-rules',[{value:'Можно курить'},
+            {value:'Можно с питомцами',checked:true},
+            {value:'Можно пригласить гостей (до 10 человек)',checked:true}])
+            +richCheckbox('доступность')
+            .select__comfort__list
+                +select
+            +expandable-checkbox-list('дополнительные удобства')
+        .search-room__card-room
+            h1 Номера, которые мы для вас подобрали
+            .search-room__card-room-list
+                - let cardInfo = require("./cards-room.json").value;
+                -for(let card of cardInfo)
+                    +card-room(card) 
+            .pagination
+                .pagination__list
+                .pagination__text 1 – 12 из 100+ вариантов аренды
