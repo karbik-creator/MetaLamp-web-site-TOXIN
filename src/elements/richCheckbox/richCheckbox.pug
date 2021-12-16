@@ -1,8 +1,14 @@
-include ../checkboxList/checkboxList.pug
-mixin richCheckbox(array=[{header:'Широкий коридор',text:'Ширина коридоров в номере не менее 91 см.'},{header:'Помощник для инвалидов',text:'На 1 этаже вас встретит специалист  и проводит до номера.'}])
+include ../checkboxList/checkbox__list.pug
+mixin richCheckbox(header,name='luxOptions',array=[{value:'Широкий коридор',text:'Ширина коридоров в номере не менее 91 см.'},{value:'Помощник для инвалидов',text:'На 1 этаже вас встретит специалист  и проводит до номера.'}],styleForActiveInput='',imgPathForInputChecked='')
     .richCheckbox
-        each item in array
-            +checkbox(item.header)
-                .checkbox__item__text
-                    .checkbox__item__text-title=item.header
-                    .checkbox__item__text-info=item.text
+        if header === undefined
+            .richCheckbox__list
+                each item in array
+                    +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+                        .richCheckbox__text-info=item.text
+        else 
+            h3=header
+            .richCheckbox__list
+                each item in array
+                    +checkbox(item.value,item.checked,name,styleForActiveInput,imgPathForInputChecked)
+                        .richCheckbox__text-info=item.text

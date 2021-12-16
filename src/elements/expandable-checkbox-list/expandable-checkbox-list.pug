@@ -1,12 +1,19 @@
-include ../checkboxlist/checkboxList.pug 
+include ../checkboxlist/checkbox__list.pug 
 
-mixin expandable-checkbox-list(headerName='правила дома', id)
-    .expandable-checkbox-list(id=id)
-        .expandable-checkbox-list-header(data-type='checkbox') 
-            .expandable-checkbox-list-header-title
-                h3=headerName
-            .expandable-checkbox-list-header-arrow
-                span.material-icons expand_more
-        .expandable-checkbox-list-content
-            +checkboxList
+mixin expandable-checkbox-list(headerName='правила дома',nameCheckbox='options',array=[{value:'Завтрак'},{value:'Письменный стол', checked:true},{value:'Стул для кормления', checked:true},{value:'Кроватка', checked:true},{value:'Телевизор'},{value:'Шампунь'}],styleForActiveInput='',imgPathForInputChecked='')
+    .expandable-checkbox-list
+        .expandable-checkbox-list__header(data-type='checkbox'  tabindex='0') 
+            h3=headerName
+            span.material-icons expand_more
+        .expandable-checkbox-list__content
+            +checkboxList(undefined,nameCheckbox,array,styleForActiveInput,imgPathForInputChecked)
+            block
+
+mixin expandable-checkbox-list-open(headerName='правила дома',nameCheckbox='options',array=[{value:'Завтрак'},{value:'Письменный стол', checked:true},{value:'Стул для кормления', checked:true},{value:'Кроватка', checked:true},{value:'Телевизор'},{value:'Шампунь'}],styleForActiveInput='',imgPathForInputChecked='')
+    .expandable-checkbox-list.open
+        .expandable-checkbox-list__header(data-type='checkbox' tabindex='0') 
+            h3=headerName
+            span.material-icons expand_more
+        .expandable-checkbox-list__content
+            +checkboxList(undefined,nameCheckbox,array,styleForActiveInput,imgPathForInputChecked)
             block

@@ -1,6 +1,4 @@
 import './rateTrack.scss'
-import './img/activeStar.svg'
-import './img/borderStar.svg'
 
 const rateTracks = document.querySelectorAll('.rate-track');
 let rateTrackActive,
@@ -27,8 +25,8 @@ function initRateTrack(rateTrack){
 }
 
 function initRateTrackVars(rateTrack){
-  rateTrackActive = rateTrack.querySelector('.rate-track__active');
-  rateTrackItemsContainer = rateTrack.querySelector('.rate-track__items');
+  rateTrackActive = rateTrack.querySelector('.__icons-active');
+  rateTrackItemsContainer = rateTrack.querySelector('.rate-track__input-list');
 
 }
 
@@ -50,6 +48,13 @@ function setRating(rateTrack) {
       setRateTrackActiveWidth();
     })
     ratingItem.addEventListener('click', function (e) {
+      initRateTrackVars(rateTrack);
+      setRateTrackActiveWidth(ratingItem.value);
+      rateTrackValue = ratingItem.value;
+    })
+    ratingItem.addEventListener('focus', function (e) {
+      initRateTrackVars(rateTrack);
+      setRateTrackActiveWidth(ratingItem.value);
       rateTrackValue = ratingItem.value;
     })
   }

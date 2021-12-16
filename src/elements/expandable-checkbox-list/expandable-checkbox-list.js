@@ -1,5 +1,5 @@
 import "./expandable-checkbox-list.scss";
-import "../checkboxList/checkboxList";
+import "../checkboxlist/checkbox__list";
 
 class Checkbox {
   constructor(selector) {
@@ -15,10 +15,17 @@ class Checkbox {
     this.expandableCheckbox.forEach((element) => {
       element.addEventListener("click", this.toggle);
     });
+    this.expandableCheckbox.forEach((element) => {
+      element.addEventListener("keyup", this.toggle);
+    });
   }
 
-  toggle() {
-    this.element.classList.toggle("open");
+  toggle(event) {
+    if (event.code === 'Space' || event.type === 'click') {
+      this.element.classList.toggle("open");
+    }
   }
 }
+
+new Checkbox('.expandable-checkbox-list')
 

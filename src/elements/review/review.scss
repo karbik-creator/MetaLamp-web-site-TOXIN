@@ -1,50 +1,41 @@
-@import '../../scss/style.scss';
+@import "../../scss/vars.scss";
 
 .review__list {
     .review__item {
         display: flex;
-
-        .review__content-left {
-            display: flex;
-            justify-content: flex-start;
-            flex-direction: column;
-            margin-right: 10px;
-
-            .review__content-left__img {
-                width: 48px;
-                height: 48px;
-                margin-bottom: 12px;
-                background-size: contain;
-                background-repeat: no-repeat;
-                background-position: center;
-                border: 2px solid #FFFFFF;
-                filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
-                border-radius: 32px;
-            }
-
-
-
-        }
-
-        .review__content-right {
-            font-weight: 400;
-            font-size: 14px;
-            line-height: 24px;
-            color: rgba(31, 32, 65, 0.75);
-
-            .review__content-right__name {
-                font-weight: 700;
-            }
-
-            .review__content-right__date {}
-
-            .review__content-right__text {
-                margin-top: 10px;
-            }
-        }
+    }
+    .__content-left {
+        display: flex;
+        justify-content: flex-start;
+        flex-direction: column;
+        margin-right: 10px;
+    }
+    .review__content__img {
+        width: 48px;
+        height: 48px;
+        margin-bottom: 12px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        border: 2px solid #ffffff;
+        filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
+        border-radius: 32px;
+    }
+    .text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        color: rgba(31, 32, 65, 0.75);
+    }
+    .review__content__name {
+        font-weight: 700;
     }
 
-    .review__item + .review__item{
+    .review__content__text {
+        margin-top: 10px;
+    }
+
+    .review__item + .review__item {
         margin-top: 22px;
     }
 }

@@ -1,0 +1,13 @@
+extends ../../elements/templates/template-elements/template-elements.pug
+include ../../elements/color/color.pug
+block content
+    +color__list([
+            {color:'#1F2041', opacity:1, name:'Dark Shade 100%'},
+            {color:'#1F2041', opacity:0.75, name:'Dark Shade 75%'},
+            {color:'#1F2041', opacity:0.5, name:'Dark Shade 50%'},
+            {color:'#1F2041', opacity:0.25, name:'Dark Shade 25%'},
+            {color:'#1F2041', opacity:0.05,name:'Dark Shade 5%'},
+            {color:'BC9CFF', name:'Purple'},
+            {color:'#6FCF97', opacity:1, name:'Green'}
+            ])
+    .text

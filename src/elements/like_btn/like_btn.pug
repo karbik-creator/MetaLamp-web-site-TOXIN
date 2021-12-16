@@ -1,5 +1,13 @@
-mixin like_btn(styleActiveLike,activeLike='favorite',inactiveLike='favorite_border')
-    button.like_btn(data-type='like_btn')
-        span.material-icons.activeLike(style=styleActiveLike)=activeLike
-        span.material-icons.inactiveLike=inactiveLike
-        span.countLike(style=`color:${colorCountLike}`) 12
+mixin like_btn(countLike=12,activeLikeIcon='favorite',inactiveLikeIcon='favorite_border',styleActiveLikeIcon='',styleInactiveLikeIcon='')
+     button.like-btn
+        .like-btn__icons
+            span.material-icons.like-btn__icon.__icon-active(style=styleActiveLikeIcon)=activeLikeIcon
+            span.material-icons.like-btn__icon.__icon-inactive(style=styleInactiveLikeIcon)=inactiveLikeIcon
+        span.like-btn__count=countLike
+
+mixin like_btn_active(countLike=12,activeLikeIcon='favorite',inactiveLikeIcon='favorite_border',styleActiveLikeIcon='',styleInactiveLikeIcon='')
+     button.like-btn.__btn-active
+        .like-btn__icons
+            span.material-icons.like-btn__icon.__icon-active(style=styleActiveLikeIcon)=activeLikeIcon
+            span.material-icons.like-btn__icon.__icon-inactive(style=styleInactiveLikeIcon)=inactiveLikeIcon
+        span.like-btn__count=countLike

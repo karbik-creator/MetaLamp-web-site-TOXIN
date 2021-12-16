@@ -1,46 +1,46 @@
-@import "../../scss/style.scss";
+@import "../../scss/vars.scss";
 .expandable-checkbox-list {
-    .expandable-checkbox-list-header {
+    .expandable-checkbox-list__header {
         display: flex;
         flex-wrap: nowrap;
         justify-content: space-between;
         align-items: center;
+
         margin-bottom: 17px;
         cursor: pointer;
-
-        .expandable-checkbox-list-header-title {
-            display: flex;
-            flex-wrap: wrap;
+        &:focus-visible {
+            outline: 1px solid rgba(31, 32, 65, 0.5);
         }
-        .expandable-checkbox-list-header-arrow {
-            .material-icons {
-                color: rgba(31, 32, 65, 0.5);
-                transition: transform .4s;
-            }
+        .material-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            color: rgba(31, 32, 65, 0.5);
+            transition: transform 0.4s;
         }
     }
-    .expandable-checkbox-list-content {
-        transition: opacity .1s;
-        //display: none;
-        transition: transform .4s;
+    .expandable-checkbox-list__content {
+        transition: opacity 0.3s;
+        overflow: hidden;
+        visibility: hidden;
+        transition: overflow 0.4s;
         opacity: 0;
-        transform: translateY(-2000px);
     }
 
     &.open {
-        .expandable-checkbox-list-content {
-            //display: block;
+        .expandable-checkbox-list__content {
+            overflow: visible;
+            visibility: visible;
             opacity: 1;
-            transform: translateY(0);
-            transition: transform .4s;
-            transition: opacity .6s;
+            transition: overflow 0.4s;
+            transition: opacity 0.3s;
         }
 
-        .expandable-checkbox-list-header-arrow {
-            .material-icons {
-                transform: rotate(180deg);
-                transition: transform .4s;
-            }
+        .material-icons {
+            transform: rotate(180deg);
+            transition: transform 0.4s;
         }
     }
 }

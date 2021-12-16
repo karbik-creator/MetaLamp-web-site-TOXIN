@@ -1,33 +1,45 @@
-@import "../../scss/style.scss";
+@import "../../scss/vars.scss";
 
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat", sans-serif;
-    flex-wrap: wrap;
-}
-
-.checkbox {
+.toggle {
     display: flex;
     flex-wrap: nowrap;
-    align-items: center;
     position: relative;
-
-    input {
-        -webkit-appearance: none;
-        width: 40px;
+    cursor: pointer;
+    .toggle__input {
+        min-width: 40px;
         height: 20px;
+        border-radius: 10px;
+        &:focus-visible {
+            outline: 1px solid rgba(31, 32, 65, 0.5);
+        }
+        &:checked ~ .__input-active {
+            &::before {
+                left: 23px;
+                transition: all 0.3s ease-in;
+            }
+            span.border {
+                opacity: 1;
+                transition: all 0.3s ease-in;
+            }
+            span.circle {
+                opacity: 1;
+                left: 23px;
+                transition: all 0.3s ease-in;
+            }
+        }
+    }
+    .__input-hidden {
+        -webkit-appearance: none;
         margin-right: 10px;
     }
-    .checkbox-title {
+    .toggle__title {
         font-size: 14px;
         line-height: 24px;
         color: rgba(31, 32, 65, 0.75);
     }
-    .checkbox-input-visible {
+    .__input-active {
         position: absolute;
-        top: 2px;
+        top: 0;
         left: 0;
         width: 40px;
         height: 20px;
@@ -45,7 +57,7 @@ body {
             height: 12px;
             background: rgba(31, 32, 65, 0.25);
             border-radius: 10px;
-            transition:  0.3s ease-out;
+            transition: 0.3s ease-out;
         }
 
         span.border {
@@ -58,7 +70,6 @@ body {
             border: 1px solid $Purple;
             box-sizing: border-box;
             border-radius: 10px;
-            
         }
         span.circle {
             opacity: 0;
@@ -69,22 +80,6 @@ body {
             height: 12px;
             background: linear-gradient(180deg, $Purple 0%, #8ba4f9 100%);
             border-radius: 10px;
-        }
-    }
-
-    &.active {
-        .checkbox-input-visible::before {
-            left: 23px;
-            transition: all 0.3s ease-in;
-        }
-        span.border {
-            opacity: 1;
-            transition: all 0.3s ease-in;
-        }
-        span.circle {
-            opacity: 1;
-            left: 23px;
-            transition: all 0.3s ease-in;
         }
     }
 }

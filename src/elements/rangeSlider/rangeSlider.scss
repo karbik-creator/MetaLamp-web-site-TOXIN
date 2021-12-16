@@ -1,0 +1,105 @@
+@import "../../scss/style.scss";
+.range-slider {
+    &__wrapper {
+        width: 266px;
+        .slider__container {
+            position: relative;
+            input[type="range"] {
+                appearance: none;
+                height: 6px;
+                width: 266px;
+                outline: none;
+                position: absolute;
+                margin: auto;
+                top: 0;
+                background-color: transparent;
+                pointer-events: none;
+            }
+
+            .slider-track {
+                width: 264px;
+                height: 6px;
+                background: #ffffff;
+                border: 1px solid rgba(31, 32, 65, 0.25);
+                border-radius: 3px;
+                position: relative;
+
+                .slider-track__item {
+                    height: 6px;
+                    width: 100%;
+                    position: absolute;
+                    background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                }
+            }
+
+            input[type="range"]::-webkit-slider-runnable-track {
+                -webkit-appearance: none;
+                height: 5px;
+            }
+            input[type="range"]::-ms-track {
+                appearance: none;
+                height: 5px;
+            }
+            input[type="range"]::-moz-range-track {
+                -webkit-appearance: none;
+                height: 6px;
+            }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                height: 15px;
+                width: 15px;
+                background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                border: 2px solid #ffffff;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-top: -5px;
+                pointer-events: auto;
+            }
+
+            input[type="range"]::-moz-range-thumb {
+                -webkit-appearance: none;
+                height: 12px;
+                width: 12px;
+                background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                border: 2px solid #ffffff;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-top: -20px;
+                pointer-events: auto;
+            }
+
+            input[type="range"]::-ms-thumb {
+                appearance: none;
+                height: 12px;
+                width: 12px;
+                background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+                border: 2px solid #ffffff;
+                border-radius: 10px;
+                cursor: pointer;
+                margin-top: -12px;
+                pointer-events: auto;
+            }
+        }
+        .values {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            &__name {
+                font-size: 12px;
+                line-height: 15px;
+                font-weight: bold;
+                text-transform: uppercase;
+                color: #1f2041;
+            }
+            &__count {
+                font-size: 12px;
+                line-height: 15px;
+                text-align: right;
+                text-transform: uppercase;
+                color: rgba(31, 32, 65, 0.5);
+            }
+        }
+    }
+}

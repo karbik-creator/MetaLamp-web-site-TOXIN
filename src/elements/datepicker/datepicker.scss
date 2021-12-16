@@ -1,11 +1,4 @@
-@import "../../scss/style.scss";
-body {
-    background-color: #e5e5e5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: "Montserrat", sans-serif;
-}
+@import "../../scss/vars.scss";
 .datepicker {
     display: flex;
     justify-content: space-between;
@@ -32,41 +25,6 @@ body {
         opacity: 0.2;
     }
 
-    .datepicker__item {
-        & + .datepicker__item {
-            margin-left: 20px;
-        }
-        &__wrapper {
-            background-color: #ffffff;
-            border-radius: 4px;
-            transition: background-color 0.2s ease-in;
-            &:hover {
-                transition: background-color 0.2s ease-out;
-                background-color: rgba(12, 13, 25, 0.03);
-            }
-            .datepicker__item__input {
-                border: 1px solid $DS25;
-                border-radius: 4px;
-                min-width: 150px;
-                padding: 11px 10px 8px 15px;
-                margin-top: 5px;
-                cursor: pointer;
-                display: flex;
-                justify-content: space-between;
-                .datepicker__item__placeholder {
-                    display: contents;
-                    font-size: 14px;
-                    color: rgba(31, 32, 65, 0.75);
-                    max-width: 85%;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                }
-                span.material-icons {
-                    color: rgba(31, 32, 65, 0.5);
-                }
-            }
-        }
-    }
     .datepicker__item__dropdown {
         display: none;
         position: absolute;
@@ -93,6 +51,7 @@ body {
                 }
 
                 .arrow {
+                    height: 25px;
                     background-color: transparent;
 
                     #arrow-prev-month,
@@ -224,6 +183,7 @@ body {
                     justify-content: space-between;
                     margin-top: 20px;
                     button {
+                        height: 15px;
                         opacity: 0;
                         overflow: hidden;
                         visibility: hidden;
@@ -248,6 +208,46 @@ body {
                         }
                     }
                 }
+            }
+        }
+    }
+}
+.datepicker__item {
+    width: 100%;
+    & + .datepicker__item {
+        margin-left: 20px;
+    }
+    &__wrapper {
+        background-color: #ffffff;
+        border-radius: 4px;
+        transition: background-color 0.2s ease-in;
+        &:hover .datepicker__item__input,
+        &:focus .datepicker__item__input {
+            transition: all 0.2s;
+            border-color: rgba(31, 32, 65, 0.5);
+        }
+        .datepicker__item__input {
+            border: 1px solid $DS25;
+            border-radius: 4px;
+            min-width: 150px;
+            height: 44px;
+            padding: 0 10px 0 15px;
+            margin-top: 5px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.2s;
+            .datepicker__item__placeholder {
+                display: contents;
+                font-size: 14px;
+                color: rgba(31, 32, 65, 0.75);
+                max-width: 85%;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+            span.material-icons {
+                color: rgba(31, 32, 65, 0.5);
             }
         }
     }

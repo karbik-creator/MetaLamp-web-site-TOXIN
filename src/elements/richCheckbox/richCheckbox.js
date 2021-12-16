@@ -1,2 +1,2 @@
 import './richCheckbox.scss'
-import '../checkboxlist/checkboxList'
+import '../checkboxlist/checkbox__list'

@@ -1,0 +1,9 @@
+.body__wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 30px;
+    & .content__container {
+        padding: 68px 114px;
+        margin: 0;
+    }
+}

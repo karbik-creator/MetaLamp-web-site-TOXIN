@@ -1,9 +1,13 @@
-mixin toggle_btn(title='Получать спецпредложения',styleBorder='',styleInput='')
-    .checkbox(data-type='checkbox')
-        input.checkbox-input-hidden(type="checkbox", name="toggle_btn" value=title)
-        .checkbox-title=title
-            .checkbox-input-visible
-                span.border(style=styleBorder)
-                span.circle(style=styleInput)
+mixin toggle_btn_list(name,array=[{value:'Получать спецпредложения', name:'sale',checked:true},{value:'Получать спецпредложения', name:'sale'}],styleActiveInputBorder='',styleActiveInputCircle='')
+    each item in array 
+        +toggle_btn(item.value,name,item.checked,styleActiveInputBorder,styleActiveInputCircle)
+
+mixin toggle_btn(value='Получать спецпредложения', name='sale', checked=false, styleActiveInputBorder='',styleActiveInputCircle='')
+    label.toggle
+        input.toggle__input.__input-hidden(type="checkbox", name=name value=value checked=checked)
+        .toggle__title=value
+        .toggle__input.__input-active
+            span.border(style=styleActiveInputBorder)
+            span.circle(style=styleActiveInputCircle)
             
 

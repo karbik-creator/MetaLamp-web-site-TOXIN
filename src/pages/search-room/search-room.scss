@@ -1,0 +1,43 @@
+@import "../../scss/nullstyle.scss";
+@import "../../scss/vars.scss";
+@import "../../scss/style.scss";
+.header {
+    box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+}
+.search-room {
+    display: flex;
+
+    .search-room__filter-list {
+        width: 290px;
+        padding-right: 30px;
+        .range-slider__caption {
+            margin-top: 10px;
+        }
+    }
+    .search-room__filter-list > div {
+        margin-top: 30px;
+    }
+
+    .search-room__card-room {
+        padding-top: 30px;
+        padding-left: 30px;
+    }
+    .search-room__card-room-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+    .range-slider__caption {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 14px;
+        color: rgba(31, 32, 65, 0.5);
+    }
+    .card {
+        margin-bottom: 20px;
+    }
+    h1 {
+        margin-bottom: 20px;
+    }
+}

@@ -1,18 +1,51 @@
-mixin select(arrowPath='',arrowWidth='',arrowHeight='',styleForInput='',placeholder='Сколько гостей',placholderStyle='',value=['Взрослые','Младенцы','Дети'])
+mixin select(header='',placeholder='Сколько гостей',value=['Взрослые','Младенцы','Дети'],styleForInput='',placholderStyle='')
     .select
+        h3=header
+        .select__backdrop(data-type='backdrop')
+        .select__input(style=styleForInput,data-type='input' tabindex='0') 
+            .select__input__placeholder(style=placholderStyle data-type="input")=placeholder
+            span.material-icons.select__input__btn(data-type="input") expand_more
+        .select__drop__down
+            each item in value
+                .select__drop__down__item
+                .select__item__text=item
+                .select__item__content__right
+                    button.select__item__btn(type='button', data-type='btnMinus') -
+                    .select__item__number(data-type='count') 0
+                    button.select__item__btn.active(type='button', data-type='btnPlus') + 
+            .select__drop__down__btn
+                button(type='button', data-type='cleandrop') очистить
+                button.active(type='button', data-type='backdrop') применить 
+
+mixin selectInput(placeholder='Сколько гостей',placholderStyle='',styleForInput='')       
+    .select__input(style=styleForInput,data-type='input' tabindex='0') 
+                .select__input__placeholder(style=placholderStyle data-type="input")=placeholder
+                span.material-icons.select__input__btn(data-type="input") expand_more
+
+mixin selectOpen(header='',placeholder='Сколько гостей',value=[{name:'Взрослые',count:0},{name:'Младенцы',count:0},{name:'Дети',count:0}],btnActive=true,btnCleanActive=false,styleForInput='',placholderStyle='') 
+    .select.open
+        h3=header
         .select__wrapper
             .select__backdrop(data-type='backdrop')
             .select__input(style=styleForInput,data-type='input') 
                 .select__input__placeholder(style=placholderStyle)=placeholder
-                .select__input__btn(style=`background-image:url(${arrowPath}),width:${arrowWidth},height:${arrowHeight}`)
+                span.material-icons.select__input__btn expand_more
             .select__drop__down
-                each item in value
-                   .select__drop__down__item(data-id=`${1}`)
-                    .select__item__text=item
+                each item,index in value
+                   .select__drop__down__item
+                    .select__item__text=item.name
                     .select__item__content__right
-                        button.select__item__btn(type='button', data-type='btnMinus') -
-                        .select__item__number(data-type='count') 0
+                        if item.count > 0
+                            button.select__item__btn.active(type='button', data-type='btnMinus') -
+                        else
+                            button.select__item__btn(type='button', data-type='btnMinus') -
+                        .select__item__number(data-type='count')=item.count
                         button.select__item__btn.active(type='button', data-type='btnPlus') + 
-                .select__drop__down__btn
-                    button(type='button', data-type='cleandrop') очистить
-                    button.active(type='button', data-type='backdrop') применить 
+                if btnActive === true
+                    .select__drop__down__btn
+                        if btnCleanActive === true
+                            button.active(type='button', data-type='cleandrop') очистить
+                        else    
+                            button(type='button', data-type='cleandrop') очистить
+                        button.active(type='button', data-type='backdrop') применить 
+                else

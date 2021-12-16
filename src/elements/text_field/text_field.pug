@@ -1,0 +1,12 @@
+mixin text_field(type,placehoder,name,dataType,style)
+    input.text_field(type=type, name=name, placeholder=placehoder, style=(style) data-type=dataType)
+
+mixin text_field_email 
+    input(type="email", name="email", placeholder="Email").text_field
+
+mixin text_field_email(value, hover=false)
+    if hover === false
+        input(type="email", name="email", placeholder="Email" value=value).text_field
+    else
+        input(type="email", name="email", placeholder="Email" value=value).text_field.hover
+    

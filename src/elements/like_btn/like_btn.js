@@ -3,7 +3,6 @@ import './like_btn.scss'
 class LikeBtn {
     constructor(selector) {
         this.elements = document.querySelectorAll(selector);
-
         this.setup()
     }
 
@@ -14,19 +13,15 @@ class LikeBtn {
     }
 
     toggle(event){
-        if(event.target.offsetParent.dataset.type === 'like_btn'){
-            let button = event.target.offsetParent;
-            button.classList.toggle('active');
-            let countLike = button.querySelector('.countLike');
-            if(button.classList.contains('active')){
-                countLike.innerHTML = 1 + parseInt(countLike.innerHTML);
-            }else{
-                countLike.innerHTML = parseInt(countLike.innerHTML)-1;
-            }
-            
+        let likeBtn = event.currentTarget;
+        let countLike = likeBtn.querySelector('.like-btn__count');
+        likeBtn.classList.toggle('__btn-active');
+        if(likeBtn.classList.contains('__btn-active')){
+            countLike.innerHTML = 1 + parseInt(countLike.innerHTML);
+        }else{
+            countLike.innerHTML = parseInt(countLike.innerHTML)-1;
         }
-
     }
 }
 
-new LikeBtn('.like_btn');
+new LikeBtn('.like-btn');

@@ -1,20 +1,26 @@
 @import "../../scss/vars.scss";
-button.pick-up-numbers {
-    margin-top: 30px;
-    width: 100%;
+button {
+    height: 44px;
     font-weight: 700;
     font-size: 12px;
     line-height: 15px;
     text-transform: uppercase;
+}
+button.btnBackground {
+    width: 100%;
     border-radius: 22px;
-    padding: 14px 0 15px 0;
+    padding-left: 19px;
+    padding-right: 19px;
     position: relative;
     transition: opacity 0.3s;
     background: linear-gradient(180deg, $Purple 0%, #8ba4f9 100%);
     color: #fff;
     border: 0;
+    z-index: 1;
 
-    &:hover {
+    &:hover,
+    &:focus,
+    &.hover {
         transition: opacity 0.3s;
         opacity: 0.5;
         span {
@@ -26,10 +32,60 @@ button.pick-up-numbers {
         position: absolute;
         top: 0;
         right: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 44px;
         height: 44px;
-        background-image: url(./img/arrow_forward.svg);
-        background-position: center;
-        background-repeat: no-repeat;
+    }
+}
+.btnBorder_container {
+    position: relative;
+    z-index: 1;
+    height: 42px;
+    .btnBorder {
+        height: 42px;
+        color: $Purple;
+        background-color: #ffff;
+        padding: 0 18px 0 20px;
+        border-radius: 22px;
+        text-transform: uppercase;
+        transition: all 0.2s ease-out;
+    }
+    .btnBorder::after {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        right: -2px;
+        bottom: -2px;
+        border-radius: 24px;
+        background: linear-gradient($Purple, #8ba4f9);
+        z-index: -1;
+        transition: all 0.2s ease-out;
+    }
+    .btnBorder:hover::after,
+    .btnBorder.hover::after {
+        transition: all 0.2s ease-in;
+        opacity: 0.5;
+    }
+
+    .btnBorder:focus {
+        &::after {
+            transition: all 0.2s ease-in;
+            opacity: 0.5;
+        }
+    }
+}
+
+.btnLink {
+    color: $Purple;
+    background-color: transparent;
+    transition: 0.3s;
+    &:hover,
+    &.hover,
+    &:focus {
+        color: rgba(31, 32, 65, 0.5);
+        transition: 0.3s;
     }
 }

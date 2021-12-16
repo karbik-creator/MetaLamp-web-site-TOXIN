@@ -1,6 +1,6 @@
-@import "../../scss/style.scss";
+@import "../../scss/vars.scss";
 
-.like_btn {
+.like-btn {
     min-width: 40px;
     height: 20px;
     background: #ffffff;
@@ -12,59 +12,56 @@
     justify-content: space-around;
     align-items: center;
     padding-right: 10px;
-    margin: 0 auto;
+    padding-left: 5px;
 
-    span.activeLike {
-        opacity: 0;
-        width: 20px;
+    .like-btn__icons {
+        position: relative;
+        width: 15px;
+    }
+    span.material-icons.like-btn__icon {
         height: 20px;
-        position: absolute;
-        top: -1px;
-        left: 0;
+        display: flex;
+        justify-content: start;
+        align-items: center;
         font-size: 10px;
         line-height: 9px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        transition: 0.3s ease-out;
+    }
+    .__icon-active {
+        position: absolute;
+        opacity: 0;
         background: -webkit-gradient(linear, left top, left bottom, from($Purple), to(#8ba4f9));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        transition: .3s ease-out;
     }
-    span.countLike {
+
+    .__icon-inactive {
+        opacity: 1;
+        color: rgba(31, 32, 65, 0.25);
+    }
+    .like-btn__count {
         font-size: 10px;
         line-height: 12px;
+        font-weight: 400;
         color: rgba(31, 32, 65, 0.25);
-        transition: .3s ease-out;
+        transition: 0.3s ease-out;
     }
-
-    span.material-icons.inactiveLike { 
-        opacity: 1;
-        width: 20px;
-        height: 20px;
-        font-size: 10px;
-        line-height: 9px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: rgba(31, 32, 65, 0.25);
-        transition: .3s ease-out;
-    }
-
-    &.active{
+    &.__btn-active {
         border-color: $Purple;
-        span.material-icons.inactiveLike{
+        .__icon-inactive {
             opacity: 0;
-            transition: .3s ease-out;
+            transition: 0.3s ease-out;
         }
-        span.material-icons.activeLike{
+        .__icon-active {
             opacity: 1;
-            transition: .2s ease-in;
+            transition: 0.2s ease-in;
         }
-        span.countLike{
+        .like-btn__count {
             color: $Purple;
-            transition: .3s ease-in;
+            transition: 0.3s ease-in;
         }
-
     }
+}
+button.like-btn:focus-visible {
+    outline: 1px solid rgba(31, 32, 65, 0.7);
 }

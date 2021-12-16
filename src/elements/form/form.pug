@@ -1,0 +1,15 @@
+mixin form(header='undefined',className='')
+    .form(class=className)
+        .form__wrapper
+            if header == 'undefined'
+                form(action="", method="post")
+                    block
+            else
+                h1=header
+                form(action="", method="post")
+                    block
+
+mixin form_footer(text='Нет аккаунта на Toxin?')
+    .form__footer
+        p=text
+        block

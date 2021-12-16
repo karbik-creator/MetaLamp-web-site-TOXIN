@@ -1,20 +1,20 @@
-@import "../../scss/style.scss";
+@import "../../scss/vars.scss";
 
 .bulletList {
     &__item {
         display: flex;
         flex-wrap: nowrap;
         justify-content: left;
-        align-items: center;
+        align-items: baseline;
 
-        span.bulletList__item-marker {
-            width: 10.43px;
+        span.bulletList__item__marker {
+            min-width: 10px;
             height: 10px;
             background: rgba(31, 32, 65, 0.25);
             border-radius: 50%;
-            margin-right: 10.43px;
+            margin-right: 10px;
         }
-        .bulletList__item-text {
+        .bulletList__item__text {
             font-size: 14px;
             line-height: 24px;
             color: rgba(31, 32, 65, 0.75);

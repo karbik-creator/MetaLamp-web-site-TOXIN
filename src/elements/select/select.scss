@@ -1,151 +1,219 @@
 @import "../../scss/vars.scss";
 .select {
-    margin-top: 20px;
+    width: 100%;
+    position: relative;
+    h3 {
+        margin-bottom: 5px;
+    }
 
-    &__wrapper {
-        margin-top: 5px;
-        position: relative;
+    .select__backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: transparent;
+    }
 
-        .select__backdrop {
-            display: none;
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-            background-color: transparent;
+    .select__input {
+        border: 1px solid $DS25;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #ffff;
+        height: 44px;
+        width: 100%;
+
+        &:focus {
+            transition: all 0.2s;
+            border-color: rgba(31, 32, 65, 0.5);
         }
 
-        .select__input {
-            border: 1px solid $DS25;
-            border-radius: 4px;
-            cursor: pointer;
+        .select__input__placeholder {
+            padding: 13px 0 14px 15px;
+            max-width: 85%;
+            overflow: hidden;
+            font-size: 14px;
+            line-height: 18px;
+            color: rgba(31, 32, 65, 0.75);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        .select__input__btn {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.4s;
+        }
+        span.material-icons {
+            color: rgba(31, 32, 65, 0.5);
+        }
+    }
+
+    .select__drop__down {
+        z-index: 1000;
+        position: absolute;
+        width: -webkit-fill-available;
+        width: -moz-available;
+        background-color: #ffffff;
+        border-bottom: 1px solid transparent;
+        border-left: 1px solid $DS25;
+        border-right: 1px solid $DS25;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+        box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+        padding: 0 7px 0 15px;
+        max-height: 0;
+        overflow-y: hidden;
+        transition: max-height 0.2s ease-in-out, padding 0.5s;
+
+        &__item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            
-            .select__input__placeholder{
-                padding-left: 15px;
-                max-width: 85%;
-                overflow: hidden;
-            }
-            .select__input__btn {
-                background-image: url(../../img/expand_more.svg);
-                background-position: center;
-                background-repeat: no-repeat;
-                width: 44px;
-                height: 44px;
-            }
-        }
-        .select__drop__down {
-            display: none;
-            z-index: 1000;
-            position: absolute;
-            width: -webkit-fill-available;
-            width: -moz-available;
-            background-color: #ffffff;
-            border-bottom: 1px solid $DS25;
-            border-left: 1px solid $DS25;
-            border-right: 1px solid $DS25;
-            border-bottom-left-radius: 4px;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
-            padding: 13px 7px 13px 15px;
 
-            &__item {
+            & + .select__drop__down__item {
+                margin-top: 7px;
+            }
+
+            .select__item__text {
+                font-weight: 700;
+                font-size: 12px;
+                line-height: 15px;
+                text-transform: uppercase;
+            }
+
+            .select__item__content__right {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
+                min-width: 92px;
 
-                & + .select__drop__down__item {
-                    margin-top: 7px;
-                }
-
-                .select__item__text {
+                .select__item__number {
                     font-weight: 700;
                     font-size: 12px;
                     line-height: 15px;
                     text-transform: uppercase;
                 }
 
-                .select__item__content__right {
-                    display: flex;
-                    justify-content: space-between;
-                    align-items: center;
-                    min-width: 92px;
-
-                    .select__item__number {
-                        font-weight: 700;
-                        font-size: 12px;
-                        line-height: 15px;
-                        text-transform: uppercase;
-                    }
-
-                    .select__item__btn {
-                        background-color: #ffffff;
-                        border: 1px solid $DS25;
-                        border-radius: 22px;
-                        color: $DS50;
-                        opacity: 0.38;
-                        font-size: 18px;
-                        width: 30px;
-                        height: 30px;
-                        cursor: default;
-
-                        &.active {
-                            cursor: pointer;
-                            opacity: 1;
-
-                            &:active {
-                                background-color: $DS25;
-                            }
-                        }
-                    }
-                }
-            }
-
-            .select__drop__down__btn {
-                display: flex;
-                justify-content: space-between;
-                margin-top: 20px;
-                button {
-                    opacity: 0;
-                    overflow: hidden;
-                    visibility: hidden;
-                    pointer-events: none;
-                    font-size: 12px;
-                    line-height: 15px;
-                    font-weight: 700;
-                    text-transform: uppercase;
-                    color: $Purple;
-                    background-color: transparent;
-                    transition: 0.3s;
+                .select__item__btn {
+                    background-color: #ffffff;
+                    border: 1px solid $DS25;
+                    border-radius: 22px;
+                    color: $DS50;
+                    opacity: 0.38;
+                    font-size: 18px;
+                    width: 30px;
+                    height: 30px;
+                    cursor: default;
 
                     &.active {
+                        cursor: pointer;
                         opacity: 1;
-                        visibility: inherit;
-                        pointer-events: visible;
 
-                        &:hover {
-                            color: $DS50;
-                            transition: 0.3s;
+                        &:active {
+                            background-color: $DS25;
                         }
                     }
                 }
             }
         }
 
-        &.open {
-            .select__input {
-                border-end-end-radius: 0;
-                border-end-start-radius: 0;
-            }
-            .select__drop__down {
-                display: block;
-            }
+        .select__drop__down__btn {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            button {
+                opacity: 0;
+                overflow: hidden;
+                visibility: hidden;
+                pointer-events: none;
+                font-size: 12px;
+                line-height: 15px;
+                font-weight: 700;
+                height: 15px;
+                text-transform: uppercase;
+                color: $Purple;
+                background-color: transparent;
+                transition: 0.3s;
+                padding-bottom: 6px;
 
-            .select__backdrop {
-                display: block;
+                &.active {
+                    opacity: 1;
+                    visibility: inherit;
+                    pointer-events: visible;
+
+                    &:hover {
+                        color: $DS50;
+                        transition: 0.3s;
+                    }
+                }
             }
         }
+    }
+
+    &.open {
+        .select__input {
+            border-end-end-radius: 0;
+            border-end-start-radius: 0;
+        }
+        .select__drop__down {
+            padding: 7px 7px 13px 15px;
+            border-bottom: 1px solid $DS25;
+            max-height: 200px;
+            transition: max-height 0.2s ease-in-out;
+        }
+
+        .select__backdrop {
+            display: block;
+        }
+
+        .select__input__btn {
+            transform: rotate(180deg);
+            transition: transform 0.4s;
+        }
+    }
+}
+
+.select__input {
+    border: 1px solid $DS25;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffff;
+    height: 44px;
+    width: 100%;
+
+    &:focus,
+    &:hover {
+        transition: all 0.2s;
+        border-color: rgba(31, 32, 65, 0.5);
+    }
+
+    .select__input__placeholder {
+        padding: 13px 0 14px 15px;
+        max-width: 85%;
+        overflow: hidden;
+        font-size: 14px;
+        line-height: 18px;
+        color: rgba(31, 32, 65, 0.75);
+    }
+    .select__input__btn {
+        width: 44px;
+        height: 44px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: transform 0.4s;
+    }
+    span.material-icons {
+        color: rgba(31, 32, 65, 0.5);
     }
 }

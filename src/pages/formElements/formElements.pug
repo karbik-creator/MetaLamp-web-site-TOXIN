@@ -1,0 +1,143 @@
+extends ../../elements/templates/template-elements/template-elements.pug 
+include ../../elements/text_field/text_field.pug
+include ../../elements/select/select.pug
+include ../../elements/masked_text_field/masked_text_field.pug
+include ../../elements/datepicker/datepicker.pug
+include ../../elements/subscriptionTextField/subscriptionTextField.pug
+include ../../elements/expandable-checkbox-list/expandable-checkbox-list.pug
+include ../../elements/richCheckbox/richCheckbox.pug
+include ../../elements/bulletlist/bulletlist.pug
+include ../../elements/info_list/info_list.pug
+include ../../elements/review/review.pug
+include ../../elements/radio_btn/radio_btn.pug
+include ../../elements/toggle_btn/toggle_btn.pug
+include ../../elements/like_btn/like_btn.pug
+include ../../elements/rateTrack/rateTrack.pug
+include ../../elements/btn/btn.pug
+include ../../elements/pagination/pagination.pug
+include ../../elements/rangeSlider/rangeSlider.pug
+block content
+                .elements__list.__grid
+                    .column-1
+                        .element__item 
+                            .element-name
+                                .element-title Text Field
+                                .element-subtitle Default
+                            .element-content
+                                +text_field_email
+                        .element__item.m20
+                            .element-name
+                                .element-title Text Field
+                                .element-subtitle Hover / Focus
+                            .element-content
+                                +text_field_email('This is pretty awesome',true)
+                        .element__item.m20
+                            .element-name Dropdown
+                            .element-content
+                                +selectInput
+                        .element__item.m23
+                            .element-name masked text field
+                            .element-content
+                                +masked_text_field
+                        .element__item.m40
+                            .element-content.content-element
+                                +datepickerInput([{placeholder:'ДД.ММ.ГГГГ',label:'DATE DROPDOWN'},
+                                {placeholder:'19.08.2019',label:'DATE DROPDOWN'}])
+                        .element__item.m40
+                            .element-content.datepickerInput
+                                +datepickerInput([{placeholder:'19 авг - 23 авг',label:'filter date dropdown'}]) 
+                        .element__item.m40
+                            .element-name subscription text field
+                            .element-content.subscriptionTextField 
+                                +subscriptionTextField 
+                    .column-2
+                        .element__item
+                            .element-name Checkbox Buttons
+                            .element-content
+                                +checkboxList('','options',[
+                                    {value:'Можно курить'},
+                                    {value:'Можно с питомцами',checked:true},
+                                    {value:'Можно пригласить гостей (до 10 человек)',checked:true}
+                                    ])
+                        .element__item.m40
+                            .element-name Radio Buttons
+                            .element-content
+                                +radio_btn_list
+                        .element__item.m36
+                            .element-name Toggle
+                            .element-content
+                                +toggle_btn_list
+                        .element__item.m40
+                            .element-name like button
+                            .element-content.content-element
+                                +like_btn
+                                +like_btn_active
+                        .element__item.m40
+                            .element-name rate button
+                            .element-content.content-element
+                                +rateTrackActive(4)
+                                +rateTrackActive
+                    .column-3
+                        .element__item
+                            .element-content
+                                +rangeSlider
+                        .element__item
+                            .element-name buttons
+                            .element-content.__grid
+                                +btnBackground('Click me',false)
+                                +btnBackgroundHover('Click me',false)
+                                +btnBorder('Click me')
+                                +btnBorderHover('Click me')
+                                +btnLink('Click me')
+                                +btnLinkHover('Click me')
+                                +btnBackground('перейти к оплате')
+                        .element__item
+                            .element-name pagination
+                            .element-content
+                                +pagination
+                                
+                            
+                .elements__list.__grid
+                    .element__item
+                        .element-name
+                            .element-title dropdown
+                            .element-subtitle Default
+                        .element-content
+                            +selectInput('2 спальни, 2 кровати')
+                    .element__item(style='height:182px')
+                        .element-name
+                            .element-title dropdown
+                            .element-subtitle expanded
+                        .element-content
+                            +selectOpen('','2 спальни, 2 кровати',[{name:'Спальни',count:2},{name:'Кровати',count:2},{name:'Ванные комнаты',count:0}],false)
+                    .element__item(style='height:221px')
+                        .element-name dropdown
+                        .element-content
+                            +selectOpen('','Сколько гостей',[{name:'Взрослые',count:0},{name:'Дети',count:0},{name:'Младенцы',count:0}])
+                    .element__item(style='height:221px')
+                        .element-name dropdown
+                        .element-content
+                            +selectOpen('','3 гостя',[{name:'Взрослые',count:2},{name:'Дети',count:1},{name:'Младенцы',count:0}],true,true)
+                .element_expandable_list.__grid
+                    .element__item
+                        .element-content
+                            +expandable-checkbox-list('element expandable list')
+                    .element__item
+                        .element-content
+                            +expandable-checkbox-list-open('element expandable list')
+                    .element__item
+                        .element-name.m17 rich Checkbox Buttons
+                        .element-content
+                            +richCheckbox
+                    .element__item
+                        .element-name.m17 bullet list
+                        .element-content
+                            +bulletlist
+                .element_footer_list
+                    .element__item
+                        .element-content
+                            +info_list(undefined,[{img:'insert_emoticon',title:'Комфорт',text:'Шумопоглощающие стены'},{img:'location_city',title:'Комфорт',text:'Шумопоглощающие стены'}])
+                    .element__item
+                        .element-content
+                            +review__list
+                

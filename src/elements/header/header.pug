@@ -1,42 +1,14 @@
 include ../logo/logo.pug
-header.header
-  .container
-    .header__wrapper
-      +logo("./img/logo.svg", "106px","40px")
-      .header__content__right
-        nav.menu
-          ul.menu__list
-            li.menu__list__item
-              a.link__top(href="/mock-address/change-me" data-title="О-нас") О нас 
-            li.menu__list__item
-              a.link__top(href="catalog.html" data-title="Услуги") Услуги
-              ul.menu__sub__list
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Услуги
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Услуги
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Услуги
-              span.link__arrow
-                svg(width="12" height="8" viewbox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg")
-                  path(d="M10.5938 0.578125L12 1.98438L6 7.98438L0 1.98438L1.40625 0.578125L6 5.17188L10.5938 0.578125Z" fill="#1F2041" fill-opacity="0.5")
-            li.menu__list__item
-              a.link__top(href="/mock-address/change-me" data-title="Вакансии") Вакансии
-            li.menu__list__item
-              a.link__top(href="/mock-address/change-me" data-title="Новости") Новости
-            li.menu__list__item
-              a.link__top(href="/mock-address/change-me" data-title="Соглашения") Соглашения
-              ul.menu__sub__list
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Соглашения
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Соглашения
-                li.menu__sub__list__item
-                  a(href="/mock-address/change-me") Соглашения
-              span.link__arrow
-                svg(width="12" height="8" viewbox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg")
-                  path(d="M10.5938 0.578125L12 1.98438L6 7.98438L0 1.98438L1.40625 0.578125L6 5.17188L10.5938 0.578125Z" fill="#1F2041" fill-opacity="0.5")
-        .account__name Константин Константинович
-        .header__button
-          button.btn__entry Войти
-          button.btn__registration зарегистрироваться
+include ../menu/menu.pug
+include ../btn/btn.pug
+mixin header
+  header.header
+    .container
+      .header__wrapper
+        +logo("../../img/logo.svg", "106px","40px")
+        .header__content-right
+          +menu
+          .header__account-name Константин Константинович
+          .header__buttons
+            +btnBorder('Войти')
+            +btnBackground('зарегистрироваться',false)

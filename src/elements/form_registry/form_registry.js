@@ -1,0 +1,7 @@
+import './form_registry.scss'
+import '../form/form'
+import '../text_field/text_field'
+import '../btn/btn'
+import '../radio_btn/radio_btn'
+import '../toggle_btn/toggle_btn'
+import '../masked_text_field/masked_text_field'

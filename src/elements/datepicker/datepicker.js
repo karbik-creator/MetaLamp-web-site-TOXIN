@@ -7,6 +7,7 @@ export const getTemplateDatepicker = (
   year,
   daysOfWeek
 ) => {
+
   const days = daysOfWeek.map((item) => {
     return `<div class="day-of-week">${item}</div>`;
   });
@@ -15,27 +16,27 @@ export const getTemplateDatepicker = (
       ? `
   <div class="datepicker__item">
   <h3>${name[0]}</h3>
-  <div class="datepicker__item__wrapper">
+  <div class="datepicker__item__wrapper" tabindex='0'>
     <div class="datepicker__item__input" data-type="input-start-date">
-    <div class="datepicker__item__placeholder">${placeholder}</div>
+    <div class="datepicker__item__placeholder">${typeof placeholder === 'object' ? placeholder[0] + '-' + placeholder[1] : placeholder}</div>
     <span class="material-icons">expand_more</span>
     </div>
   </div>
 </div>`
       : `<div class="datepicker__item">
       <h3>${name[0]}</h3>
-<div class="datepicker__item__wrapper">
+<div class="datepicker__item__wrapper" tabindex='0'>
   <div class="datepicker__item__input" data-type="input-start-date">
-  <div class="datepicker__item__placeholder">${placeholder}</div>
+  <div class="datepicker__item__placeholder">${typeof placeholder === 'object' ? placeholder[0] : placeholder}</div>
   <span class="material-icons">expand_more</span>
   </div>
 </div>
 </div>
 <div class="datepicker__item">
 <h3>${name[1]}</h3>
-<div class="datepicker__item__wrapper">
+<div class="datepicker__item__wrapper" tabindex='0' data-type='input'>
   <div class="datepicker__item__input" data-type="input-end-date">
-  <div class="datepicker__item__placeholder">${placeholder}</div>
+  <div class="datepicker__item__placeholder">${typeof placeholder === 'object' ? placeholder[1] : placeholder}</div>
   <span class="material-icons">expand_more</span>
   </div>
 </div>
@@ -76,12 +77,16 @@ export const getTemplateDatepicker = (
 };
 
 export class Datepicker {
-  constructor(selector, options={
-    placeholder:"ДД.ММ.ГГГГ - ДД.ММ.ГГГГ",
-    countInput:1,
-    name:['Дата']}) {
+  constructor(selector = '.datepicker', options = {
+    format: 'ДД.МММ',
+    placeholder: "ДД.МММ - ДД.МММ",
+    countInput: 1,
+    name: ['Дата']
+  }) {
     this.element = document.querySelector(selector);
     this.options = options;
+    this.placeholder = this.options.placeholder
+    this.format = options.format;
     this.date = new Date();
     this.month = this.date.getMonth();
     this.year = this.date.getFullYear();
@@ -103,18 +108,29 @@ export class Datepicker {
     this.daysOfWeek = ["пн", "вт", "ср", "чт", "пт", "сб", "вс"];
     this.timeStampDay = 86400000;
     this.number = 0;
-
+    this.renderFormatter();
     this.render();
     this.setup();
   }
 
+  localStorageDate() {
+    let datePeriod = localStorage.getItem('date');
+    if (datePeriod !== null) {
+      let newArrayFormatDatePeriod = JSON.parse(datePeriod).map(item => {
+        return this.formatter.format(new Date(item))
+      });
+      return newArrayFormatDatePeriod
+    }
+    return this.placeholder
+  }
+
   render() {
-    const { placeholder, countInput, name } = this.options;
+    const { countInput, name } = this.options;
     this.element.innerHTML = "";
     this.element.insertAdjacentHTML(
       "afterbegin",
       getTemplateDatepicker(
-        placeholder,
+        this.localStorageDate(),
         countInput,
         name,
         this.months[this.month],
@@ -145,22 +161,12 @@ export class Datepicker {
     let countDaysInDatepicker = 35;
     for (let i = 1; i <= countDaysInDatepicker; i++) {
       if (i <= paddingDays) {
-        for (
-          let j = countDaysOfLastMonth;
-          j > countDaysOfLastMonth - paddingDays;
-          j--
-        ) {
+        for (let j = countDaysOfLastMonth; j > countDaysOfLastMonth - paddingDays; j--) {
           days.insertAdjacentHTML(
             "afterbegin",
-            `<div class="day prev-next-day" data-type="day" data-value="${new Date(
-              this.year,
-              this.month - 1,
-              j,
-              0,
-              0,
-              0,
-              0
-            ).getTime()}">${j}<span></span></div>`
+            `<div class="day prev-next-day" data-type="day" data-value="${new Date(this.year, this.month - 1, j).getTime()}">
+            ${j}
+            <span></span></div>`
           );
           i++;
         }
@@ -168,34 +174,18 @@ export class Datepicker {
       if (i <= countDaysInMonth + paddingDays && i > paddingDays) {
         days.insertAdjacentHTML(
           "beforeend",
-          `<div class="day" data-type="day" data-value="${new Date(
-            this.year,
-            this.month,
-            i - paddingDays,
-            0,
-            0,
-            0,
-            0
-          ).getTime()}">${i - paddingDays}<span></span></div>`
+          `<div class="day" data-type="day" data-value="${new Date(this.year, this.month, i - paddingDays).getTime()}">
+          ${i - paddingDays}
+          <span></span></div>`
         );
       }
       if (i >= countDaysInMonth + paddingDays) {
-        for (
-          let k = 1;
-          k <= countDaysInDatepicker - countDaysInMonth - paddingDays;
-          k++
-        ) {
+        for (let k = 1; k <= countDaysInDatepicker - countDaysInMonth - paddingDays; k++) {
           days.insertAdjacentHTML(
             "beforeend",
-            `<div class="day prev-next-day" data-type="day" data-value="${new Date(
-              this.year,
-              this.month + 1,
-              k,
-              0,
-              0,
-              0,
-              0
-            ).getTime()}">${k}<span></span></div>`
+            `<div class="day prev-next-day" data-type="day" data-value="${new Date(this.year, this.month + 1, k).getTime()}">
+            ${k}
+            <span></span></div>`
           );
           i++;
         }
@@ -206,6 +196,7 @@ export class Datepicker {
   setup() {
     this.clickHandler = this.clickHandler.bind(this);
     this.element.addEventListener("click", this.clickHandler);
+    this.element.addEventListener("keyup", this.clickHandler);
     this.monthAndYear = this.element.querySelector(".month-and-year");
     this.daysContainer = this.element.querySelector(".days>.days__wrapper");
     this.btnClean = this.element.querySelector('[data-type="cleandrop"]');
@@ -219,14 +210,26 @@ export class Datepicker {
     this.translateX = 0;
   }
 
+  renderFormatter() {
+    if (this.format === 'ДД.МММ') {
+      this.formatter = new Intl.DateTimeFormat("ru", { day: '2-digit', month: 'short' });
+    }
+    if (this.format === 'ДД.ММ.ГГГГ') {
+      this.formatter = new Intl.DateTimeFormat("ru", { day: '2-digit', month: '2-digit', year: 'numeric' });
+    }
+  }
+
   clickHandler(event) {
     const { type } = event.target.dataset;
-    let typeParent = event.path[1].dataset.type;
+    let path = event.path || (event.composedPath && event.composedPath());
+    let typeParent = path[1].dataset.type;
     if (
+      event.code === 'Tab' || event.type === 'click' &&
       typeParent === "input-start-date" ||
       typeParent === "input-end-date" ||
       type === "input-start-date" ||
-      type === "input-end-date"
+      type === "input-end-date" ||
+      type === "input"
     ) {
       this.toggleDropdown();
     }
@@ -265,9 +268,8 @@ export class Datepicker {
       this.colorPeriod();
     }
     this.translateX = this.translateX - 280;
-    this.daysContainer.style.transform = `translateX(${
-      this.translateX + "px"
-    })`;
+    this.daysContainer.style.transform = `translateX(${this.translateX + "px"
+      })`;
   }
 
   prevMonth() {
@@ -283,9 +285,8 @@ export class Datepicker {
       this.colorPeriod();
     } else {
       this.translateX = this.translateX + 280;
-      this.daysContainer.style.transform = `translateX(${
-        this.translateX + "px"
-      })`;
+      this.daysContainer.style.transform = `translateX(${this.translateX + "px"
+        })`;
     }
   }
 
@@ -299,8 +300,8 @@ export class Datepicker {
   reviewCountActiveDays() {
     let activeDays = this.arrayActiveDays();
     if (activeDays.length > 1) {
-      activeDays.forEach(item=>item.classList.remove("active", "start", "end"));
-      this.element.querySelectorAll(".streak").forEach(item=>item.classList.remove("streak"));
+      activeDays.forEach(item => item.classList.remove("active", "start", "end"));
+      this.element.querySelectorAll(".streak").forEach(item => item.classList.remove("streak"));
     }
   }
 
@@ -344,26 +345,22 @@ export class Datepicker {
       } else {
         this.inputStartDate.textContent = this.options.placeholder;
         this.inputEndDate.textContent = this.options.placeholder;
+
       }
       return
     }
-    let startDate = new Date(this.startPeriodTimeStamp + this.timeStampDay)
-      .toISOString()
-      .replace(/^([^T]+)T(.+)$/, "$1")
-      .replace(/^(\d+)-(\d+)-(\d+)$/, "$3.$2.$1");
-    let endDate = new Date(this.endPeriodTimeStamp + this.timeStampDay)
-      .toISOString()
-      .replace(/^([^T]+)T(.+)$/, "$1")
-      .replace(/^(\d+)-(\d+)-(\d+)$/, "$3.$2.$1");
+    localStorage.setItem('date', JSON.stringify([this.startPeriodTimeStamp, this.endPeriodTimeStamp]));
+    let startDate = this.formatter.format(this.startPeriodTimeStamp);
+    let endDate = this.formatter.format(this.endPeriodTimeStamp);
 
     if (arrayActiveDays.length >= 1) {
       if (this.options.countInput === 1) {
         this.inputStartDate.textContent = `${startDate} - ${endDate}`
-      }else{
+      } else {
         this.inputStartDate.textContent = startDate;
         this.inputEndDate.textContent = endDate;
+
       }
-      
     }
   }
   arrayActiveDays() {
@@ -377,4 +374,3 @@ export class Datepicker {
   }
 }
 
-new Datepicker(".datepicker");

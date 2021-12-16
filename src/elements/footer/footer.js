@@ -1,2 +1,6 @@
 import '../subscriptionTextField/subscriptionTextField'
+import '../logo/logo'
 import './footer.scss'
+import './img/twitter-link.svg'
+import './img/facebook-link.svg'
+import './img/insta-link.svg'

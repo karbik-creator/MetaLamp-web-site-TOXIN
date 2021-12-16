@@ -1,0 +1,30 @@
+@import '../../scss/vars.scss';
+.colors__list {
+    display: flex;
+    flex-direction: column;
+
+    .colors__item {
+        display: flex;
+    }
+    .color {
+        border-radius: 6px;
+        width: 70px;
+        height: 70px;
+        background-color: black;
+        margin-right: 40px;
+    }
+    .colors__item + .colors__item {
+        margin-top: 20px;
+    }
+    .color-text{
+         font-size: 19px;
+        line-height: 28px;
+        color: $DS100;
+    }
+    .color-name {
+        font-weight: bold;
+    }
+    .color-subtext{
+        font-weight: normal;
+    }
+}

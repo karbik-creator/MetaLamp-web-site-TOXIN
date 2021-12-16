@@ -1,15 +1,27 @@
-mixin datepicker
+mixin datepicker(array=[{placeholder:'ДД.ММ.ГГГГ',label:'Прибытие'},{placeholder:'ДД.ММ.ГГГГ',label:'Выезд'}])
     .datepicker
         .datepicker__backdrop(data-type='backdrop')
-        block
+        +datepickerInput(array)
+        +datepickerDropDown
         
-mixin datepickerInput(placeholder='ДД.ММ.ГГГГ',label='Прибытие')
-    .datepicker__item
-            h3=label
-            .datepicker__item__wrapper
-                .datepicker__item__input(data-type='input-start-date')
-                    .datepicker__item__placeholder=placeholder
-                    span.material-icons expand_more
+mixin datepickerInput(array=[{placeholder:'ДД.ММ.ГГГГ',label:'Прибытие'},{placeholder:'ДД.ММ.ГГГГ',label:'Выезд'}])
+    each item,index in array
+        .datepicker__item
+                h3=item.label
+                .datepicker__item__wrapper(tabindex='0' data-type='input')
+                    if item.length === 1
+                        .datepicker__item__input(data-type='input-start-date')
+                            .datepicker__item__placeholder=item.placeholder
+                            span.material-icons expand_more
+                    else
+                        if index === 0
+                            .datepicker__item__input(data-type='input-start-date')
+                                .datepicker__item__placeholder=item.placeholder
+                                span.material-icons expand_more
+                        else
+                            .datepicker__item__input(data-type='input-end-date')
+                                .datepicker__item__placeholder=item.placeholder
+                                span.material-icons expand_more
 
 mixin datepickerDropDown(color) 
     .datepicker__item__dropdown
@@ -35,9 +47,3 @@ mixin datepickerDropDown(color)
                     .drop__down__btn
                         button(type='button', data-type='cleandrop', style=color) очистить
                         button.active(type='button', data-type='backdrop', style=color) применить
-
-link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
-+datepicker
-    +datepickerInput('ДД.ММ.ГГГГ','Прибытие')
-    +datepickerInput('ДД.ММ.ГГГГ','Выезд')
-    +datepickerDropDown

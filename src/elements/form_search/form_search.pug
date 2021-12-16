@@ -1,13 +1,15 @@
 include ../datepicker/datepicker.pug
 include ../select/select.pug
-include ../btn/btn.pug
-mixin form__search(header)
+include ../btn/btn.pug 
+mixin form_search
     .form__search
         .form__search__wrapper
-            h1=header
-                form(action="", method="post")
-                    +datepicker
-                    +select
-                    +button('подобрать номера')
-                    block
+            h1 Найдём номера под ваши пожелания 
+            form(action="http://127.0.0.1:5501/dist/search-room.html")
+                +datepicker
+                +select
+                block content
+                +btnBackground('подобрать номера')
+            
+
 

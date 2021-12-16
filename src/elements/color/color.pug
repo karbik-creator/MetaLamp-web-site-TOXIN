@@ -1,0 +1,15 @@
+mixin color__list(array=[{color:'#1F2041', opacity:1, name:'Dark Shade 100%'}])
+    .colors__list
+        each item in array
+            if item.opacity==undefined
+                .colors__item 
+                    .color(style=`background-color:${item.color};opacity:1`) 
+                    .color-text
+                        .color-name=item.name
+                        .color-subtext=item.color
+            else 
+                 .colors__item 
+                    .color(style=`background-color:${item.color};opacity:${item.opacity}`) 
+                    .color-text
+                        .color-name=item.name
+                        .color-subtext=item.color

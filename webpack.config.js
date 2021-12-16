@@ -5,7 +5,26 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const TerserWebpackPlugin = require('terser-webpack-plugin')
 const { config } = require("process")
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-
+function _path(p) {
+  return path.join(__dirname, p);
+}
+const pages = [
+  'home',
+  'colors',
+  'formElements',
+  'search-room',
+  'sign-in',
+  'registration',
+  'room-details'
+];
+function renderEntry(array) {
+  let object = {}
+  array.forEach(element => {
+      object[`${element}`] = `./pages/${element}/${element}.js`
+  });
+  return object
+}
+const base = [];
 const isDev = process.env.NODE_ENV === 'development'
 const isProd = !isDev
 const optimization = () => {
@@ -20,67 +39,33 @@ const optimization = () => {
       new TerserWebpackPlugin()
     ]
   }
-
   return config
 }
-const plugins = () => {
-  const base = [
-   /* new HTMLWebpackPlugin({
-      filename: "index.html",
-      template: "./pages/home/index.pug",
-      minify: {
-        collapseWhitespace: isProd
-      },
-      chunks: ["pages/main"]
-    }),
+
+pages.forEach(page => {
+  base.push(
     new HTMLWebpackPlugin({
-      filename: "catalog.html",
-      template: "./pages/catalog/catalog.pug",
-      minify: {
-        collapseWhitespace: isProd
-      },
-      chunks: ["pages/catalog"]
+      filename: `./${page}.html`,
+      template: `./pages/${page}/${page}.pug`,
+      inject: true,
+      chunks: [page],
     }),
-    new HTMLWebpackPlugin({
-      filename: "./template/colors/colors.html",
-      template: "./template/colors/colors.pug",
-      minify: {
-        collapseWhitespace: isProd
-      },
-      chunks: ["template/colors/colors"]
-    }),*/
-    new HTMLWebpackPlugin({
-      filename: "./elements/like_btn/like_btn.html",
-      template: "./elements/like_btn/like_btn.pug",
-      minify: {
-        collapseWhitespace: isProd
-      },
-      chunks: ["template/radio_btn"]
-    }),
-    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: "./css/[name].css",
+      filename: `./css/[name].css`,
+      ignoreOrder: true
     })
-  ];
-  return base
-}
+  );
+});
+
+
 module.exports = {
   context: path.resolve(__dirname, 'src'),
-  mode: "development", //проект собираем в режиме разработки
-  entry: {
-    //точка входа
-    
-    //"pages/main": "./pages/home/index.js",
-    //"pages/catalog": "./pages/catalog/catalog.js",
-    //"template/colors/colors": "./template/colors/colors.js",
-    //"template/formElements/formElements": "./template/formElements/formElements.js"
-    "template/radio_btn": "./elements/like_btn/like_btn.js"
-  },
+  mode: "development",
+  entry: renderEntry(pages),
   //devtool: "source-map",
   output: {
-    //куда сохраняем
     clean: true,
-    path: path.resolve(__dirname, "dist"), //__dirname-текущая директория
+    path: path.resolve(__dirname, "dist"),
     filename: "./js/[name].js",
     //assetModuleFilename: 'img/[hash][ext][query]'
   },
@@ -89,7 +74,7 @@ module.exports = {
     port: 3000,
     hot: isDev
   },
-  plugins: plugins(),
+  plugins: base,
   module: {
     rules: [
       {
@@ -106,12 +91,9 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {}
+            loader: MiniCssExtractPlugin.loader
           },
-          // Translates CSS into CommonJS
           "css-loader",
-          // Compiles Sass to CSS
           "sass-loader",
         ],
       },
@@ -134,5 +116,11 @@ module.exports = {
         loader: 'pug-loader'
       }
     ],
+  },
+  resolve: {
+    alias: {
+      'jquery': _path('node_modules/jquery/dist/jquery'),
+      'inputmask.dependencyLib': _path('node_modules/jquery.maskedinput/src/jquery.maskedinput'),
+    },
   },
 };

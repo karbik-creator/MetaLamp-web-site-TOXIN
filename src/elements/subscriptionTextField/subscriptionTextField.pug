@@ -1,4 +1,5 @@
-mixin subscriptionTextField(buttonImg='./img/arrow_forward_purple.svg',typeInput='email',nameInput='email',placeholderInput='Email',styleForInput='border-radius: 4px;')
-    form.input__and__button
-        input(type=typeInput, name=nameInput, placeholder=placeholderInput, style=styleForInput)
-        button( style=`background-image:url(${buttonImg})`)
+mixin subscriptionTextField(typeInput='email',nameInput='email',placeholderInput='Email',styleForInput=''.styleForButton='',styleSpan='')
+    form.subscription-text-field(tabindex='0')
+        input.subscription-text-field__input(type=typeInput, name=nameInput, placeholder=placeholderInput, style=styleForInput)
+        button.subscription-text-field__btn(style=styleForButton aria-label='submit')
+            span.material-icons(style=styleSpan) arrow_forward

@@ -1,8 +1,11 @@
-mixin info_list(array=[{img:'insert_emoticon',title:'Комфорт',text:'Шумопоглощающие стены'},{img:'location_city',title:'Комфорт',text:'Шумопоглощающие стены'},{img:'location_city',title:'Комфорт',text:'Шумопоглощающие стены'}],styleImg='')
+mixin info_list(header=undefined,array=[{img:'insert_emoticon',title:'Комфорт',text:'Шумопоглощающие стены'},{img:'location_city',title:'Комфорт',text:'Шумопоглощающие стены'},{img:'location_city',title:'Комфорт',text:'Шумопоглощающие стены'}],styleImg='')
     .info__list
+        if header===undefined
+        else
+            h2=header
         each item in array
             .info__list__item
-                span.material-icons.info__list__item-img(style=styleImg)=item.img
-                .info__list__item-info
-                    .info__list__item-title=item.title 
-                    .info__list__item-text=item.text
+                span.material-icons.info__list__item__img(style=styleImg)=item.img
+                .info__list__item__info
+                    .info__list__item__title=item.title 
+                    .info__list__item__text=item.text

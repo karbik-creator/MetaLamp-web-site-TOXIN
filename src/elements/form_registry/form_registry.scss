@@ -1,0 +1,27 @@
+@import "../../scss/style.scss";
+
+.form {
+    .form__wrapper {
+        .form__content {
+            margin-top: 20px;
+            & >h3 ~ *:not(:first-child):not(:nth-child(2)) {
+                margin-top: 10px;
+            }
+            & > h3 {
+                margin-bottom: 5px;
+            }
+            &.content-1 > *:not(:first-child){
+                margin-top: 10px;
+            }
+
+        }
+        .form__footer {
+            margin-top: 30px;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
+    .form__content + .button {
+        margin-top: 20px;
+    }
+}
