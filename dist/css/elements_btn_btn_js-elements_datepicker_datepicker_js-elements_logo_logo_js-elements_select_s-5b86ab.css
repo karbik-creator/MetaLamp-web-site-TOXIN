@@ -1,0 +1,552 @@
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/logo/logo.scss ***!
+  \********************************************************************************************************************/
+.logo {
+  background-image: url(../img/logo.svg);
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 40px;
+}
+/*!******************************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/subscriptionTextField/subscriptionTextField.scss ***!
+  \******************************************************************************************************************************************************/
+.subscription-text-field {
+  height: 44px;
+  width: 100%;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.subscription-text-field .subscription-text-field__input {
+  height: 100%;
+  width: 83%;
+  border-radius: 4px;
+  padding-left: 15px;
+  transition: all 0.2s;
+}
+.subscription-text-field .subscription-text-field__input::placeholder {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.25);
+}
+.subscription-text-field .subscription-text-field__btn {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px;
+}
+.subscription-text-field .subscription-text-field__btn:focus-visible {
+  transition: all 0.2s;
+  border: 1px solid rgba(31, 32, 65, 0.7);
+}
+.subscription-text-field:hover, .subscription-text-field:focus {
+  transition: all 0.2s;
+  border: 1px solid rgba(31, 32, 65, 0.5);
+}
+.subscription-text-field .material-icons {
+  background: -webkit-gradient(linear, left top, left bottom, from(#BC9CFF), to(#8ba4f9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*!******************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/btn/btn.scss ***!
+  \******************************************************************************************************************/
+button {
+  height: 44px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+button.btnBackground {
+  width: 100%;
+  border-radius: 22px;
+  padding-left: 19px;
+  padding-right: 19px;
+  position: relative;
+  transition: opacity 0.3s;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8ba4f9 100%);
+  color: #fff;
+  border: 0;
+  z-index: 1;
+}
+button.btnBackground:hover, button.btnBackground:focus, button.btnBackground.hover {
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+button.btnBackground:hover span, button.btnBackground:focus span, button.btnBackground.hover span {
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+button.btnBackground span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.btnBorder_container {
+  position: relative;
+  z-index: 1;
+  height: 42px;
+}
+.btnBorder_container .btnBorder {
+  height: 42px;
+  color: #BC9CFF;
+  background-color: #ffff;
+  padding: 0 18px 0 20px;
+  border-radius: 22px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+.btnBorder_container .btnBorder::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 24px;
+  background: linear-gradient(#BC9CFF, #8ba4f9);
+  z-index: -1;
+  transition: all 0.2s ease-out;
+}
+.btnBorder_container .btnBorder:hover::after,
+.btnBorder_container .btnBorder.hover::after {
+  transition: all 0.2s ease-in;
+  opacity: 0.5;
+}
+.btnBorder_container .btnBorder:focus::after {
+  transition: all 0.2s ease-in;
+  opacity: 0.5;
+}
+
+.btnLink {
+  color: #BC9CFF;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.btnLink:hover, .btnLink.hover, .btnLink:focus {
+  color: rgba(31, 32, 65, 0.5);
+  transition: 0.3s;
+}
+/*!********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/datepicker/datepicker.scss ***!
+  \********************************************************************************************************************************/
+.datepicker {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 21px;
+  position: relative;
+}
+.datepicker.open .datepicker__item__dropdown {
+  display: block;
+}
+.datepicker.open .datepicker__backdrop {
+  display: block;
+}
+.datepicker .datepicker__backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+  opacity: 0.2;
+}
+.datepicker .datepicker__item__dropdown {
+  display: none;
+  position: absolute;
+  z-index: 1000;
+  top: 70px;
+  background-color: #ffffff;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  width: 320px;
+  min-height: 369px;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+}
+.datepicker .datepicker__item__dropdown__inner {
+  padding: 19px;
+}
+.datepicker .datepicker__item__dropdown__inner .content__top {
+  display: flex;
+  justify-content: space-between;
+}
+.datepicker .datepicker__item__dropdown__inner .content__top .month-and-year {
+  font-weight: 700;
+  font-size: 19px;
+  color: #0c0d19;
+}
+.datepicker .datepicker__item__dropdown__inner .content__top .arrow {
+  height: 25px;
+  background-color: transparent;
+}
+.datepicker .datepicker__item__dropdown__inner .content__top .arrow #arrow-prev-month,
+.datepicker .datepicker__item__dropdown__inner .content__top .arrow #arrow-next-month {
+  color: #BC9CFF;
+  font-size: 25px;
+}
+.datepicker .datepicker__item__dropdown__inner .content__top .arrow #arrow-prev-month {
+  transform: rotate(180deg);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center {
+  margin-top: 30px;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days-of-week {
+  display: flex;
+  justify-content: space-between;
+  color: #BC9CFF;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days-of-week .day-of-week {
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days {
+  overflow: hidden;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days__wrapper {
+  display: flex;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days__list {
+  display: grid;
+  grid-template-columns: repeat(7, 40px);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day {
+  display: grid;
+  height: 40px;
+  justify-content: center;
+  align-items: center;
+  color: rgba(12, 13, 25, 0.5);
+  background-color: transparent;
+  font-size: 12px;
+  transition: all 0.3s;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day span {
+  position: absolute;
+  height: 100%;
+  z-index: -1;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.active, .datepicker .datepicker__item__dropdown__inner .content__center .days .day.active:hover {
+  color: white;
+  font-weight: 700;
+  background: linear-gradient(180deg, #bc9cff 0%, #8ba4f9 100%);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.active.end span, .datepicker .datepicker__item__dropdown__inner .content__center .days .day.active:hover.end span {
+  left: 0;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(188, 156, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.active.start span, .datepicker .datepicker__item__dropdown__inner .content__center .days .day.active:hover.start span {
+  right: 0;
+  width: 50%;
+  background: linear-gradient(180deg, rgba(188, 156, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.prev-next-day {
+  color: rgba(12, 13, 25, 0.25);
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.prev-next-day.active {
+  color: white;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day:hover {
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(180deg, #6fcf97 0%, #66d2ea 100%);
+  transition: all 0.3s;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.streak, .datepicker .datepicker__item__dropdown__inner .content__center .days .day.streak:hover {
+  background: none;
+  color: rgba(12, 13, 25, 0.5);
+  font-weight: 400;
+}
+.datepicker .datepicker__item__dropdown__inner .content__center .days .day.streak span, .datepicker .datepicker__item__dropdown__inner .content__center .days .day.streak:hover span {
+  width: 100%;
+  background: linear-gradient(180deg, rgba(188, 156, 255, 0.25) 0%, rgba(139, 164, 249, 0.25) 100%);
+}
+.datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn button {
+  height: 15px;
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #BC9CFF;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn button.active {
+  opacity: 1;
+  visibility: inherit;
+  pointer-events: visible;
+}
+.datepicker .datepicker__item__dropdown__inner .content__footer .drop__down__btn button.active:hover {
+  color: rgba(12, 13, 25, 0.5);
+  transition: 0.3s;
+}
+
+.datepicker__item {
+  width: 100%;
+}
+.datepicker__item + .datepicker__item {
+  margin-left: 20px;
+}
+.datepicker__item__wrapper {
+  background-color: #ffffff;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in;
+}
+.datepicker__item__wrapper:hover .datepicker__item__input, .datepicker__item__wrapper:focus .datepicker__item__input {
+  transition: all 0.2s;
+  border-color: rgba(31, 32, 65, 0.5);
+}
+.datepicker__item__wrapper .datepicker__item__input {
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  min-width: 150px;
+  height: 44px;
+  padding: 0 10px 0 15px;
+  margin-top: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.2s;
+}
+.datepicker__item__wrapper .datepicker__item__input .datepicker__item__placeholder {
+  display: contents;
+  font-size: 14px;
+  color: rgba(31, 32, 65, 0.75);
+  max-width: 85%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.datepicker__item__wrapper .datepicker__item__input span.material-icons {
+  color: rgba(31, 32, 65, 0.5);
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/select/select.scss ***!
+  \************************************************************************************************************************/
+.select {
+  width: 100%;
+  position: relative;
+}
+.select h3 {
+  margin-bottom: 5px;
+}
+.select .select__backdrop {
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: transparent;
+}
+.select .select__input {
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffff;
+  height: 44px;
+  width: 100%;
+}
+.select .select__input:focus {
+  transition: all 0.2s;
+  border-color: rgba(31, 32, 65, 0.5);
+}
+.select .select__input .select__input__placeholder {
+  padding: 13px 0 14px 15px;
+  max-width: 85%;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(31, 32, 65, 0.75);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.select .select__input .select__input__btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s;
+}
+.select .select__input span.material-icons {
+  color: rgba(31, 32, 65, 0.5);
+}
+.select .select__drop__down {
+  z-index: 1000;
+  position: absolute;
+  width: -webkit-fill-available;
+  width: -moz-available;
+  background-color: #ffffff;
+  border-bottom: 1px solid transparent;
+  border-left: 1px solid rgba(12, 13, 25, 0.25);
+  border-right: 1px solid rgba(12, 13, 25, 0.25);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0px 10px 20px rgba(31, 32, 65, 0.05);
+  padding: 0 7px 0 15px;
+  max-height: 0;
+  overflow-y: hidden;
+  transition: max-height 0.2s ease-in-out, padding 0.5s;
+}
+.select .select__drop__down__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.select .select__drop__down__item + .select__drop__down__item {
+  margin-top: 7px;
+}
+.select .select__drop__down__item .select__item__text {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+.select .select__drop__down__item .select__item__content__right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 92px;
+}
+.select .select__drop__down__item .select__item__content__right .select__item__number {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+.select .select__drop__down__item .select__item__content__right .select__item__btn {
+  background-color: #ffffff;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 22px;
+  color: rgba(12, 13, 25, 0.5);
+  opacity: 0.38;
+  font-size: 18px;
+  width: 30px;
+  height: 30px;
+  cursor: default;
+}
+.select .select__drop__down__item .select__item__content__right .select__item__btn.active {
+  cursor: pointer;
+  opacity: 1;
+}
+.select .select__drop__down__item .select__item__content__right .select__item__btn.active:active {
+  background-color: rgba(12, 13, 25, 0.25);
+}
+.select .select__drop__down .select__drop__down__btn {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.select .select__drop__down .select__drop__down__btn button {
+  opacity: 0;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  font-size: 12px;
+  line-height: 15px;
+  font-weight: 700;
+  height: 15px;
+  text-transform: uppercase;
+  color: #BC9CFF;
+  background-color: transparent;
+  transition: 0.3s;
+  padding-bottom: 6px;
+}
+.select .select__drop__down .select__drop__down__btn button.active {
+  opacity: 1;
+  visibility: inherit;
+  pointer-events: visible;
+}
+.select .select__drop__down .select__drop__down__btn button.active:hover {
+  color: rgba(12, 13, 25, 0.5);
+  transition: 0.3s;
+}
+.select.open .select__input {
+  border-end-end-radius: 0;
+  border-end-start-radius: 0;
+}
+.select.open .select__drop__down {
+  padding: 7px 7px 13px 15px;
+  border-bottom: 1px solid rgba(12, 13, 25, 0.25);
+  max-height: 200px;
+  transition: max-height 0.2s ease-in-out;
+}
+.select.open .select__backdrop {
+  display: block;
+}
+.select.open .select__input__btn {
+  transform: rotate(180deg);
+  transition: transform 0.4s;
+}
+
+.select__input {
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffff;
+  height: 44px;
+  width: 100%;
+}
+.select__input:focus, .select__input:hover {
+  transition: all 0.2s;
+  border-color: rgba(31, 32, 65, 0.5);
+}
+.select__input .select__input__placeholder {
+  padding: 13px 0 14px 15px;
+  max-width: 85%;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 18px;
+  color: rgba(31, 32, 65, 0.75);
+}
+.select__input .select__input__btn {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.4s;
+}
+.select__input span.material-icons {
+  color: rgba(31, 32, 65, 0.5);
+}

@@ -1,0 +1,728 @@
+/*!*********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./pages/room-details/room-details.scss ***!
+  \*********************************************************************************************************************************/
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 18px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.75);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0c0d19;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0c0d19;
+  text-transform: uppercase;
+}
+
+.room-details h2 {
+  margin-bottom: 20px;
+}
+.room-details .preview {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.room-details .images__list {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "img-large img-small-top" "img-large img-small-bottom";
+}
+.room-details .images__list img {
+  width: 100%;
+  height: 100%;
+}
+.room-details .images__list img:nth-of-type(1) {
+  grid-area: img-large;
+}
+.room-details .images__list img:nth-of-type(2) {
+  grid-area: img-small-top;
+}
+.room-details .images__list img:nth-of-type(3) {
+  grid-area: img-small-bottom;
+}
+.room-details .content {
+  display: flex;
+  justify-content: space-between;
+  padding: 70px 0;
+}
+.room-details .content > * + * {
+  margin-left: 70px;
+}
+.room-details .__left > * + * {
+  margin-top: 30px;
+}
+.room-details .__top {
+  display: flex;
+  justify-content: space-between;
+}
+.room-details .row + .row {
+  margin-left: 70px;
+}
+.room-details .review__title {
+  display: flex;
+  justify-content: space-between;
+}
+.room-details .review__item + .review__item {
+  margin-top: 22px;
+}
+.room-details .subtitle {
+  font-size: 14px;
+  line-height: 14px;
+  color: rgba(31, 32, 65, 0.5);
+}
+.room-details .any-info {
+  max-width: 391px;
+}
+.room-details .info__list__item:last-child {
+  border-bottom: none;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/footer/footer.scss ***!
+  \************************************************************************************************************************/
+.footer {
+  padding-top: 100px;
+}
+.footer .footer__top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+.footer .footer__top__content {
+  display: flex;
+  flex-direction: column;
+}
+.footer .footer__top__content .footer__text {
+  margin-bottom: 20px;
+}
+.footer .footer__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+  max-width: 260px;
+}
+.footer .caption {
+  max-width: 100%;
+}
+.footer .logo {
+  margin-bottom: 20px;
+}
+.footer .footer__top__content__title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  padding-bottom: 21px;
+}
+.footer .footer__top__content__list li {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(12, 13, 25, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.footer .footer__top__content__list li:hover,
+.footer .footer__top__content__list li:focus-visible {
+  color: #0c0d19;
+  transition: all 0.3s;
+}
+.footer .footer__top__content__list li + li {
+  padding-top: 20px;
+}
+.footer .footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+}
+.footer .footer__bottom .footer__bottom__list {
+  display: flex;
+}
+.footer .footer__bottom .footer__bottom__list li {
+  transition: all 0.3s;
+}
+.footer .footer__bottom .footer__bottom__list li:hover a,
+.footer .footer__bottom .footer__bottom__list a:focus-visible {
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.footer .footer__bottom .footer__bottom__list li + li {
+  padding-left: 20px;
+}
+.footer .footer__bottom .footer__bottom__list img {
+  width: 24px;
+  height: 24px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(12, 13, 25, 0.25);
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/header/header.scss ***!
+  \************************************************************************************************************************/
+.header__wrapper {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__content-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.header .header__account-name {
+  display: none;
+  color: rgba(12, 13, 25, 0.5);
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 0 6px 20px;
+  border-left: 1px solid rgba(12, 13, 25, 0.1);
+}
+.header .header__buttons {
+  display: flex;
+}
+.header .header__buttons .btnBorder_container {
+  height: 32px;
+}
+.header .header__buttons button {
+  height: 32px;
+}
+.header .header__buttons * + * {
+  margin-left: 20px;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/menu/menu.scss ***!
+  \********************************************************************************************************************/
+.menu__list {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+.menu__item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  width: 100%;
+  padding: 15px 15px 15px 0;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+.menu__item:hover > .menu__item__link, .menu__item:focus-visible > .menu__item__link {
+  color: transparent;
+}
+.menu__item:hover > .menu__item__link::after, .menu__item:focus-visible > .menu__item__link::after {
+  opacity: 1;
+}
+.menu__item:hover .menu__sub, .menu__item:focus-visible .menu__sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.menu__item__link {
+  color: rgba(12, 13, 25, 0.5);
+  position: relative;
+  white-space: nowrap;
+}
+.menu__item__link::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: rgba(12, 13, 25, 0.75);
+  font-weight: 700;
+  opacity: 0;
+}
+.menu__item__link:focus-visible {
+  color: transparent;
+}
+.menu__item__link:focus-visible::after {
+  opacity: 1;
+}
+.menu__item__link:focus-visible ~ .menu__sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.menu .link__arrow {
+  width: 24px;
+  text-align: center;
+  margin: auto;
+}
+.menu .link__arrow.material-icons {
+  color: rgba(31, 32, 65, 0.5);
+}
+.menu .menu__sub {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #ffff;
+  box-shadow: 0px 6px 8px 3px #00000030;
+  transform: translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all 0.3s;
+  pointer-events: none;
+  min-width: 95px;
+  max-width: 120px;
+  margin-top: 10px;
+  z-index: 1000;
+}
+.menu .menu__sub > .menu__item {
+  padding: 10px 10px;
+}
+.menu .menu__sub.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+/*!******************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/info_list/info_list.scss ***!
+  \******************************************************************************************************************************/
+.info__list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.info__list .info__list__item {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding-bottom: 17px;
+  padding-top: 20px;
+  border-bottom: 1px solid rgba(31, 32, 65, 0.1);
+}
+.info__list .info__list__item .info__list__item__img {
+  font-size: 48px;
+  line-height: 41px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#BC9CFF), to(#8ba4f9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.info__list .info__list__item .info__list__item__info {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+  max-width: 280px;
+  margin-left: 10px;
+  padding-right: 25px;
+}
+.info__list .info__list__item .info__list__item__info .info__list__item__title {
+  font-weight: 700;
+}
+.info__list .info__list__item .info__list__item__info .info__list__item__text {
+  font-weight: 400;
+}
+/*!************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/form_booking/form_booking.scss ***!
+  \************************************************************************************************************************************/
+.form .datepicker + .select {
+  margin-top: 20px;
+}
+
+.content__top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+.content__top .content__number-room {
+  display: flex;
+  align-items: flex-end;
+}
+.content__top .content__number-room .number {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+  color: #1f2041;
+}
+.content__top .content__number-room .room-class {
+  padding-left: 8px;
+}
+.content__top .content__number-room span:nth-of-type(1) {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 17px;
+  color: #1f2041;
+}
+.content__top .content__number-room span:nth-of-type(2) {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  color: #bc9cff;
+}
+.content__top .content__price-room {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 18px;
+  color: #1f204180;
+  display: flex;
+}
+.content__top .content__price-room span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  padding-left: 5px;
+}
+
+.content__bottom {
+  margin: 30px 0;
+}
+.content__bottom .price__info__list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+.content__bottom .price__info__list .price__info__item {
+  display: flex;
+  justify-content: space-between;
+}
+.content__bottom .price__info__list .price__info__item + .price__info__item {
+  margin-top: 10px;
+}
+.content__bottom .price__info__list .price__info__item .info {
+  max-width: 214px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(31, 32, 65, 0.75);
+  position: relative;
+}
+.content__bottom .price__info__list .price__info__item .price {
+  font-size: 14px;
+  line-height: 20px;
+  color: rgba(31, 32, 65, 0.75);
+}
+.content__bottom .price__info__sum {
+  display: flex;
+}
+.content__bottom .price__info__sum span {
+  flex-grow: 1;
+  border-bottom: 1px dashed rgba(31, 32, 65, 0.25);
+}
+.content__bottom .price__info__sum .sum,
+.content__bottom .price__info__sum .name {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 14px;
+  color: #1f2041;
+}
+.content__bottom .material-icons-outlined {
+  position: absolute;
+  top: 0;
+  right: -24px;
+  font-size: 20px;
+  color: rgba(31, 32, 65, 0.25);
+  cursor: pointer;
+}
+.content__bottom .material-icons-outlined:hover ~ .tooltip {
+  display: block;
+}
+.content__bottom .tooltip {
+  display: none;
+  position: absolute;
+  top: -55px;
+  left: 0px;
+  right: -14px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 5px;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/form/form.scss ***!
+  \********************************************************************************************************************/
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.75);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0c0d19;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0c0d19;
+  text-transform: uppercase;
+}
+
+.form__wrapper {
+  width: 380px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 40px 30px 30px 30px;
+}
+
+.form__footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form__footer p {
+  color: #000000;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/review/review.scss ***!
+  \************************************************************************************************************************/
+.review__list .review__item {
+  display: flex;
+}
+.review__list .__content-left {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin-right: 10px;
+}
+.review__list .review__content__img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 2px solid #ffffff;
+  filter: drop-shadow(0px 10px 20px rgba(31, 32, 65, 0.1));
+  border-radius: 32px;
+}
+.review__list .text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+}
+.review__list .review__content__name {
+  font-weight: 700;
+}
+.review__list .review__content__text {
+  margin-top: 10px;
+}
+.review__list .review__item + .review__item {
+  margin-top: 22px;
+}
+/*!****************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/like_btn/like_btn.scss ***!
+  \****************************************************************************************************************************/
+.like-btn {
+  min-width: 40px;
+  height: 20px;
+  background: #ffffff;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+.like-btn .like-btn__icons {
+  position: relative;
+  width: 15px;
+}
+.like-btn span.material-icons.like-btn__icon {
+  height: 20px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  font-size: 10px;
+  line-height: 9px;
+  transition: 0.3s ease-out;
+}
+.like-btn .__icon-active {
+  position: absolute;
+  opacity: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#BC9CFF), to(#8ba4f9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.like-btn .__icon-inactive {
+  opacity: 1;
+  color: rgba(31, 32, 65, 0.25);
+}
+.like-btn .like-btn__count {
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 400;
+  color: rgba(31, 32, 65, 0.25);
+  transition: 0.3s ease-out;
+}
+.like-btn.__btn-active {
+  border-color: #BC9CFF;
+}
+.like-btn.__btn-active .__icon-inactive {
+  opacity: 0;
+  transition: 0.3s ease-out;
+}
+.like-btn.__btn-active .__icon-active {
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+.like-btn.__btn-active .like-btn__count {
+  color: #BC9CFF;
+  transition: 0.3s ease-in;
+}
+
+button.like-btn:focus-visible {
+  outline: 1px solid rgba(31, 32, 65, 0.7);
+}
+/*!********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/bulletlist/bulletlist.scss ***!
+  \********************************************************************************************************************************/
+.bulletList__item {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-items: baseline;
+}
+.bulletList__item span.bulletList__item__marker {
+  min-width: 10px;
+  height: 10px;
+  background: rgba(31, 32, 65, 0.25);
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.bulletList__item .bulletList__item__text {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+}

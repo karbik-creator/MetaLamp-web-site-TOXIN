@@ -1,0 +1,777 @@
+/*!*********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./pages/registration/registration.scss ***!
+  \*********************************************************************************************************************************/
+@charset "UTF-8";
+/*Обнуление*/
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+  display: block;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-size: 100%;
+  line-height: 1;
+  font-size: 18px;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+  font-family: inherit;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.75);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0c0d19;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0c0d19;
+  text-transform: uppercase;
+}
+
+.main {
+  background-image: url(../img/form_filter_background.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.main .main__content {
+  position: relative;
+  min-height: 712px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/*!******************************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/subscriptionTextField/subscriptionTextField.scss ***!
+  \******************************************************************************************************************************************************/
+.subscription-text-field {
+  height: 44px;
+  width: 100%;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s;
+}
+.subscription-text-field .subscription-text-field__input {
+  height: 100%;
+  width: 83%;
+  border-radius: 4px;
+  padding-left: 15px;
+  transition: all 0.2s;
+}
+.subscription-text-field .subscription-text-field__input::placeholder {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.25);
+}
+.subscription-text-field .subscription-text-field__btn {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  position: absolute;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 4px;
+}
+.subscription-text-field .subscription-text-field__btn:focus-visible {
+  transition: all 0.2s;
+  border: 1px solid rgba(31, 32, 65, 0.7);
+}
+.subscription-text-field:hover, .subscription-text-field:focus {
+  transition: all 0.2s;
+  border: 1px solid rgba(31, 32, 65, 0.5);
+}
+.subscription-text-field .material-icons {
+  background: -webkit-gradient(linear, left top, left bottom, from(#BC9CFF), to(#8ba4f9));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/logo/logo.scss ***!
+  \********************************************************************************************************************/
+.logo {
+  background-image: url(../img/logo.svg);
+  background-repeat: no-repeat;
+  width: 160px;
+  height: 40px;
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/footer/footer.scss ***!
+  \************************************************************************************************************************/
+.footer {
+  padding-top: 100px;
+}
+.footer .footer__top {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 100px;
+}
+.footer .footer__top__content {
+  display: flex;
+  flex-direction: column;
+}
+.footer .footer__top__content .footer__text {
+  margin-bottom: 20px;
+}
+.footer .footer__text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+  max-width: 260px;
+}
+.footer .caption {
+  max-width: 100%;
+}
+.footer .logo {
+  margin-bottom: 20px;
+}
+.footer .footer__top__content__title {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+  padding-bottom: 21px;
+}
+.footer .footer__top__content__list li {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  color: rgba(12, 13, 25, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.footer .footer__top__content__list li:hover,
+.footer .footer__top__content__list li:focus-visible {
+  color: #0c0d19;
+  transition: all 0.3s;
+}
+.footer .footer__top__content__list li + li {
+  padding-top: 20px;
+}
+.footer .footer__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 70px;
+}
+.footer .footer__bottom .footer__bottom__list {
+  display: flex;
+}
+.footer .footer__bottom .footer__bottom__list li {
+  transition: all 0.3s;
+}
+.footer .footer__bottom .footer__bottom__list li:hover a,
+.footer .footer__bottom .footer__bottom__list a:focus-visible {
+  opacity: 0.5;
+  transition: all 0.3s;
+}
+.footer .footer__bottom .footer__bottom__list li + li {
+  padding-left: 20px;
+}
+.footer .footer__bottom .footer__bottom__list img {
+  width: 24px;
+  height: 24px;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: rgba(12, 13, 25, 0.25);
+}
+/*!************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/header/header.scss ***!
+  \************************************************************************************************************************/
+.header__wrapper {
+  min-height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__content-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+.header .header__account-name {
+  display: none;
+  color: rgba(12, 13, 25, 0.5);
+  font-size: 14px;
+  line-height: 17px;
+  padding: 6px 0 6px 20px;
+  border-left: 1px solid rgba(12, 13, 25, 0.1);
+}
+.header .header__buttons {
+  display: flex;
+}
+.header .header__buttons .btnBorder_container {
+  height: 32px;
+}
+.header .header__buttons button {
+  height: 32px;
+}
+.header .header__buttons * + * {
+  margin-left: 20px;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/menu/menu.scss ***!
+  \********************************************************************************************************************/
+.menu__list {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+.menu__item {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  width: 100%;
+  padding: 15px 15px 15px 0;
+  transition: all 0.3s;
+  position: relative;
+  cursor: pointer;
+}
+.menu__item:hover > .menu__item__link, .menu__item:focus-visible > .menu__item__link {
+  color: transparent;
+}
+.menu__item:hover > .menu__item__link::after, .menu__item:focus-visible > .menu__item__link::after {
+  opacity: 1;
+}
+.menu__item:hover .menu__sub, .menu__item:focus-visible .menu__sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.menu__item__link {
+  color: rgba(12, 13, 25, 0.5);
+  position: relative;
+  white-space: nowrap;
+}
+.menu__item__link::after {
+  content: attr(data-title);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: rgba(12, 13, 25, 0.75);
+  font-weight: 700;
+  opacity: 0;
+}
+.menu__item__link:focus-visible {
+  color: transparent;
+}
+.menu__item__link:focus-visible::after {
+  opacity: 1;
+}
+.menu__item__link:focus-visible ~ .menu__sub {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.menu .link__arrow {
+  width: 24px;
+  text-align: center;
+  margin: auto;
+}
+.menu .link__arrow.material-icons {
+  color: rgba(31, 32, 65, 0.5);
+}
+.menu .menu__sub {
+  position: absolute;
+  top: 30px;
+  left: 0;
+  background-color: #ffff;
+  box-shadow: 0px 6px 8px 3px #00000030;
+  transform: translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: all 0.3s;
+  pointer-events: none;
+  min-width: 95px;
+  max-width: 120px;
+  margin-top: 10px;
+  z-index: 1000;
+}
+.menu .menu__sub > .menu__item {
+  padding: 10px 10px;
+}
+.menu .menu__sub.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateY(0);
+}
+/*!******************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/btn/btn.scss ***!
+  \******************************************************************************************************************/
+button {
+  height: 44px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: uppercase;
+}
+
+button.btnBackground {
+  width: 100%;
+  border-radius: 22px;
+  padding-left: 19px;
+  padding-right: 19px;
+  position: relative;
+  transition: opacity 0.3s;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8ba4f9 100%);
+  color: #fff;
+  border: 0;
+  z-index: 1;
+}
+button.btnBackground:hover, button.btnBackground:focus, button.btnBackground.hover {
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+button.btnBackground:hover span, button.btnBackground:focus span, button.btnBackground.hover span {
+  transition: opacity 0.3s;
+  opacity: 0.5;
+}
+button.btnBackground span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+}
+
+.btnBorder_container {
+  position: relative;
+  z-index: 1;
+  height: 42px;
+}
+.btnBorder_container .btnBorder {
+  height: 42px;
+  color: #BC9CFF;
+  background-color: #ffff;
+  padding: 0 18px 0 20px;
+  border-radius: 22px;
+  text-transform: uppercase;
+  transition: all 0.2s ease-out;
+}
+.btnBorder_container .btnBorder::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 24px;
+  background: linear-gradient(#BC9CFF, #8ba4f9);
+  z-index: -1;
+  transition: all 0.2s ease-out;
+}
+.btnBorder_container .btnBorder:hover::after,
+.btnBorder_container .btnBorder.hover::after {
+  transition: all 0.2s ease-in;
+  opacity: 0.5;
+}
+.btnBorder_container .btnBorder:focus::after {
+  transition: all 0.2s ease-in;
+  opacity: 0.5;
+}
+
+.btnLink {
+  color: #BC9CFF;
+  background-color: transparent;
+  transition: 0.3s;
+}
+.btnLink:hover, .btnLink.hover, .btnLink:focus {
+  color: rgba(31, 32, 65, 0.5);
+  transition: 0.3s;
+}
+/*!**************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/form_registry/form_registry.scss ***!
+  \**************************************************************************************************************************************/
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.75);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0c0d19;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0c0d19;
+  text-transform: uppercase;
+}
+
+.form .form__wrapper .form__content {
+  margin-top: 20px;
+}
+.form .form__wrapper .form__content > h3 ~ *:not(:first-child):not(:nth-child(2)) {
+  margin-top: 10px;
+}
+.form .form__wrapper .form__content > h3 {
+  margin-bottom: 5px;
+}
+.form .form__wrapper .form__content.content-1 > *:not(:first-child) {
+  margin-top: 10px;
+}
+.form .form__wrapper .form__footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+}
+.form .form__content + .button {
+  margin-top: 20px;
+}
+/*!********************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/form/form.scss ***!
+  \********************************************************************************************************************/
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.75);
+}
+
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #0c0d19;
+}
+
+h2 {
+  font-weight: 700;
+  font-size: 19px;
+  line-height: 23px;
+}
+
+h3 {
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 15px;
+  color: #0c0d19;
+  text-transform: uppercase;
+}
+
+.form__wrapper {
+  width: 380px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  padding: 40px 30px 30px 30px;
+}
+
+.form__footer {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form__footer p {
+  color: #000000;
+}
+/*!********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/text_field/text_field.scss ***!
+  \********************************************************************************************************************************/
+input.text_field {
+  width: 100%;
+  height: 44px;
+  border: 1px solid rgba(12, 13, 25, 0.25);
+  border-radius: 4px;
+  padding-left: 15px;
+  color: rgba(31, 32, 65, 0.75);
+  font-size: 14px;
+  line-height: 24px;
+  transition: all 0.2s;
+}
+input.text_field::placeholder {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(12, 13, 25, 0.25);
+}
+input.text_field:hover, input.text_field:focus, input.text_field.hover {
+  transition: all 0.2s;
+  border-color: rgba(31, 32, 65, 0.5);
+}
+/*!******************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/radio_btn/radio_btn.scss ***!
+  \******************************************************************************************************************************/
+.radio-btn {
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+.radio-btn .radio-btn__text {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.5);
+}
+.radio-btn .__input-hidden {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.radio-btn .radio-btn__input {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+.radio-btn .radio-btn__input:focus-visible ~ .__input-active {
+  outline: 1px solid rgba(31, 32, 65, 0.5);
+}
+.radio-btn .radio-btn__input:checked ~ .__input-active {
+  border: 1px solid rgba(31, 32, 65, 0);
+  transition: all 0.1s;
+}
+.radio-btn .radio-btn__input:checked ~ .__input-active span.circle,
+.radio-btn .radio-btn__input:checked ~ .__input-active span.border {
+  opacity: 1;
+  transition: all 0.1s;
+}
+.radio-btn .__input-active {
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-right: 10px;
+}
+.radio-btn .__input-active span.circle {
+  opacity: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8ba4f9 100%);
+}
+.radio-btn .__input-active span.border {
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  opacity: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid;
+  border-color: #BC9CFF;
+}
+
+.radio-btn__list {
+  display: flex;
+}
+
+.radio-btn__item + .radio-btn__item {
+  margin-left: 20px;
+}
+/*!********************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/toggle_btn/toggle_btn.scss ***!
+  \********************************************************************************************************************************/
+.toggle {
+  display: flex;
+  flex-wrap: nowrap;
+  position: relative;
+  cursor: pointer;
+}
+.toggle .toggle__input {
+  min-width: 40px;
+  height: 20px;
+  border-radius: 10px;
+}
+.toggle .toggle__input:focus-visible {
+  outline: 1px solid rgba(31, 32, 65, 0.5);
+}
+.toggle .toggle__input:checked ~ .__input-active::before {
+  left: 23px;
+  transition: all 0.3s ease-in;
+}
+.toggle .toggle__input:checked ~ .__input-active span.border {
+  opacity: 1;
+  transition: all 0.3s ease-in;
+}
+.toggle .toggle__input:checked ~ .__input-active span.circle {
+  opacity: 1;
+  left: 23px;
+  transition: all 0.3s ease-in;
+}
+.toggle .__input-hidden {
+  -webkit-appearance: none;
+  margin-right: 10px;
+}
+.toggle .toggle__title {
+  font-size: 14px;
+  line-height: 24px;
+  color: rgba(31, 32, 65, 0.75);
+}
+.toggle .__input-active {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 20px;
+  border: 1px solid rgba(31, 32, 65, 0.25);
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.toggle .__input-active::before {
+  content: "";
+  opacity: 1;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  background: rgba(31, 32, 65, 0.25);
+  border-radius: 10px;
+  transition: 0.3s ease-out;
+}
+.toggle .__input-active span.border {
+  opacity: 0;
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 40px;
+  height: 20px;
+  border: 1px solid #BC9CFF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.toggle .__input-active span.circle {
+  opacity: 0;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(180deg, #BC9CFF 0%, #8ba4f9 100%);
+  border-radius: 10px;
+}
+/*!**********************************************************************************************************************************************!*\
+  !*** css ../node_modules/css-loader/dist/cjs.js!../node_modules/sass-loader/dist/cjs.js!./elements/masked_text_field/masked_text_field.scss ***!
+  \**********************************************************************************************************************************************/
+
