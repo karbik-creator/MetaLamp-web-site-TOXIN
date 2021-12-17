@@ -1,7 +1,7 @@
 # TOXIN
 Сайт по бронированию отелей
 
-[TOXIN(demo)](https://karbik-creator.github.io/TOXIN/sign-in.html)
+[TOXIN(demo)](https://karbik-creator.github.io/TOXIN/)
 
 Все страницы проекта
 
