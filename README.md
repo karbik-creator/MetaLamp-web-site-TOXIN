@@ -1,5 +1,5 @@
 # TOXIN
-Сайт по бронированию отелей
+Сайт отеля по бронированию номеров
 
 [TOXIN(demo)](https://karbik-creator.github.io/TOXIN/)
 
